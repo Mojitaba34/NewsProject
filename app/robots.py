@@ -27,8 +27,6 @@ class PageContent():
         return mystr
 
 
-
-
 class news_from_tejaratnews():
     '''
     Class for tejaratNews 
@@ -95,14 +93,17 @@ class news_from_tejaratnews():
     returning a dictionary data for store in dataBase
 
     '''
-    def return_dic(self):
-        dic_for_news= {
+    def getData(self):
+        data= {
             'news_image_link': self.img_lnk(),
             'news_title': self.news_title(),
             'news_content': self.news_content(),
             'news_link':self.news_link()
         }
-        return dic_for_news
+        posts=[]
+        for post in range(data.__len__()):
+            posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
+        return posts#TODO: InsertTblNews()
 
 
 
@@ -191,14 +192,18 @@ class news_from_tasnimnews():
     returning a dictionary data for store in dataBase
 
     '''
-    def return_dic(self):
-        dic_for_news= {
+    def getData(self):
+        data= {
             'news_image_link': self.img_lnk(),
             'news_title': self.news_title(),
             'news_content': self.news_content(),
             'news_link':self.news_link()
         }
-        return dic_for_news
+        posts=[]
+        for post in range(data.__len__()):
+            posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
+        return posts#TODO: InsertTblNews()
+
 
 
 class news_from_arzdigital():
@@ -276,11 +281,14 @@ class news_from_arzdigital():
     returning a dictionary data for store in dataBase
 
     '''
-    def return_dic(self):
-        dic_for_news= {
+    def getData(self):
+        data= {
             'news_image_link': self.img_lnk(),
             'news_title': self.news_title(),
             'news_content': self.news_content(),
             'news_link':self.news_link()
         }
-        return dic_for_news
+        posts=[]
+        for post in range(data.__len__()):
+            posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
+        return posts #TODO: InsertTblNews()

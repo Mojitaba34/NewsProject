@@ -8,5 +8,5 @@ This is a big Project for Online News
 
 - [x] Start Project
 - [ ] Crawled CryptoPrice
-- [ ] Crawled Online economic News
-- [ ] Crawled Online Sport News
+- [x] Crawled Online News
+- [x] save data to db
