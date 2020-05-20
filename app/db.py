@@ -1,5 +1,5 @@
 import MySQLdb
-import config
+from app import config
 
 def get_database_connection():
     """connects to the MySQL database and returns the connection"""
@@ -47,6 +47,16 @@ def BuildTables():
             time_crawler int(5)
         );
         """)
+        # Create tbl_contact If not Exists
+        cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_contact_us
+        (
+            id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+            username VARCHAR(30),
+            email VARCHAR(40) UNIQUE,
+            subject VARCHAR(255),
+            comment VARCHAR(255)
+        );
+        """)
         return 'tables created successfully'
 
     except Exception as e:
@@ -65,8 +75,7 @@ def InsertTblNews(data):
         count = 0
         for post in range(data.__len__()):
             if CheckExistsTitleNews(data[post]['title']) == False:
-                cursor.execute("""INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date) 
-                        VALUES (%s, %s, %s, %s, %s)""",(data[post]['title'],data[post]['content'],data[post]['link'],data[post]['news_img_link'],date.today()))
+                cursor.execute("INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date) VALUES (%s, %s, %s, %s, %s)",(data[post]['title'],data[post]['content'],data[post]['link'],data[post]['news_img_link'],"date.today()"))
                 db.commit()
                 count+=1
         return f'{count} data inserted '
@@ -110,3 +119,58 @@ def CheckExistsTitleNews(title):
     else:
         return False
     db.close()
+
+"""
+inserting comments into database
+"""
+def Insertcomment(username,email,subject,comment):
+    db = get_database_connection()
+    cursor = db.cursor()
+    try:
+        cursor.execute("INSERT INTO tbl_contact_us (username, email, subject,comment) VALUES (%s,%s,%s,%s)",(username,email,subject,comment))
+        db.commit()
+        return True
+    except Exception as e:
+        return f'an Erorr {e} .'
+
+    db.close()
+    return 'none'
+
+
+
+
+
+"""
+Geting data from DataBase to import in index page
+"""
+def read_data(ofsset, limit):
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute('SELECT news_title,news_content,news_link,news_img_link FROM tbl_news ORDER BY id DESC LIMIT %s, %s;', (ofsset,limit))
+    data = list(cursor.fetchall())
+    return data
+
+
+"""
+We need a rows number to figure out how many pages do we have
+
+"""
+
+def row_count():
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute('SELECT COUNT(*) FROM tbl_news')
+    data = cursor.fetchone()
+    return data[0]
+
+
+"""
+Geting data from DataBase to import in to the Slider
+"""
+def read_data_for_slider(limit):
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute(f'SELECT news_title,news_content,news_link,news_img_link FROM tbl_news ORDER BY id DESC LIMIT {limit}')
+    data = list(cursor.fetchall())
+    return data
+

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% set active_page = 'arzdigital' %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12 ">
+			<div class="text-center  p-2 mt-5">
+				<h1 class="hero-title"><i class="fa fa-flash mx-2 text-dark"></i>از قیمت لحظه ای ارز های دیجیتال با خبر باشید<i
+						class="fa fa-flash mx-2 text-dark"></i></h1>
+			</div>
+		</div>
+	</div>
+</div>
+<main>
+	<!-- start of digital table -->
+	<section id="table">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="arz-table">
+						<table class="table table-responsive-xl table-striped text-center">
+							<!-- start of header of table  -->
+							<thead>
+								<tr>
+									<th scope="col"><a href="#"> # </a></th>
+									<th scope="col"><a href="#"> ارز دیجیتال <i class="fa fa-compress"></i>
+										</a>
+									</th>
+									<th scope="col"><a href="#"> قیمت <i class="fa fa-compress"></i> </a>
+									</th>
+									<th scope="col"><a href="#">قیمت ریالی <i class="fa fa-compress"></i>
+										</a></th>
+									<th scope="col"><a href="#">حجم بازار <i class="fa fa-compress"></i>
+										</a></th>
+									<th scope="col"><a href="#">معاملات روزانه <i class="fa fa-compress"></i> </a>
+									</th>
+									<th scope="col"><a href="#"> ارز در دسترس</a> </th>
+									<th scope="col"><a href="#">روزانه <i class="fa fa-compress"></i> </a>
+									</th>
+									<th scope="col"><a href="#">هفتگی <i class="fa fa-compress"></i> </a>
+									</th>
+									<th scope="col"><a href="#">امکانات <i class="fa fa-compress"></i> </a>
+									</th>
+								</tr>
+							</thead>
+							<!-- end of header of table  -->
+
+							<!-- start of body of table  -->
+							<tbody>
+								<!-- 1 -->
+								{% for coins_data in coins %}
+								<tr>
+									<th scope="row">1</th>
+									<td><a class="d-flex flex-column align-items-center" href="#">BitCoin
+											<span class="text-muted small"> بیت کوین </span> </a></td>
+									<td><a href="#">$8,883.59</a></td>
+									<td><a class="d-flex flex-column align-items-center" href="#">۱۴۷,۴۶۱,۳۳۲ <span
+												class="text-muted small"> تومان
+											</span> </a></td>
+									<td><a class="d-flex flex-column align-items-center" href="#">163.64
+											<span class="text-muted small"> میلیارد دلار </span> </a></td>
+									<td><a class="d-flex flex-column align-items-center" href="#">41.341
+											<span class="text-muted small"> میلیارد دلار </span> </a></td>
+									<td><a class="d-flex flex-column align-items-center" href="#">18.378
+											<span class="text-muted small"> میلیون BTC </span> </a></td>
+									<td><a href="#"> <span class="right-badge"> 1.67% </span> </a></td>
+									<td><a href="#"> <span class="text-danger"> 1.98% </span> </a></td>
+									<td><a href="#" class="large"> ... </a></td>
+								</tr>
+								{% endfor %}
+								<!-- 2 -->
+							</tbody>
+							<!-- end of body of table  -->
+						</table>
+						<!-- end of table it self -->
+					</div>
+					<!-- end of div.arz-table  -->
+				</div>
+				<!-- end of div.col-12  -->
+			</div>
+			<!-- end of div.row  -->
+		</div>
+		<!-- end of div.container-fluid  -->
+	</section>
+	<!-- end of digital table -->
+	<div class="row">
+		<div class="col-12 text-center">
+			<div class="return">
+				<a href="/" data-toggle="tooltip" data-placement="top" title="برگشت به صفحه اصلی"><i class="fa fa-undo"></i></a>
+			</div>
+		</div>
+	</div>
+</main>
+<hr style="border-width: 1px;">
+{% endblock %}

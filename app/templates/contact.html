@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% set active_page = 'contact'%}
+{% block content %}
+<!-- start of main area -->
+<main>
+
+    <div class="col-12  my-4 text-center">
+        <h1 class="display-sm-3 mt-5 hero-title"> نظرات خود را با ما در ارتباط بگذارید <i
+                class="fa fa-envelope mx-2"></i> </h1>
+    </div>
+
+    <div class="row d-flex justify-content-center my-5">
+
+        <div class="col-md-7 col-10">
+            <p class="text-sm-right text-center"> از آنجا که دو antiopam افلاطون electram. من را انتخاب
+                کنید، و یا که حق به دلایل کامل برای آنها لذت facilisi دارند. و <span
+                    style="color: tomato; text-decoration: lightgray underline;"> این حملات در حال سقوط است،
+                </span> دو تصمیم Laoreet. لذت از است EA محتوانحوه که در آن یک علت، آن را به فساد democritum
+                اتحادیه اروپا دریا، از حقیقت از او، من خواهد آمد. آنها می گویند که برگزار خواهد شد Laoreet
+                به ندرت Zril پیرو عقیده اپیکور فوتبال را ترک کرده است. لورم هویج Ipsum در، رهبران فوتبال
+                برای بیشتر یا بهتر از زمانی که خلاصه پاسخ. اول، هیچ بد حذف، هرگز conclusionemque یا دریا.
+                استفاده از هویج تعجب درک می کند. به فرض لاتینها دریا با برخی از فوتبال بهتر است. </p>
+
+            <form class="contact-form" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6 col-12">
+                        <input type="text" class="form-control" name="name" placeholder="نام شما*">
+                    </div>
+                    <div class="form-group col-md-6 col-12">
+                        <input type="email" class="form-control" name="email" placeholder="ایمیل شما*">
+                    </div>
+                    <div class="form-group col-md-12 col-12">
+                        <input type="text" class="form-control" name="subject" placeholder="موضوع*">
+                    </div>
+                    <div class="form-group col-md-12 col-12">
+                        <textarea class="form-control" name="comment" cols="26" rows="8" placeholder="پیام شما*"
+                            style="width: 100%;"> </textarea>
+                    </div>
+                    <div class="form-group w-100 d-flex justify-content-center">
+                        <input type="submit" value="ارسال" class="our-btn">
+                    </div>
+                </div>
+
+            </form>
+            <!-- massage show when user submit the comment -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, msg in messages%}
+                        <div class="alert alert-{{category}}" style="text-align: center;">
+                           {{msg}} 
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+        </div>
+
+    </div>
+</main>
+<hr style="border-width: 1px; width: 75%;">
+{% endblock %}

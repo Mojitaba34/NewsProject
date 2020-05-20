@@ -1,7 +1,9 @@
 from flask import Flask
-import db
-import robots
-app = Flask(__name__)
+from app import db
+from app import robots
+app = Flask(__name__ , static_url_path='/static', static_folder='static')
+
+app.config['SECRET_KEY'] = 'c07fc84ea77edced0582cbb80095795d'
 
 db.BuildTables() # First Step Check exists and build Tables Database
 

@@ -1,8 +1,9 @@
-import urllib
+import urllib, requests
 import time
 import urllib.request
 from urllib.request import Request, urlopen
 import lxml.html as html
+from app import db
 
 
 
@@ -101,9 +102,11 @@ class news_from_tejaratnews():
             'news_link':self.news_link()
         }
         posts=[]
-        for post in range(data.__len__()):
+        data_len = self.news_title().__len__()
+        for post in range(data_len):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
-        return posts#TODO: InsertTblNews()
+        # return posts#TODO: InsertTblNews()
+        
 
 
 
@@ -292,3 +295,17 @@ class news_from_arzdigital():
         for post in range(data.__len__()):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts #TODO: InsertTblNews()
+
+
+
+class crypto():
+
+    def __init__(self):
+        self.CoinList = ['BTCUSDT','ETHUSDT','XRPUSDT','BCHUSDT','LTCUSDT','BNBUSDT','LINKUSDT']
+        # https://api.binance.com/api/v3/ticker/price?symbol=ZENBTC
+        #API = 'https://api.binance.com/api/v3/ticker/price?symbol={}'
+
+    def get_data(self):
+        for coin in self.CoinList:
+            r = requests.get(f'https://api.binance.com/api/v3/ticker/price?symbol={coin}')
+            return r.text
