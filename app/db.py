@@ -1,9 +1,13 @@
-import MySQLdb
+import mysql.connector
 from app import config
+import datetime
+"""
+Connection To Db
+"""
 
 def get_database_connection():
     """connects to the MySQL database and returns the connection"""
-    return MySQLdb.connect(
+    return mysql.connector.connect(
         host=config.MYSQL_HOST,
         user=config.MYSQL_USERNAME,
         passwd=config.MYSQL_PASSWORD,
@@ -12,6 +16,9 @@ def get_database_connection():
     )
 
 
+"""
+Build Tables Default
+"""
 def BuildTables():
     db = get_database_connection()
     cursor = db.cursor()
@@ -66,19 +73,26 @@ def BuildTables():
         db.commit()
         db.close()
 
+"""
 
+"""
+
+"""
+Insert Data To tbl_news
+"""
 def InsertTblNews(data):
     """This Method received the data argument and insert into table news after check data exists or not"""
     db = get_database_connection()
     cursor = db.cursor()
     try:
-        count = 0
-        for post in range(data.__len__()):
+        for post in range(len(data)):
             if CheckExistsTitleNews(data[post]['title']) == False:
-                cursor.execute("INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date) VALUES (%s, %s, %s, %s, %s)",(data[post]['title'],data[post]['content'],data[post]['link'],data[post]['news_img_link'],"date.today()"))
-                db.commit()
-                count+=1
-        return f'{count} data inserted '
+                insert_query = "INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date) VALUES (%s, %s, %s, %s, %s)"
+                insert_val = (str(data[post]['title']),str(data[post]['content']),str(data[post]['link']),str(data[post]['news_img_link']),"date.today()")
+                cursor.execute(insert_query,insert_val)
+            print('inserted')
+        db.commit()
+        return f'{cursor.rowcount} data inserted '
     except Exception as e:
         return f'an Erorr {e} .'
     
@@ -86,6 +100,9 @@ def InsertTblNews(data):
     return 'none'
 
 
+"""
+Check Exists Title News With Crawled Title
+"""
 def CheckExistsTitleNews(title):
     """ This Method for get all titles in database and check with input title
         now, if title equal by database titles this data not insert to table News
@@ -98,15 +115,15 @@ def CheckExistsTitleNews(title):
 
         # This try run query in mysql and fetch all data titles
         try:
-            rowCount = cursor.execute(
+            cursor.execute(
             """SELECT news_title FROM tbl_news;"""
             )
+            data_db = cursor.fetchall()
         except Exception as _:
             return False
 
-        if rowCount > 0 :
+        if cursor.rowcount > 0 :
             db_titles = [] # this list for database Titles
-            data_db = cursor.fetchall()
 
             for db_title in data_db:
                 db_titles.append(db_title[0]) # append titles in db_titles
@@ -119,6 +136,8 @@ def CheckExistsTitleNews(title):
     else:
         return False
     db.close()
+
+
 
 """
 inserting comments into database
@@ -153,7 +172,6 @@ def read_data(ofsset, limit):
 
 """
 We need a rows number to figure out how many pages do we have
-
 """
 
 def row_count():
