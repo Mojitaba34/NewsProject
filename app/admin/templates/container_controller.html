@@ -1,0 +1,11 @@
+{% extends 'base_admin.html' %} <!-- base.html for admin panel -->
+{% block content %}
+    {% if container == '' %} <!-- Dashboard -->
+        {% include 'dashboard.html' %} 
+    {% elif container == 'news_robot' %} <!-- News_robot -->
+        {% include 'news_robot.html' %}
+    {% elif container == 'crypto_robot' %}
+        {% include 'crypto_robot.html' %}
+    {% endif %}
+{% endblock %}
+

@@ -1,6 +1,7 @@
 import urllib, requests
 import time
 import urllib.request
+from app import config
 from urllib.request import Request, urlopen
 import lxml.html as html
 from app import db

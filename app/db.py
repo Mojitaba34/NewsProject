@@ -1,6 +1,7 @@
 import mysql.connector
 from app import config
 import datetime
+
 """
 Connection To Db
 """
@@ -36,15 +37,7 @@ def BuildTables():
             news_date DATETIME
             );
             """)
-        # Create tbl_admin If not Exists
-        cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_admin
-        (
-            id_admin INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-            username VARCHAR(30),
-            password VARCHAR(30),
-            email VARCHAR(40) UNIQUE
-        );
-        """)
+
         # Create tbl_robots If not Exists
         cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_robots
         (
@@ -73,9 +66,6 @@ def BuildTables():
         db.commit()
         db.close()
 
-"""
-
-"""
 
 """
 Insert Data To tbl_news
