@@ -103,6 +103,15 @@ $(document).ready(function () {
     $('[data-toggle="popover"]').popover();
     $('[data-toggle="tooltip"]').tooltip();
 
+    // pagination active class set
+    const currentlocation = location.href;
+    const items = document.querySelectorAll('#pagination a');
+    const menulength = items.length
+    for (let i = 0; i<menulength; i++){
+        if (items[i].href === currentlocation){
+            items[i].className = "active"
+        }
+    }
 
 });
 

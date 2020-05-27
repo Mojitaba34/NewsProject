@@ -1,7 +1,7 @@
-import db
+# import db
 
-import robots
+# import robots
 
-tejarat_news = robots.news_from_tejaratnews()
-data = tejarat_news.getData()
-print(db.InsertTblNews(data))
+# tejarat_news = robots.news_from_tejaratnews()
+# data = tejarat_news.getData()
+# print(db.InsertTblNews(data))

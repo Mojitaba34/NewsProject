@@ -103,7 +103,7 @@ class news_from_tejaratnews():
             'news_link':self.news_link()
         }
         posts=[]
-        data_len = self.news_title().__len__()
+        data_len = self.news_title().__len__() - 1
         for post in range(data_len):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts#TODO: InsertTblNews()
@@ -204,7 +204,8 @@ class news_from_tasnimnews():
             'news_link':self.news_link()
         }
         posts=[]
-        for post in range(data.__len__()):
+        data_len = self.news_title().__len__()
+        for post in range(data_len):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts#TODO: InsertTblNews()
 
@@ -293,7 +294,8 @@ class news_from_arzdigital():
             'news_link':self.news_link()
         }
         posts=[]
-        for post in range(data.__len__()):
+        data_len = self.news_title().__len__()
+        for post in range(data_len):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts #TODO: InsertTblNews()
 

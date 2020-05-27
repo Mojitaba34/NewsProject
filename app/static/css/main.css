@@ -819,3 +819,11 @@ textarea:focus,
   box-shadow: 0 0 0px transparent inset, 0 0 0px transparent;
   outline: 0 none;
 }
+
+/* pagination active  */
+
+ul li > a.active {
+    border-bottom: 2px solid #000;
+    color: #000;
+    padding: 2px 4px;
+}

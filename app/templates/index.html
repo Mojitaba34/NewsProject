@@ -6,7 +6,7 @@
   <div class="col-12 mb-4 text-center">
     <h1 class="mt-5 hero-title"> <i class="fa fa-firefox"></i> فاکس نیوز برای همه کاربران ایرانی <i
         class="fa fa-firefox"></i> </h1>
-        <h2>ip: {{ipClient}}</h2>
+    <h2>ip: {{ip[0][0]}}</h2>
   </div>
 
   <!-- start of Hero Section -->
@@ -121,7 +121,7 @@
           </a>
 
           <div class="card-body text-sm-right text-center">
-            <h6 class="card-subtitle mb-2 text-muted">فروردین - 99 <span class="mr-2 hvr-underline-from-left pb-2">
+            <h6 class="card-subtitle mb-2 text-muted">{{post[4]}}<span class="mr-2 hvr-underline-from-left pb-2">
               </span> </h6>
             <a href="{{ post[2]}}">
               <h4 class="card-title"><b>{{ post[0] }}</b>
@@ -139,13 +139,25 @@
 
     <!-- end of main row in content area -->
 
-    <!-- pagination -->
+    <!-- pagination
+    using Jinja and data that passed to this page 
+    -->
     <div class="row my-5">
       <div class="col-12 d-flex justify-content-center">
-        <ul class="pagination">
-          {% for page in range(1,page_num)%}
-          <li class="py-4 px-3 updatebutton"> <a href="{{ url_for('home',page = page)}}"> {{page}} </a> </li>
+        <ul class="pagination" id="pagination">
+          <li class="py-4 px-3"> <a href="/" >1</a> </li>
+          {% if maxLeft>1 %}
+          <li class="py-4 px-3">...</li>
+          {% endif%}
+          {% for page in range(maxLeft,maxRight)%}
+          {% if not loop.index == 1%}
+          <li class="py-4 px-3"> <a href="{{ url_for('home',page = page )}}" >{{page}} </a> </li>
+          {%endif%}
           {% endfor %}
+          {% if maxRight < page_num %}
+          <li class="py-4 px-3">...</li>
+          {% endif%}
+          <li class="py-4 px-3"> <a href="{{ url_for('home',page = page_num )}}" >{{page_num}} </a> </li>
         </ul>
       </div>
     </div>

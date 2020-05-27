@@ -1,6 +1,7 @@
 import mysql.connector
 from app import config
 import datetime
+from persiantools.jdatetime import JalaliDateTime
 
 """
 Connection To Db
@@ -34,7 +35,8 @@ def BuildTables():
             news_content TEXT,
             news_link TEXT,
             news_img_link TEXT,
-            news_date DATETIME
+            news_date DATETIME,
+            status INT(1)
             );
             """)
 
@@ -57,6 +59,13 @@ def BuildTables():
             comment VARCHAR(255)
         );
         """)
+        # Create tbl_ip If not Exists
+        cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_ip
+        (
+            id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+            ip INT UNSIGNED
+        );
+        """)
         return 'tables created successfully'
 
     except Exception as e:
@@ -74,13 +83,13 @@ def InsertTblNews(data):
     """This Method received the data argument and insert into table news after check data exists or not"""
     db = get_database_connection()
     cursor = db.cursor()
+    date_time = JalaliDateTime.now() # give us dateTime shamsi
     try:
         for post in range(len(data)):
             if CheckExistsTitleNews(data[post]['title']) == False:
-                insert_query = "INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date) VALUES (%s, %s, %s, %s, %s)"
-                insert_val = (str(data[post]['title']),str(data[post]['content']),str(data[post]['link']),str(data[post]['news_img_link']),"date.today()")
+                insert_query = "INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date,status) VALUES (%s, %s, %s, %s, %s,%s)"
+                insert_val = (str(data[post]['title']),str(data[post]['content']),str(data[post]['link']),str(data[post]['news_img_link']),date_time.strftime("%Y-%m-%d %H:%M:%S"),0)
                 cursor.execute(insert_query,insert_val)
-            print('inserted')
         db.commit()
         return f'{cursor.rowcount} data inserted '
     except Exception as e:
@@ -121,7 +130,6 @@ def CheckExistsTitleNews(title):
             return True if title in db_titles else False # this if for check exists title in db_titles
             #print(f'{data_titles} and {db_titles}')
         else:
-            print('khali ast')
             return False
     else:
         return False
@@ -155,7 +163,7 @@ Geting data from DataBase to import in index page
 def read_data(ofsset, limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT news_title,news_content,news_link,news_img_link FROM tbl_news ORDER BY id DESC LIMIT %s, %s;', (ofsset,limit))
+    cursor.execute('SELECT news_title,news_content,news_link,news_img_link,news_date FROM tbl_news ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
     data = list(cursor.fetchall())
     return data
 
@@ -178,7 +186,75 @@ Geting data from DataBase to import in to the Slider
 def read_data_for_slider(limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute(f'SELECT news_title,news_content,news_link,news_img_link FROM tbl_news ORDER BY id DESC LIMIT {limit}')
+    cursor.execute(f'SELECT news_title,news_content,news_link,news_img_link FROM tbl_news ORDER BY news_date DESC LIMIT {limit}')
+    data = list(cursor.fetchall())
+    return data
+
+
+"""
+Inserting ip address in to the db
+"""
+def insert_ip(ip):
+    db = get_database_connection()
+    cursor = db.cursor()
+    try:
+        if CheckExistsIpAddress(ip) == False:
+            cursor.execute(f"INSERT INTO tbl_ip (ip) VALUES (INET_ATON('{ip}'))")
+        db.commit()
+        return "Done"
+    except Exception as e:
+        return f'an Erorr {e} .'
+
+    db.close()
+    return 'none'
+
+
+
+"""
+Check Exists ip address
+"""
+def CheckExistsIpAddress(ip):
+    """ This Method for get all titles in database and check with input title
+        now, if title equal by database titles this data not insert to table News
+        thats Mean check data exists ro not
+    """
+    if (ip != None):
+        # import connection database and build a cursor
+        db = get_database_connection()
+        cursor = db.cursor()
+
+        # This try run query in mysql and fetch all data ip
+        try:
+            cursor.execute(
+            """SELECT INET_NTOA(ip) FROM tbl_ip;"""
+            )
+            data_db = cursor.fetchall()
+        except Exception as _:
+            return False
+
+        if cursor.rowcount > 0 :
+            db_ip = [] # this list for database ip
+
+            for db_ip in data_db:
+                db_ip.append(db_ip[0]) # append ips in db_ip
+
+            return True if ip in db_ip else False # this if for check exists ip in db_ip
+        else:
+            print('khali ast')
+            return False
+    else:
+        return False
+    db.close()
+
+
+
+"""
+Geting data from DataBase to show ip
+"""
+def read_ip():
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute('SELECT INET_NTOA(ip) FROM tbl_ip')
     data = list(cursor.fetchall())
     return data
 
