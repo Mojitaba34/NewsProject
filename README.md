@@ -10,7 +10,7 @@ This is a big Project for Online News
 - [ ] Crawled CryptoPrice
 - [x] Crawled Online News
 - [x] save data to db
--[x] pagination Complete
--[x] bugs are fix on index
--[x] ip address of users are saved on database
+- [x] pagination Complete
+- [x] bugs are fix on index
+- [x] ip address of users are saved on database
 
