@@ -12,9 +12,13 @@ This routes is for Home page and passing some data to home Page
 @app.route('/')
 @app.route('/home')
 def home():
+    limit=6
+    row_num = db.row_count()
+    page_num = math.ceil(row_num / limit)
+    if int(request.args.get('page', 1, type=int)) > page_num:
+        return render_template('404.html')
     page = request.args.get('page', 1, type=int)
     pagination_link_limit = 5
-    limit=6
     slider_limit = 3
     ofsset=limit * (page - 1)
     data = db.read_data(ofsset,limit)

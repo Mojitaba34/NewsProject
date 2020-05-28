@@ -63,7 +63,8 @@ def BuildTables():
         cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_ip
         (
             id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-            ip INT UNSIGNED
+            ip INT UNSIGNED,
+            date DATETIME
         );
         """)
         return 'tables created successfully'
@@ -88,7 +89,7 @@ def InsertTblNews(data):
         for post in range(len(data)):
             if CheckExistsTitleNews(data[post]['title']) == False:
                 insert_query = "INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date,status) VALUES (%s, %s, %s, %s, %s,%s)"
-                insert_val = (str(data[post]['title']),str(data[post]['content']),str(data[post]['link']),str(data[post]['news_img_link']),date_time.strftime("%Y-%m-%d %H:%M:%S"),0)
+                insert_val = (str(data[post]['title']),str(data[post]['content']),str(data[post]['link']),str(data[post]['news_img_link']),date_time.strftime("%Y-%m-%d"),0)
                 cursor.execute(insert_query,insert_val)
         db.commit()
         return f'{cursor.rowcount} data inserted '
@@ -197,9 +198,12 @@ Inserting ip address in to the db
 def insert_ip(ip):
     db = get_database_connection()
     cursor = db.cursor()
+    date = JalaliDateTime.now()
     try:
         if CheckExistsIpAddress(ip) == False:
-            cursor.execute(f"INSERT INTO tbl_ip (ip) VALUES (INET_ATON('{ip}'))")
+            insert = "INSERT INTO tbl_ip (ip,date) VALUES (INET_ATON(%s),%s)"
+            val = (ip, date.strftime('%Y-%m-%d %H:%m:%s'))
+            cursor.execute(insert,val)
         db.commit()
         return "Done"
     except Exception as e:

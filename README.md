@@ -13,4 +13,6 @@ This is a big Project for Online News
 - [x] pagination Complete
 - [x] bugs are fix on index
 - [x] ip address of users are saved on database
+- [x] error handler for 404 Done!
+- [x] db changes are Done!
 

@@ -17,7 +17,10 @@ arzdigital = robots.news_from_arzdigital()
 tasnim = robots.news_from_tasnimnews()
 tejarat = robots.news_from_tejaratnews()
 """
+tejarat = robots.news_from_tejaratnews()
+print(db.InsertTblNews(tejarat.getData()))
 
 from app import routes # route import 
 from app.admin.routes import admin # admin route import
 app.register_blueprint(admin,url_prefix='/admin') # add admin route with blueprint
+from app import error_handlers # error Handling
