@@ -35,20 +35,12 @@ def BuildTables():
             news_content TEXT,
             news_link TEXT,
             news_img_link TEXT,
-            news_date DATETIME,
+            news_date VARCHAR(10),
             status INT(1)
             );
             """)
 
-        # Create tbl_robots If not Exists
-        cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_robots
-        (
-            id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-            state_news_price TINYINT(1),
-            state_crypto_price TINYINT(1),
-            time_crawler int(5)
-        );
-        """)
+        
         # Create tbl_contact If not Exists
         cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_contact_us
         (
@@ -64,7 +56,7 @@ def BuildTables():
         (
             id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
             ip INT UNSIGNED,
-            date DATETIME
+            date VARCHAR(10)
         );
         """)
         return 'tables created successfully'
@@ -89,7 +81,7 @@ def InsertTblNews(data):
         for post in range(len(data)):
             if CheckExistsTitleNews(data[post]['title']) == False:
                 insert_query = "INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date,status) VALUES (%s, %s, %s, %s, %s,%s)"
-                insert_val = (str(data[post]['title']),str(data[post]['content']),str(data[post]['link']),str(data[post]['news_img_link']),date_time.strftime("%Y-%m-%d"),0)
+                insert_val = (str(data[post]['title']),str(data[post]['content']),str(data[post]['link']),str(data[post]['news_img_link']),str(date_time.jalali_date()),0)
                 cursor.execute(insert_query,insert_val)
         db.commit()
         return f'{cursor.rowcount} data inserted '
@@ -202,7 +194,7 @@ def insert_ip(ip):
     try:
         if CheckExistsIpAddress(ip) == False:
             insert = "INSERT INTO tbl_ip (ip,date) VALUES (INET_ATON(%s),%s)"
-            val = (ip, date.strftime('%Y-%m-%d %H:%m:%s'))
+            val = (ip, str(date.jalali_date()))
             cursor.execute(insert,val)
         db.commit()
         return "Done"

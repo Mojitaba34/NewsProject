@@ -1,7 +1,7 @@
 import mysql.connector
 from passlib.hash import pbkdf2_sha256
 from app.admin import config
-
+from persiantools.jdatetime import JalaliDateTime
 
 def BuildTables():
     db = get_database_connection()
@@ -18,7 +18,16 @@ def BuildTables():
         );
         """)
         
-        return 'table admin created successfully'
+        # Create tbl_robots If not Exists
+        cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_robots
+        (
+            id INTEGER PRIMARY KEY NOT NULL,
+            state_news TINYINT(1),
+            time_crawler int(5)
+        );
+        """)
+
+        return 'table admin and robot created successfully'
 
     except Exception as e:
         return f'erorr in connection. {e} '
@@ -94,11 +103,12 @@ def RegisterUser(username,password,email):
         return False
 
 
-"""
-This Method Just Count All News Return From Database
-"""
+
 def getCount_AllNews():
 
+    """
+    This Method Just Count All News Return From Database
+    """
     db = get_database_connection()
     cursor = db.cursor()
     query = "SELECT COUNT(*) FROM tbl_news"
@@ -113,24 +123,26 @@ def getCount_AllNews():
         return f"Error -- > {e}"
 
 
-"""
-Method For Get TodayNews Count and return This 
-TODO: Check Date
-"""
+
 def getCount_TodayNews():
+    """
+    Method For Get TodayNews Count and return This 
+    """
     db = get_database_connection()
     cursor = db.cursor()
-    query_TodayNews = "SELECT Count(*) FROM tbl_news WHERE tbl_news.news_data = {}" # TODO: Import and check date time Persina Or English
+    date_time = JalaliDateTime.now()
+
+    query_TodayNews = "SELECT Count(*) FROM tbl_news WHERE tbl_news.news_date = %s;"
+
     try:
-        cursor.execute()
+        cursor.execute(query_TodayNews,(str(date_time.jalali_date()), ))
         row_data = cursor.fetchall()
         for data in row_data:
-            #data_login[0] # Count
+            #data[0] # Count
             TodayNews = data[0]
             return TodayNews
     except Exception as e:
-        return "ERROR -- > {e}"
-
+        return f"ERROR -- > {e}"
 
 
 def get_NewsData():
@@ -153,3 +165,71 @@ def get_NewsData():
         return posts
     except Exception as e:
         return e
+
+
+def newsEdit(id_news,Title,Desc):
+    """
+    This Method Give the Two Argument and Edite News Title and Desc
+    @return True or False
+    """
+    db = get_database_connection()
+    cursor = db.cursor()
+    edit_news_query = """UPDATE tbl_news SET tbl_news.news_title = %s, tbl_news.news_content = %s WHERE tbl_news.id = %s; """
+
+    edit_news_value = (str(Title),str(Desc),int(id_news))
+    
+    try:
+        cursor.execute(edit_news_query,edit_news_value)
+        db.commit()
+        return f" Updated {cursor.rowcount} row. ",'success'
+    except Exception as e:
+        return f"Error -- > {e}",'danger'
+
+
+def getCount_TodayVisitors():
+    """
+    This Method For Count Today Visitors By Ip
+    @return True or False
+    """
+    db = get_database_connection()
+    cursor = db.cursor()
+    date_time = JalaliDateTime.now()
+
+    visitors_query = """SELECT COUNT(*) FROM tbl_ip WHERE tbl_ip.date = %s;"""
+    try:
+        cursor.execute(visitors_query,(str(date_time.jalali_date()), ))
+        row_data = cursor.fetchall()
+        for data in row_data:
+            #data[0] # Count
+            CountVisitors = data[0]
+            return CountVisitors
+    except Exception as e:
+        return f"ERROR -- > {e}"
+
+
+def tejaratRobot_Update(state,timer):
+    """
+    This Method For Update Tejarat Robot Row in tbl_robots id == 1
+    @return True or False
+    """
+    db = get_database_connection()
+    cursor = db.cursor()
+    date_time = JalaliDateTime.now()
+
+    tejarat_query = """UPDATE tbl_robots SET tbl_robots.state_news = %s , tbl_robots.time_crawler = %s WHERE tbl_robots.id = 1;"""
+    tejarat_value = (state,timer)
+    try:
+        cursor.execute(tejarat_query,tejarat_value)
+        db.commit()
+        return f"Successfully Updated TejaratNews Robot.", "success"
+        
+    except Exception as e:
+        return f"Not Updated beacuse {e}", "danger"
+
+
+def TasnimRobot_Update():
+    pass
+
+
+def ArzdigitalRobot_Update():
+    pass

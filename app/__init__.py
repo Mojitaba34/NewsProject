@@ -12,13 +12,6 @@ db.BuildTables() # First Step Check exists and build Tables Database
 db_admin.BuildTables() # Build Tables Admin
 # This is For test robto
 # TODO: __init__ file for robot
-"""
-arzdigital = robots.news_from_arzdigital()
-tasnim = robots.news_from_tasnimnews()
-tejarat = robots.news_from_tejaratnews()
-"""
-tejarat = robots.news_from_tejaratnews()
-print(db.InsertTblNews(tejarat.getData()))
 
 from app import routes # route import 
 from app.admin.routes import admin # admin route import

@@ -1,6 +1,6 @@
 from app import app
 from flask import Flask , render_template, request, redirect, url_for,flash, jsonify, make_response
-from app.robots import crypto
+from app.robots.robots import crypto
 from app import db
 import math
 

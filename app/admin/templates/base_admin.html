@@ -265,6 +265,17 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <!-- <strong>Title</strong> --> {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 {% block content %}{% endblock %}
 
                 <!-- ============================================================== -->
@@ -283,9 +294,8 @@
         </div>
         <!-- ============================================================== -->
         <!-- End Wrapper -->
-        <!-- ============================================================== -->
-        <!-- End Wrapper -->
-        <!-- ============================================================== -->
+
+        
         <!-- All Jquery -->
         <!-- ============================================================== -->
         <script src="{{url_for('admin.static',filename='libs/jquery/dist/jquery.min.js')}}"></script>
@@ -301,7 +311,6 @@
         <script src="{{url_for('admin.static',filename='js/custom.min.js')}}"></script>
         <!--This page JavaScript -->
         <script src="{{url_for('admin.static',filename='extra-libs/c3/d3.min.js')}}"></script>
-        <script src="{{url_for('admin.static',filename='extra-libs/c3/c3.min.js')}}"></script>
         <script src="{{url_for('admin.static',filename='libs/chartist/dist/chartist.min.js')}}"></script>
         <script src="{{url_for('admin.static',filename='libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
         <script src="{{url_for('admin.static',filename='extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
@@ -310,6 +319,25 @@
         <script src="{{url_for('admin.static',filename='extra-libs/datatables.net/js/jquery.dataTables.min.js' )}}"></script>
         <script src="{{url_for('admin.static',filename='js/pages/datatable/datatable-basic.init.js' )}}"></script>
         <script src="{{url_for('admin.static',filename='extra-libs/datatables.net/js/jquery.dataTables.min.js' )}}"></script>
+        <script src="{{url_for('admin.static',filename='js/pages/chartjs/chartjs.init.js' )}}"></script>
+        <script src="{{url_for('admin.static',filename='libs/chart.js/dist/Chart.min.js' )}}"></script>
+        <script src="{{url_for('admin.static',filename='extra-libs/sparkline/sparkline.js' )}}"></script>
+        
+
+        <!-- 
+            This Script for Modal table in dashboard 
+            this is for edit News title and Description
+        -->
+        <script>
+            $(document).on("click", ".mymodal", function () {
+                var id_news = $(this).data('id');
+                console.log()
+                $(".modal-body #NewsId").val( id_news );
+                // As pointed out in comments, 
+                // it is unnecessary to have to manually call the modal.
+                // $('#addBookDialog').modal('show');
+           });
+        </script>
 </body>
 
 </html>

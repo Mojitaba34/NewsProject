@@ -1,4 +1,4 @@
-from flask import session,render_template,redirect,url_for,request,flash
+from flask import session,render_template,redirect,url_for,request,flash,jsonify
 from app.admin import admin
 from app.admin import db
 from app.admin import getData
@@ -94,6 +94,40 @@ def news_robot():
         return redirect(url_for('login'))
 
 
+"""
+This Method For 'TejaratNews' Get id Robot and save [timer, state] in db
+"""
+@admin.route('/tejarat',methods=["POST"])
+def tejarat():
+    if request.method == "POST":
+        timer = request.form.get("timer")
+        state = 0 if request.form.get("state") == 'on' else 1 # if for Checked Checkbox Value
+        message = db.tejaratRobot_Update(state,timer) # Updated Method in db
+        flash(message[0],message[1]) # Flash Compeleted
+        return redirect(url_for("admin.news_robot"))
+
+
+"""
+This Method For 'TejaratNews' Get id Robot and save [timer, state] in db
+"""
+@admin.route('/tasnim',methods=["POST"])
+def tasnim():
+    if request.method == "POST":
+        member = request.form.get("timer")
+        state = request.form.get("state")
+        return jsonify(member,state)
+
+
+"""
+This Method For 'TejaratNews' Get id Robot and save [timer, state] in db
+"""
+@admin.route('/arzdigital',methods=["POST"])
+def arzdigital():
+    if request.method == "POST":
+        member = request.form.get("timer")
+        state = request.form.get("state")
+        return jsonify(member,state)
+
 
 """
 This Method and Url -- Crypto Robot Page -- in admin panel
@@ -105,3 +139,18 @@ def crypto_robot():
     else:
         return redirect(url_for('login'))
 
+@admin.route('/edit_news',methods=["POST"])
+def NewsEdit():
+    if request.method == "POST":
+        NewsId = request.form['NewsId']
+        Title = request.form['Title']
+        Description = request.form['Description']
+        if Title != "" and Description != "":
+            # Update Table News
+            msg = db.newsEdit(NewsId,Title,Description)
+            flash(msg[0],msg[1])
+            
+        else:
+            flash('لطفا اطلاعات را تکمیل کنید')
+        
+    return redirect(url_for("admin.dashboard"))
