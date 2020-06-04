@@ -89,7 +89,8 @@ This Method and Url -- News Robot Page -- in admin panel
 @admin.route('/news_robot')
 def news_robot():
     if session.get("user_data") != None:
-        return render_template('container_controller.html',container='news_robot',user_data=session.get("user_data"))
+        robot_data = db.get_robots()
+        return render_template('container_controller.html',container='news_robot',user_data=session.get("user_data"),robotdata=robot_data)
     else:
         return redirect(url_for('login'))
 

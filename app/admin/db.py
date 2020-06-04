@@ -246,7 +246,7 @@ def TasnimRobot_Update(state,timer):
 
 def ArzdigitalRobot_Update(state,timer):
     """
-    This Method For Update Tasnim Robot Row in tbl_robots id == 3
+    This Method For Update arzdigital Robot Row in tbl_robots id == 3
     @return True or False
     """
     db = get_database_connection()
@@ -261,3 +261,23 @@ def ArzdigitalRobot_Update(state,timer):
         
     except Exception as e:
         return f"Not Updated beacuse {e}", "danger"
+
+
+def get_robots():
+    db = get_database_connection()
+    cursor = db.cursor()
+    item = list()
+    query = """ SELECT * FROM tbl_robots; """
+
+    try:
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        for row in rows:
+            robotId = row[0]
+            robotState = row[1]
+            robotTimer = row[2]
+            item.append([robotId,robotState,robotTimer])
+        
+        return item
+    except Exception as e:
+        return f"Error -- > {e}"

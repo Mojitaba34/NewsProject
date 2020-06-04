@@ -15,7 +15,11 @@
                                 <span class="text-muted">ON / OFF</span>
                                 <span class="text-dark float-right font-weight-medium">
                                     <div class="custom-control custom-checkbox">
-                                        <input name="state" type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                                        {% if robotdata[0][1] == 0 %}
+                                            <input name="state" type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                                        {% elif robotdata[0][1] == 1 %}
+                                            <input name="state" type="checkbox" class="custom-control-input" id="customCheck1">
+                                        {% endif %}
                                         <label class="custom-control-label" for="customCheck1"></label>
                                     </div>
                                 </span>
@@ -25,7 +29,7 @@
                                 <span class="text-muted">Timer</span>
                                 <span class="text-dark float-right font-weight-medium">
                                     <div class="form-group">
-                                        <input name="timer" type="number" class="form-control" value="15">
+                                        <input name="timer" type="number" class="form-control" value="{{robotdata[0][2]}}">
                                     </div>
                                 </span>
                             </li>
@@ -52,7 +56,11 @@
                                 <span class="text-muted">ON / OFF</span>
                                 <span class="text-dark float-right font-weight-medium">
                                     <div class="custom-control custom-checkbox">
-                                        <input name="state" type="checkbox" class="custom-control-input" id="customCheck2" checked>
+                                        {% if robotdata[1][1] == 0 %}
+                                            <input name="state" type="checkbox" class="custom-control-input" id="customCheck2" checked>
+                                        {% elif robotdata[1][1] == 1 %}
+                                            <input name="state" type="checkbox" class="custom-control-input" id="customCheck2">
+                                        {% endif %}
                                         <label class="custom-control-label" for="customCheck2"></label>
                                     </div>
                                 </span>
@@ -62,7 +70,7 @@
                                 <span class="text-muted">Timer</span>
                                 <span class="text-dark float-right font-weight-medium">
                                     <div class="form-group">
-                                        <input name="timer" type="number" class="form-control" value="15">
+                                        <input name="timer" type="number" class="form-control" value="{{robotdata[1][2]}}">
                                     </div>
                                 </span>
                             </li>
@@ -89,7 +97,11 @@
                                 <span class="text-muted">ON / OFF</span>
                                 <span class="text-dark float-right font-weight-medium">
                                     <div class="custom-control custom-checkbox">
-                                        <input name="state" type="checkbox" class="custom-control-input" id="customCheck3" checked>
+                                        {% if robotdata[2][1] == 0 %}
+                                            <input name="state" type="checkbox" class="custom-control-input" id="customCheck3" checked>
+                                        {% elif robotdata[2][1] == 1 %}
+                                            <input name="state" type="checkbox" class="custom-control-input" id="customCheck3">
+                                        {% endif %}
                                         <label class="custom-control-label" for="customCheck3"></label>
                                     </div>
                                 </span>
@@ -99,7 +111,7 @@
                                 <span class="text-muted">Timer</span>
                                 <span class="text-dark float-right font-weight-medium">
                                     <div class="form-group">
-                                        <input name="timer" type="number" class="form-control" value="15">
+                                        <input name="timer" type="number" class="form-control" value="{{robotdata[2][2]}}">
                                     </div>
                                 </span>
                             </li>
