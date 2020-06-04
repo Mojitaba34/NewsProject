@@ -99,8 +99,7 @@ def RegisterUser(username,password,email):
         db.commit()
         return True
     except Exception as e:
-        return f"ERROR -> {e} "
-        return False
+        return f"ERROR -> {e} ", False
 
 
 
