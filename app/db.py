@@ -31,7 +31,7 @@ def BuildTables():
         cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_news
         ( 
             id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT ,
-            news_title VARCHAR(100),
+            news_title VARCHAR(500),
             news_content TEXT,
             news_link TEXT,
             news_img_link TEXT,
@@ -83,7 +83,7 @@ def InsertTblNews(data):
                 insert_query = "INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date,status) VALUES (%s, %s, %s, %s, %s,%s)"
                 insert_val = (str(data[post]['title']),str(data[post]['content']),str(data[post]['link']),str(data[post]['news_img_link']),str(date_time.jalali_date()),0)
                 cursor.execute(insert_query,insert_val)
-        db.commit()
+            db.commit()
         return f'{cursor.rowcount} data inserted '
     except Exception as e:
         return f'an Erorr {e} .'

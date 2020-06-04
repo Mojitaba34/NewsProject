@@ -204,8 +204,7 @@ class news_from_tasnimnews():
             'news_link':self.news_link()
         }
         posts=[]
-        data_len = self.news_title().__len__()
-        for post in range(data_len):
+        for post in range(len(self.news_title()) - 1):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts#TODO: InsertTblNews()
 
@@ -294,8 +293,7 @@ class news_from_arzdigital():
             'news_link':self.news_link()
         }
         posts=[]
-        data_len = self.news_title().__len__()
-        for post in range(data_len):
+        for post in range(len(self.news_title()) - 1):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts #TODO: InsertTblNews()
 
