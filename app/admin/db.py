@@ -214,7 +214,6 @@ def tejaratRobot_Update(state,timer):
     """
     db = get_database_connection()
     cursor = db.cursor()
-    date_time = JalaliDateTime.now()
 
     tejarat_query = """UPDATE tbl_robots SET tbl_robots.state_news = %s , tbl_robots.time_crawler = %s WHERE tbl_robots.id = 1;"""
     tejarat_value = (state,timer)
@@ -227,9 +226,39 @@ def tejaratRobot_Update(state,timer):
         return f"Not Updated beacuse {e}", "danger"
 
 
-def TasnimRobot_Update():
-    pass
+def TasnimRobot_Update(state,timer):
+    """
+    This Method For Update Tasnim Robot Row in tbl_robots id == 2
+    @return Flash message Seccess or danger
+    """
+    db = get_database_connection()
+    cursor = db.cursor()
+
+    tasnim_query = """UPDATE tbl_robots SET tbl_robots.state_news = %s , tbl_robots.time_crawler = %s WHERE tbl_robots.id = 2;"""
+    tasnim_value = (state,timer)
+    try:
+        cursor.execute(tasnim_query,tasnim_value)
+        db.commit()
+        return f"Successfully Updated TasnimNews Robot.", "success"
+        
+    except Exception as e:
+        return f"Not Updated beacuse {e}", "danger"
 
 
-def ArzdigitalRobot_Update():
-    pass
+def ArzdigitalRobot_Update(state,timer):
+    """
+    This Method For Update Tasnim Robot Row in tbl_robots id == 3
+    @return True or False
+    """
+    db = get_database_connection()
+    cursor = db.cursor()
+
+    arz_query = """UPDATE tbl_robots SET tbl_robots.state_news = %s , tbl_robots.time_crawler = %s WHERE tbl_robots.id = 3;"""
+    arz_value = (state,timer)
+    try:
+        cursor.execute(arz_query,arz_value)
+        db.commit()
+        return f"Successfully Updated Arzdigital Robot.", "success"
+        
+    except Exception as e:
+        return f"Not Updated beacuse {e}", "danger"

@@ -1,5 +1,7 @@
+from app.admin import db as db_admin
 from app import db
 from app.robots import robots
+import time
 def tejarat_test():
     tejarat_news = robots.news_from_tejaratnews()
     data = tejarat_news.getData()

@@ -113,9 +113,11 @@ This Method For 'TejaratNews' Get id Robot and save [timer, state] in db
 @admin.route('/tasnim',methods=["POST"])
 def tasnim():
     if request.method == "POST":
-        member = request.form.get("timer")
-        state = request.form.get("state")
-        return jsonify(member,state)
+        timer = request.form.get("timer")
+        state = 0 if request.form.get("state") == 'on' else 1 # if for Checked Checkbox Value
+        message = db.TasnimRobot_Update(state,timer) # Updated Method in db
+        flash(message[0],message[1]) # Flash Compeleted
+        return redirect(url_for("admin.news_robot"))
 
 
 """
@@ -124,9 +126,11 @@ This Method For 'TejaratNews' Get id Robot and save [timer, state] in db
 @admin.route('/arzdigital',methods=["POST"])
 def arzdigital():
     if request.method == "POST":
-        member = request.form.get("timer")
-        state = request.form.get("state")
-        return jsonify(member,state)
+        timer = request.form.get("timer")
+        state = 0 if request.form.get("state") == 'on' else 1 # if for Checked Checkbox Value
+        message = db.ArzdigitalRobot_Update(state,timer) # Updated Method in db
+        flash(message[0],message[1]) # Flash Compeleted
+        return redirect(url_for("admin.news_robot"))
 
 
 """
