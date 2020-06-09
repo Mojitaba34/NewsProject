@@ -26,6 +26,7 @@
 
 </head>
 
+
 {% if active_page == 'arzdigital' %}
 <body onload="autoRefreshPage()">
 {% else %}
@@ -57,10 +58,10 @@
 
               <div class="header-content-mobile">
                 <ul class="pages">
-                  <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}" > خانه </a> <i class="fa fa-home"></i> </li>
-                  <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}" > درباره ی ما </a> <i class="fa fa-users"></i> </li>
-                  <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}" > ارتباط با ما </a> <i class="fa fa-envelope"></i> </li>
-                  <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}" > ارز های دیجیتالی </a> <i class="fa fa-bitcoin"></i> </li>
+                  <li> <a href="/"> خانه </a> <i class="fa fa-home"></i> </li>
+                  <li> <a href="/about"> درباره ی ما </a> <i class="fa fa-users"></i> </li>
+                  <li> <a href="/contact"> ارتباط با ما </a> <i class="fa fa-envelope"></i> </li>
+                  <li> <a href="/arzdigital"> ارز های دیجیتالی </a> <i class="fa fa-bitcoin"></i> </li>
                 </ul>
               </div>
 
@@ -68,9 +69,7 @@
                 <a href="#"> <i class="fa fa-instagram"></i></a>
                 <a href="#"> <i class="fa fa-telegram"></i></a>
                 <a href="#"> <i class="fa fa-twitter"></i></a>
-                <a href="#"> <i class="fa fa-facebook"></i></a>
                 <a href="#"> <i class="fa fa-whatsapp"></i></a>
-                <a href="#"> <i class="fa fa-youtube"></i></a>
               </div>
 
             </div>
@@ -108,9 +107,7 @@
             <a href="#"> <i class="fa fa-instagram"></i></a>
             <a href="#"> <i class="fa fa-telegram"></i></a>
             <a href="#"> <i class="fa fa-twitter"></i></a>
-            <a href="#"> <i class="fa fa-facebook"></i></a>
             <a href="#"> <i class="fa fa-whatsapp"></i></a>
-            <a href="#"> <i class="fa fa-youtube"></i></a>
             <a href="#"> <i class="fa fa-search search-icon"></i></a>
           </div>
         </nav>
@@ -193,12 +190,14 @@
           <div class="col-lg-4 bottom-cards">
             <div class="card" style="width: 100%;">
               <div class="caption mb-3">
-                <p> بهترین امتیاز </p>
+                <p> تبلیغات </p>
               </div>
-              <img src="static/images/logan-weaver-QoZRUI6LdKw-unsplash-1024x683.jpg" class="card-img-top" alt="logan-weaver">
+              <div class="col-12 my-4 text-center">
+                <img src="../static/images/banner-728.jpg" class="w-100" alt="ad-banner">
+              </div>
               <div class="card-body text-center text-md-right">
                 <h6 class="card-subtitle mb-2 text-muted">شهریور 98 </h6>
-                <h5 class="card-title"> <a href="#"> <b>این یک مقاله مروری است</b> </a> </h5>
+                <h5 class="card-title"> <a href="#"> <b>متن مربوط به تبلیغات</b> </a> </h5>
               </div>
             </div>
           </div>
@@ -216,9 +215,7 @@
               <a href="#"> <i class="fa fa-instagram"></i></a>
               <a href="#"> <i class="fa fa-telegram"></i></a>
               <a href="#"> <i class="fa fa-twitter"></i></a>
-              <a href="#"> <i class="fa fa-facebook"></i></a>
               <a href="#"> <i class="mt-4 mt-sm-0 fa fa-whatsapp"></i></a>
-              <a href="#"> <i class="mt-4 mt-sm-0 fa fa-youtube"></i></a>
             </div>
             <ul class="footer-nav">
               <li> <a href="/"  class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>

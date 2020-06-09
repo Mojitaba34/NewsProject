@@ -30,7 +30,7 @@ def BuildTables():
         # inserting 3 deafult value into table for robots
         cursor.execute("""
             INSERT INTO tbl_robots(id, state_news, time_crawler) VALUES 
-                (1, 0, 10),
+                (1, 1, 10),
                 (2, 1, 30),
                 (3, 1, 60);
                 
