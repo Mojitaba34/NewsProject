@@ -7,7 +7,7 @@ This is a big Project for Online News
 - continues ... :)
 
 - [x] Start Project
-- [ ] Crawled CryptoPrice
+- [x] Crawled CryptoPrice
 - [x] Crawled Online News
 - [x] save data to db
 - [x] pagination Complete
@@ -15,4 +15,4 @@ This is a big Project for Online News
 - [x] ip address of users are saved on database
 - [x] error handler for 404 Done!
 - [x] db changes are Done!
-- [ ] robot run from database
+- [x] robot run from database

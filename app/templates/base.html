@@ -26,8 +26,11 @@
 
 </head>
 
-
+{% if active_page == 'arzdigital' %}
+<body onload="autoRefreshPage()">
+{% else %}
 <body>
+{% endif %}
   <!-- mini menu toggle on mobile  -->
   <div id="menu-toggle">
 
@@ -54,10 +57,10 @@
 
               <div class="header-content-mobile">
                 <ul class="pages">
-                  <li> <a href="/"> خانه </a> <i class="fa fa-home"></i> </li>
-                  <li> <a href="/about"> درباره ی ما </a> <i class="fa fa-users"></i> </li>
-                  <li> <a href="/contact"> ارتباط با ما </a> <i class="fa fa-envelope"></i> </li>
-                  <li> <a href="/arzdigital"> ارز های دیجیتالی </a> <i class="fa fa-bitcoin"></i> </li>
+                  <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}" > خانه </a> <i class="fa fa-home"></i> </li>
+                  <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}" > درباره ی ما </a> <i class="fa fa-users"></i> </li>
+                  <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}" > ارتباط با ما </a> <i class="fa fa-envelope"></i> </li>
+                  <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}" > ارز های دیجیتالی </a> <i class="fa fa-bitcoin"></i> </li>
                 </ul>
               </div>
 

@@ -64,32 +64,26 @@
     <div class="row cards-container">
 
       <div class="w-100">
-        <h1 class="text-center display-sm-2 mb-5"> <b>آخرین بازدیدها</b> </h1>
+        <h1 class="text-center display-sm-2 mb-5"> <b> اخبار ارز دیجیتال</b> </h1>
       </div>
 
 
       <!-- OWL Carousel  -->
       <div class="owl-carousel owl-theme">
-        {% for _ in range(10)%}
-        <!-- item 1 -->
+        {% for news in arzdigital%}
+        
         <div class="item">
           <div class="card" style=" width: 100%;">
-            <a href="#">
-              <img src="static/images/ship.jpg" class="card-img-top" alt="...">
+            <a href="{{ news[3] }}">
+              <img src="{{ news[4] }}" class="card-img-top" alt="...">
             </a>
 
             <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted"> اسفند - 98 / <span class="mr-2">
-                  سیاست
-                </span> </h6>
-              <a href="#">
-                <h4 class="card-title"><b>پنج کاری که پرندگان دریایی انجام میدهند</b></h4>
+              <h6 class="card-subtitle mb-2 text-muted">{{ news[5] }}</h6>
+              <a href="{{ news[3] }}">
+                <h4 class="card-title"><b>{{ news[1] }}</b></h4>
               </a>
-              <p class="card-text">هنگامی که او در زیر یک درخت آنها باور دارند که به دنیا آمد،
-                ما
-                آنها را با شما به عنوان مورد. بدون هیچ توضیحی به اجرا در تهیه کردند. برای
-                آنچه
-                در آن است و همه چیز بزرگ. در مس پالایش می گویند</p>
+              <p class="card-text">{{ news[2] }}</p>
             </div>
           </div>
         </div>

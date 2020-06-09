@@ -5,6 +5,8 @@ from app import config
 from urllib.request import Request, urlopen
 import lxml.html as html
 from app import db
+import json
+from threading import Timer
 
 
 
@@ -307,6 +309,9 @@ class crypto():
         #API = 'https://api.binance.com/api/v3/ticker/price?symbol={}'
 
     def get_data(self):
+        dict_data = {}
         for coin in self.CoinList:
             r = requests.get(f'https://api.binance.com/api/v3/ticker/price?symbol={coin}')
-            return r.text
+            data = json.loads(r.text)
+            dict_data.__setitem__(data['symbol'],round(float(data["price"]),2))
+        return dict_data

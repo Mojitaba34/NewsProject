@@ -27,6 +27,16 @@ def BuildTables():
         );
         """)
 
+        # inserting 3 deafult value into table for robots
+        cursor.execute("""
+            INSERT INTO tbl_robots(id, state_news, time_crawler) VALUES 
+                (1, 0, 10),
+                (2, 1, 30),
+                (3, 1, 60);
+                
+        """)
+
+
         return 'table admin and robot created successfully'
 
     except Exception as e:
