@@ -2,6 +2,7 @@ import mysql.connector
 from app import config
 import datetime
 from persiantools.jdatetime import JalaliDateTime
+import time
 
 """
 Connection To Db
@@ -56,7 +57,7 @@ def BuildTables():
         (
             id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
             ip INT UNSIGNED,
-            date VARCHAR(10)
+            date VARCHAR(20)
         );
         """)
         return 'tables created successfully'
@@ -194,7 +195,7 @@ def insert_ip(ip):
     try:
         if CheckExistsIpAddress(ip) == False:
             insert = "INSERT INTO tbl_ip (ip,date) VALUES (INET_ATON(%s),%s)"
-            val = (ip, str(date.jalali_date()))
+            val = (ip, str(date.strftime("%Y/%m/%d")))
             cursor.execute(insert,val)
         db.commit()
         return "Done"
@@ -204,7 +205,17 @@ def insert_ip(ip):
     db.close()
     return 'none'
 
-
+def ip_date_update(ip):
+    db = get_database_connection()
+    cursor = db.cursor()
+    date = JalaliDateTime.now()
+    try:
+        # insert = """UPDATE tbl_ip SET date= '%s' WHERE ip = INET_ATON('%s');"""
+        # val = (date.strftime("%Y/%m/%d-%H:%M:%S"), ip)
+        cursor.execute(f"UPDATE tbl_ip SET date= '{date.strftime('%Y/%m/%d')}' WHERE ip = INET_ATON('{ip}');")
+        db.commit()
+    except Exception as e:
+        return f'an Erorr {e} .'
 
 """
 Check Exists ip address
@@ -245,12 +256,14 @@ def CheckExistsIpAddress(ip):
 
 
 """
-Geting data from DataBase to show ip
+arzdigital news QUERY
 """
-def read_ip():
+
+def arzdigital_news():
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT INET_NTOA(ip) FROM tbl_ip')
-    data = list(cursor.fetchall())
+    cursor.execute("SELECT * FROM tbl_news WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT 10"  , ("%" + "arzdigital" + "%",))
+    data = cursor.fetchall()
+    cursor.close()
     return data
-
+    
