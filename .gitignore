@@ -133,3 +133,4 @@ dmypy.json
 # static Files
 .static
 static/
+/admin/static
