@@ -1,12 +1,11 @@
 import urllib, requests
 import time
 import urllib.request
-from app import config
+from app.admin import config
 from urllib.request import Request, urlopen
 import lxml.html as html
 from app import db
 import json
-from threading import Timer
 
 
 
@@ -206,7 +205,7 @@ class news_from_tasnimnews():
             'news_link':self.news_link()
         }
         posts=[]
-        for post in range(len(self.news_title()) - 1):
+        for post in range(len(self.news_title()) - 2):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts#TODO: InsertTblNews()
 

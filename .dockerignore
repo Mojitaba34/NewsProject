@@ -1,0 +1,11 @@
+.vscode/
+venv/
+.fandogh/
+.gitignore
+LICENSE
+README.md
+
+app/test/
+app/__pycache__/
+app/admin/__pycache__/
+app/robots/__pycache__/

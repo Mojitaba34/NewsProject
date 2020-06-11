@@ -5,7 +5,7 @@
 
   <!-- ad banner  -->
   <div class="col-12 mt-sm-4 mt-0 mb-3 mb-sm-0 text-center">
-    <img src="../static/images/banner-728.jpg" class="w-100" alt="ad-banner">
+    <img src="{{ url_for('admin.static',filename='images/banner.jpg') }}" class="w-100" alt="ad-banner">
   </div>
 
   <!-- start of Hero Section -->
@@ -75,7 +75,7 @@
         <div class="item">
           <div class="card" style=" width: 100%;">
             <a href="{{ news[3] }}">
-              <img src="{{ news[4] }}" class="card-img-top" alt="...">
+              <img src="{{ news[4] }}" class="card-img-top" alt="{{ news[3] }}">
             </a>
 
             <div class="card-body">
@@ -107,7 +107,7 @@
 
     <!-- ad banner  -->
     <div class="col-12 my-4 text-center">
-      <img src="../static/images/banner-728.jpg" class="w-100" alt="ad-banner">
+      <img src="{{ url_for('admin.static',filename='images/banner.jpg') }}" class="w-100" alt="ad-banner">
     </div>
 
     <div class="row">

@@ -28,7 +28,7 @@
 									</th>
 									<th scope="col"><a href="#"> قیمت <i class="fa fa-compress"></i> </a>
 									</th>
-									<th scope="col"><a href="#">قیمت ریالی <i class="fa fa-compress"></i>
+									<th scope="col"><a href="#">قیمت تومان <i class="fa fa-compress"></i>
 										</a></th>
 								</tr>
 							</thead>
@@ -42,63 +42,49 @@
 									<td><p>BTCUSDT</p>
 										</a></td>
 									<td><span id="price_BTCUSDT"></span></td>
-									<td><p id="price_BTCUSDT_Toman"></p><span
-												class="text-muted small"> تومان
-											</span> </td>
+									<td><p id="price_BTCUSDT_Toman"></p></td>
 								</tr>
 								<tr>
 									<th scope="row"></th>
 									<td><p>ETHUSDT</p>
 										</td>
 									<td><span id="price_ETHUSDT"></span></td>
-									<td><p id="price_ETHUSDT_Toman"></p><span
-												class="text-muted small"> تومان
-											</span> </td>
+									<td><p id="price_ETHUSDT_Toman"></p> </td>
 								</tr>
 								<tr>
 									<th scope="row"></th>
 									<td><p>XRPUSDT</p>
 										</td>
 									<td><span id="price_XRPUSDT"></span></td>
-									<td><p id="price_XRPUSDT_Toman"></p><span
-												class="text-muted small"> تومان
-											</span> </td>
+									<td><p id="price_XRPUSDT_Toman"></p></td>
 								</tr>
 								<tr>
 									<th scope="row"></th>
 									<td><p>BCHUSDT</p>
 										</a></td>
 									<td><span id="price_BCHUSDT"></span></td>
-									<td><p id="price_BCHUSDT_Toman"></p><span
-												class="text-muted small"> تومان
-											</span> </td>
+									<td><p id="price_BCHUSDT_Toman"></p> </td>
 								</tr>
 								<tr>
 									<th scope="row"></th>
 									<td><p>LTCUSDT</p>
 										</a></td>
 									<td><span id="price_LTCUSDT"></span></td>
-									<td><p id="price_LTCUSDT_Toman"></p><span
-												class="text-muted small"> تومان
-											</span> </td>
+									<td><p id="price_LTCUSDT_Toman"></p> </td>
 								</tr>
 								<tr>
 									<th scope="row"></th>
 									<td><p>BNBUSDT</p>
 										</td>
 									<td><span id="price_BNBUSDT"></span></td>
-									<td><p id="price_BNBUSDT_Toman"></p><span
-												class="text-muted small"> تومان
-											</span> </a></td>
+									<td><p id="price_BNBUSDT_Toman"></p> </a></td>
 								</tr>
 								<tr>
 									<th scope="row"></th>
 									<td><p>LINKUSDT</p>
 										</td>
 									<td><span id="price_LINKUSDT"></span></td>
-									<td><p id="price_LINKUSDT_Toman"></p><span
-												class="text-muted small"> تومان
-											</span> </td>
+									<td><p id="price_LINKUSDT_Toman"></p></td>
 								</tr>
 							</tbody>
 							<!-- end of body of table  -->
@@ -126,8 +112,6 @@
 <hr style="border-width: 1px;">
 <script>
 
-	var intervalID = setInterval(autoRefreshPage, 60000)
-
 	function autoRefreshPage() {
 
         var ajax = new XMLHttpRequest();
@@ -152,7 +136,7 @@
 			var price_BNBUSDT = data['BNBUSDT']
 			var price_LINKUSDT = data['LINKUSDT']
 
-			var dollar = 13500
+			var dollar = 16500
 			document.getElementById("price_BTCUSDT").innerHTML = price_BTCUSDT
 			document.getElementById("price_ETHUSDT").innerHTML = price_ETHUSDT
 			document.getElementById("price_XRPUSDT").innerHTML = price_XRPUSDT
@@ -162,16 +146,18 @@
 			document.getElementById("price_LINKUSDT").innerHTML = price_LINKUSDT
 
 			
-			document.getElementById("price_BTCUSDT_Toman").innerHTML = Math.round(price_BTCUSDT * dollar)
-			document.getElementById("price_ETHUSDT_Toman").innerHTML = Math.round(price_ETHUSDT * dollar)
-			document.getElementById("price_XRPUSDT_Toman").innerHTML = Math.round(price_XRPUSDT * dollar)
-			document.getElementById("price_BCHUSDT_Toman").innerHTML = Math.round(price_BCHUSDT * dollar)
-			document.getElementById("price_LTCUSDT_Toman").innerHTML = Math.round(price_LTCUSDT * dollar)
-			document.getElementById("price_BNBUSDT_Toman").innerHTML = Math.round(price_BNBUSDT * dollar)
-			document.getElementById("price_LINKUSDT_Toman").innerHTML = Math.round(price_LINKUSDT * dollar)
+			document.getElementById("price_BTCUSDT_Toman").innerHTML = String(Math.round(price_BTCUSDT * dollar)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+			document.getElementById("price_ETHUSDT_Toman").innerHTML = String(Math.round(price_ETHUSDT * dollar)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+			document.getElementById("price_XRPUSDT_Toman").innerHTML = String(Math.round(price_XRPUSDT * dollar)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+			document.getElementById("price_BCHUSDT_Toman").innerHTML = String(Math.round(price_BCHUSDT * dollar)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+			document.getElementById("price_LTCUSDT_Toman").innerHTML = String(Math.round(price_LTCUSDT * dollar)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+			document.getElementById("price_BNBUSDT_Toman").innerHTML = String(Math.round(price_BNBUSDT * dollar)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+			document.getElementById("price_LINKUSDT_Toman").innerHTML = String(Math.round(price_LINKUSDT * dollar)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
           }
         }
 	}
-	window.clearInterval(intervalId);
+	//var intervalID = setInterval(autoRefreshPage, 60000)
+	//window.clearInterval(intervalId);
+	autoRefreshPage()
 </script>
 {% endblock %}

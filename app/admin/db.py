@@ -55,6 +55,7 @@ def get_database_connection():
         user=config.MYSQL_USERNAME,
         passwd=config.MYSQL_PASSWORD,
         db = config.MYSQL_DB_NAME,
+        port = config.MYSQL_PORT,
         charset='utf8'
     )
 

@@ -1,0 +1,42 @@
+kind: ExternalService
+name: newsapp
+spec:
+  image: registery.fandogh.cloud/bachloarproject/news:1399322.1
+  image_pull_policy: Always
+  image_pull_secret: "private-registry-secret"
+  replicas: 4
+  port: 80
+  path: /
+  allow_http: false
+  env:
+    - name: DEBUG
+      value: 1
+    - name: API_KEY
+      value: SOME_LONG_RANDOM_STRING
+
+  domains:
+     - name: egtesadkhan.com
+
+  port_mapping:
+    - port: 8081
+      target_port: 8081
+      protocol: tcp
+  resources:
+    memory: 2457Mi
+
+  liveness_probe:
+    initial_delay_seconds: 12
+    period_seconds: 60
+    timeout_seconds: 12
+    http_get:
+      path: "/are-you-live"
+      port: 80
+  readiness_probe:
+    initial_delay_seconds: 5
+    period_seconds: 10
+    timeout_seconds: 12
+    http_get:
+      path: "/are-you-ready"
+      port: 80
+  
+

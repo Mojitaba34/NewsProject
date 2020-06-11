@@ -1,5 +1,5 @@
 import mysql.connector
-from app import config
+from app.admin import config
 import datetime
 from persiantools.jdatetime import JalaliDateTime
 import time
@@ -15,6 +15,7 @@ def get_database_connection():
         user=config.MYSQL_USERNAME,
         passwd=config.MYSQL_PASSWORD,
         db = config.MYSQL_DB_NAME,
+        port=config.MYSQL_PORT,
         charset='utf8'
     )
 

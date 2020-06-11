@@ -3,29 +3,21 @@ from app import db
 from app.robots import robots
 import time
 import threading
-import socket
-
 
 
 
 
 class robot_runner:
 
-    robotStates = db_admin.get_robots()
+    """robotStates = db_admin.get_robots()
 
     timer_tejarat      = robotStates[0][2]
     timer_tasnim       = robotStates[1][2]
     timer_arzdigital   = robotStates[2][2]
     state_tejarat      = robotStates[0][1]
     state_tasnim       = robotStates[1][1]
-    state_arzdigital   = robotStates[2][1]
+    state_arzdigital   = robotStates[2][1]"""
     
-    def internet_connection_test(self):
-        try:
-            socket.create_connection(('Google.com',80))
-            return True
-        except OSError:
-            return False
 
 
     def refresh_data(self):
@@ -41,42 +33,34 @@ class robot_runner:
 
 
     def tejarat_Robot(self):
-        while True:
-            if self.internet_connection_test() == True:
-                if self.state_tejarat == 0:
-                    tejarat_news = robots.news_from_tejaratnews()
-                    data = tejarat_news.getData()
-                    print("--------------Tejarat----------------")
-                    print("tejarat=  "+db.InsertTblNews(data))
-                    print("timer=  "+str(self.timer_tejarat))
-                    print("state= "+str(self.state_tejarat))
-                    print("------------------------------")
-                    time.sleep(self.timer_tejarat)
-            else:
-                print("Reconnecting...")
-                time.sleep(10)
+        while True:            
+            if self.state_tejarat == 0:
+                tejarat_news = robots.news_from_tejaratnews()
+                data = tejarat_news.getData()
+                print("--------------Tejarat----------------")
+                print("tejarat=  "+db.InsertTblNews(data))
+                print("timer=  "+str(self.timer_tejarat))
+                print("state= "+str(self.state_tejarat))
+                print("------------------------------")
+                time.sleep(self.timer_tejarat)
+
 
 
     def tasnim_Robot(self):
         while True:
-            if self.internet_connection_test() == True:
-                if self.state_tasnim == 0:
-                    tasnim_news = robots.news_from_tasnimnews()
-                    data = tasnim_news.getData()
-                    print("--------------Tasnim----------------")
-                    print("tasnim=  "+db.InsertTblNews(data))
-                    print("timer=  "+str(self.timer_tasnim))
-                    print("state= "+str(self.state_tasnim))
-                    print("------------------------------")
-                    time.sleep(self.timer_tasnim)
-            else:
-                print("Reconnecting...")
-                time.sleep(10)
+            if self.state_tasnim == 0:
+                tasnim_news = robots.news_from_tasnimnews()
+                data = tasnim_news.getData()
+                print("--------------Tasnim----------------")
+                print("tasnim=  "+db.InsertTblNews(data))
+                print("timer=  "+str(self.timer_tasnim))
+                print("state= "+str(self.state_tasnim))
+                print("------------------------------")
+                time.sleep(self.timer_tasnim)
 
 
     def arzdigital_Robot(self):
         while True:
-            if self.internet_connection_test() == True:
                 if self.state_arzdigital == 0:
                     arzdigital_news = robots.news_from_arzdigital()
                     data = arzdigital_news.getData()
@@ -86,10 +70,6 @@ class robot_runner:
                     print("state= "+str(self.state_arzdigital))
                     print("------------------------------")
                     time.sleep(self.timer_arzdigital)
-            else:
-                print("Reconnecting...")
-                time.sleep(10)
-
 
 
     def threadRun(self):
