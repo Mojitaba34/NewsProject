@@ -4,6 +4,7 @@ from app.admin import db
 from app import db as db_app
 from app.admin import getData
 from app.robots import robots
+
 """
 This Method and Url For --dashboard-- and --index-- in admin Panel
 """
@@ -13,6 +14,7 @@ def dashboard():
         return render_template('container_controller.html',container='',user_data=session.get("user_data"),Data = getData())
     else:
         return redirect(url_for('admin.login'))
+
 
 
 

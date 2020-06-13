@@ -2,7 +2,10 @@ from flask import (Flask,Blueprint,render_template,request,flash,redirect,url_fo
 from app.admin import db
 from app.admin import config
 from app.admin import api
-from datetime import timedelta
+
+
+
+
 
 admin = Blueprint('admin',
                     __name__,
@@ -10,10 +13,6 @@ admin = Blueprint('admin',
                     static_folder="static",
                     static_url_path='/static')
 
-
-
-admin.secret_key = config.SECRET_KEY
-admin.permanent_session_lifetime = timedelta(minutes=10)
 
 
 

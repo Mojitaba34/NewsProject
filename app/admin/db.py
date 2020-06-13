@@ -14,7 +14,8 @@ def BuildTables():
             id_admin INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
             username VARCHAR(30),
             password VARCHAR(200),
-            email VARCHAR(40) UNIQUE
+            email VARCHAR(40) UNIQUE,
+            state_admin TINYINT
         );
         """)
         
@@ -82,12 +83,16 @@ def checkLogin(email,password):
                 #data_login[1] # username
                 #data_login[2] # pass
                 #data_login[3] # email
-                print(data_login[2])
-                pass_state = pbkdf2_sha256.verify(password,data_login[2])
-                if pass_state==True:
-                    return True,data_login[1],data_login[0]
+                #data_login[4] # state_admin
+                state_admin = data_login[4]
+                if state_admin == 1:
+                    pass_state = pbkdf2_sha256.verify(password,data_login[2])
+                    if pass_state==True:
+                        return True,data_login[1],data_login[0]
+                    else:
+                        return False,"Password Invalid"
                 else:
-                    return False,"Password Invalid"
+                    return False, "Please Wait for your account to be Confirmed."
         else:
             # print('row_data ---- >',row_data)
             return False,"this email not registered."
