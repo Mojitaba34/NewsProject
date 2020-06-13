@@ -2,21 +2,22 @@ from flask import Flask
 from app import db
 from app.admin import db as db_admin
 from app.robots import robot_runner
+from app.admin import config
 app = Flask(__name__ ,template_folder='templates',
                         static_url_path='/static',
                         static_folder='static')
 
-app.config['SECRET_KEY'] = 'c07fc84ea77edced0582cbb80095795d'
+app.config["SECRET_KEY"] = config.SECRET_KEY
 
 try:
     print("build Tables")
     db.BuildTables() # First Step Check exists and build Tables Database
     db_admin.BuildTables() # Build Tables Admin
 
-    # This is For robto
-    print("thread started")
+    """print("thread started")
     robot = robot_runner.robot_runner()
-    robot.threadRun()
+    robot.threadRun()"""    
+
 except Exception as e:
     print(f"error --- > {e}")
 

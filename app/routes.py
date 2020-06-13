@@ -3,6 +3,7 @@ from flask import Flask , render_template, request, redirect, url_for,flash, jso
 from app.robots.robots import crypto
 from app import db
 import math, json
+from app.admin import config
 
 
 '''
@@ -43,7 +44,7 @@ def home():
     print(db.ip_date_update(ip_address)) # update ip Date
     arzdigital_news = db.arzdigital_news()
     return render_template('index.html', data=data, arzdigital=arzdigital_news,page_num=page_num, slider_data=slider_data,
-    maxLeft=maxLeft,maxRight=maxRight)
+    maxLeft=maxLeft,maxRight=maxRight,configId=config.USERID_GOOGLE)
 
 @app.route('/about')
 def about_us():

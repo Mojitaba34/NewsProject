@@ -134,3 +134,4 @@ dmypy.json
 .static
 static/
 /admin/static
+.vscode

@@ -1,7 +1,9 @@
 from flask import session,render_template,redirect,url_for,request,flash,jsonify
 from app.admin import admin
 from app.admin import db
+from app import db as db_app
 from app.admin import getData
+from app.robots import robots
 """
 This Method and Url For --dashboard-- and --index-- in admin Panel
 """
@@ -159,3 +161,25 @@ def NewsEdit():
             flash('لطفا اطلاعات را تکمیل کنید')
         
     return redirect(url_for("admin.dashboard"))
+
+
+@admin.route('/run',methods=["GET"])
+def runRob():
+    if session.get("user_data") != None:
+        tasnim_news = robots.news_from_tasnimnews()
+        data_tasnim = tasnim_news.getData()
+        print("--------------Tasnim----------------")
+        print("tasnim=  "+db_app.InsertTblNews(data_tasnim))
+
+
+        tejarat_news = robots.news_from_tejaratnews()
+        data_tejarat = tejarat_news.getData()
+        print("--------------Tejarat----------------")
+        print("tejarat=  "+db_app.InsertTblNews(data_tejarat))
+
+
+        arzdigital_news = robots.news_from_arzdigital()
+        data_arzdigital = arzdigital_news.getData()
+        print("--------------Arzdigital----------------")
+        print("arzdigital=  "+db_app.InsertTblNews(data_arzdigital))
+        return redirect(url_for("admin.dashboard"))

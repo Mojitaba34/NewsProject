@@ -9,14 +9,12 @@ import threading
 
 class robot_runner:
 
-    """robotStates = db_admin.get_robots()
-
-    timer_tejarat      = robotStates[0][2]
-    timer_tasnim       = robotStates[1][2]
-    timer_arzdigital   = robotStates[2][2]
-    state_tejarat      = robotStates[0][1]
-    state_tasnim       = robotStates[1][1]
-    state_arzdigital   = robotStates[2][1]"""
+    timer_tejarat      = 0
+    timer_tasnim       = 0
+    timer_arzdigital   = 0
+    state_tejarat      = 0
+    state_tasnim       = 0
+    state_arzdigital   = 0
     
 
 
@@ -73,17 +71,18 @@ class robot_runner:
 
 
     def threadRun(self):
-        p1 = threading.Thread(target=self.tejarat_Robot)
-        p2 = threading.Thread(target=self.tasnim_Robot)
-        p3 = threading.Thread(target=self.arzdigital_Robot)
-        p4 = threading.Thread(target=self.refresh_data)
-        """
-        Started threads by start() method
-        """
-        p1.start()
-        p2.start()
-        p3.start()
-        p4.start()
-
+        while True:
+            if self.state_tasnim == 1:
+                p1 = threading.Thread(target=self.tejarat_Robot)
+                p2 = threading.Thread(target=self.tasnim_Robot)
+                p3 = threading.Thread(target=self.arzdigital_Robot)
+                p4 = threading.Thread(target=self.refresh_data)
+                """
+                Started threads by start() method
+                """
+                p1.start()
+                p2.start()
+                p3.start()
+                p4.start()
 
 

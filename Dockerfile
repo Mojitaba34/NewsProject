@@ -9,6 +9,8 @@ COPY ./requirements.txt /var/www/requirements.txt
 
 RUN apt update && apt install -qy libmariadbclient-dev gcc
 
+RUN apt-get --assume-yes install ca-certificates
+
 ENV ENGINX_WORKER_PROCESSES 2
 
 RUN pip3 install -r /var/www/requirements.txt
