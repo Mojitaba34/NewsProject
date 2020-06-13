@@ -9,14 +9,13 @@ import threading
 
 class robot_runner:
 
-    """robotStates = db_admin.get_robots()
 
-    timer_tejarat      = robotStates[0][2]
-    timer_tasnim       = robotStates[1][2]
-    timer_arzdigital   = robotStates[2][2]
-    state_tejarat      = robotStates[0][1]
-    state_tasnim       = robotStates[1][1]
-    state_arzdigital   = robotStates[2][1]"""
+    timer_tejarat      = 0
+    timer_tasnim       = 0
+    timer_arzdigital   = 0
+    state_tejarat      = 0
+    state_tasnim       = 0
+    state_arzdigital   = 0
     
 
 
