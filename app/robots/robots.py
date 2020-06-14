@@ -52,6 +52,7 @@ class news_from_tejaratnews():
 
     '''
     def img_lnk(self):
+        news_image_dec = []
         news_image_dec =self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//div[contains(@class, 'news-media__image media-left')]//img/@src")
         modified_list = []
         for img_src in news_image_dec:
@@ -67,6 +68,7 @@ class news_from_tejaratnews():
     '''
 
     def news_title(self):
+        title_lst = []
         title_lst = self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//div[contains(@class, 'news-media__title')]//a/text()")
         return title_lst
 
@@ -78,6 +80,7 @@ class news_from_tejaratnews():
     '''
 
     def news_content(self):
+        content_list = []
         content_list = self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//p[contains(@class, 'news-media__description hidden-xs')]/text()")
         return content_list
 
@@ -89,6 +92,7 @@ class news_from_tejaratnews():
     '''
 
     def news_link(self):
+        link_news = []
         link_news = self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//div[contains(@class, 'news-media__title')]//a/@href")
         return link_news
 
@@ -105,7 +109,7 @@ class news_from_tejaratnews():
         }
         posts=[]
         data_len = self.news_title()
-        for post in range(len(data_len) - 1):
+        for post in range(len(data_len)):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts#TODO: InsertTblNews()
         
@@ -145,6 +149,7 @@ class news_from_tasnimnews():
     '''
 
     def img_lnk(self):
+        news_image_dec = []
         news_image_dec =self.root.xpath("//article[contains(@class, 'list-item')]//div[contains(@class,'col-md-4 col-xs-4 image-container vcenter')]//img/@src")
         modified_list = []
         for img_src in news_image_dec:
@@ -161,6 +166,7 @@ class news_from_tasnimnews():
     '''
 
     def news_title(self):
+        title_lst = []
         title_lst = self.root.xpath("//article[contains(@class, 'list-item')]//div[contains(@class,'col-md-8 col-xs-8 text-container vcenter')]//h2[contains(@class,'title')]/text()")
         return title_lst
 
@@ -172,6 +178,7 @@ class news_from_tasnimnews():
     '''
 
     def news_content(self):
+        content_list = []
         content_list = self.root.xpath("//article[contains(@class, 'list-item')]//div[contains(@class,'col-md-8 col-xs-8 text-container vcenter')]//h4[contains(@class,'lead')]/text()")
         return content_list
 
@@ -185,6 +192,7 @@ class news_from_tasnimnews():
     '''
 
     def news_link(self):
+        link_news = []
         link_news = self.root.xpath("//article[contains(@class, 'list-item')]/a/@href")
         modified_link = []
         link_add = "https://www.tasnimnews.com"
@@ -205,7 +213,7 @@ class news_from_tasnimnews():
             'news_link':self.news_link()
         }
         posts=[]
-        for post in range(len(self.news_title()) - 2):
+        for post in range(len(self.news_title())):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts#TODO: InsertTblNews()
 
@@ -243,6 +251,7 @@ class news_from_arzdigital():
 
     '''
     def img_lnk(self):
+        news_image_dec = []
         news_image_dec =self.root.xpath("//div[contains(@class, 'arz-col arz-col-md arz-last-post-image')]/img/@src")
         modified_list = []
         for img_src in news_image_dec:
@@ -257,6 +266,7 @@ class news_from_arzdigital():
     
     '''
     def news_title(self):
+        title_lst = []
         title_lst = self.root.xpath("//div[contains(@class, 'arz-row-sb arz-posts')]//h3[contains(@class,'arz-last-post-title')]/text()")
         return title_lst
 
@@ -279,6 +289,7 @@ class news_from_arzdigital():
     '''
 
     def news_link(self):
+        link_news = []
         link_news = self.root.xpath("//div[contains(@class, 'arz-row-sb arz-posts')]/a/@href")
         return link_news
 
@@ -294,7 +305,7 @@ class news_from_arzdigital():
             'news_link':self.news_link()
         }
         posts=[]
-        for post in range(len(self.news_title()) - 1):
+        for post in range(len(self.news_title())):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts #TODO: InsertTblNews()
 

@@ -181,7 +181,7 @@ Geting data from DataBase to import in to the Slider
 def read_data_for_slider(limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute(f'SELECT news_title,news_content,news_link,news_img_link FROM tbl_news ORDER BY news_date DESC LIMIT {limit}')
+    cursor.execute('SELECT news_title,news_content,news_link,news_img_link FROM tbl_news  WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT %s', ("%" + "tejaratnews" + "%", limit))
     data = list(cursor.fetchall())
     return data
 
