@@ -22,7 +22,7 @@ class PageContent():
     def reading_Html(url):
         reformated_url = url.replace('%3A', ':')
         headers = {'User-Agent':"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.162 Safari/537.36"}
-        req = Request(reformated_url, headers=headers)
+        req = Request(reformated_url,time.sleep(2), headers=headers)
         fp = urllib.request.urlopen(req)
         mybytes = fp.read()
         mystr = mybytes.decode("utf8")
