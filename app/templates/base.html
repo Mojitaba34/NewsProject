@@ -91,6 +91,9 @@
   </div>
   <!-- mini menu toggle on mobile  -->
 
+
+
+  <!-- normal view header & menu -->
   <!-- Whole Site  -->
   <div class="container whole my-4">
 
@@ -112,19 +115,15 @@
             <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
             <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a> </li>
             <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}"> ارز های دیجیتالی </a> </li>
+            
           </ul>
           <div class="social-media">
             <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
             <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
             <a href="#"> <i class="fa fa-twitter"></i></a>
-          
+            <a href="#" class="search-icon"> <i class="fa fa-search"></i> </a>
           </div>
-
-          <form action="#" class="form-row search-box text-center" method="GET">
-            <input type="text" class="form-control my-4" name="search" placeholder="جستجو کنید...">
-            <a href="#"> <i class="fa fa-search zarebin-2"></i> </a>
-          </form>
-
+          
         </nav>
 
       </header>
@@ -148,7 +147,7 @@
 
       {% endblock %}
 
-      
+      <!-- start of footer area -->
       <footer id="footer">
 
         <div class="row my-5">
