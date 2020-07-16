@@ -26,7 +26,14 @@
   <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/responsive.css') }}">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script src="{{ url_for('admin.static',filename='static/js/gtag.js') }}"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169005487-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-169005487-1');
+  </script>
 
 </head>
 

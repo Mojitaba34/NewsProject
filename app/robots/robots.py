@@ -22,7 +22,7 @@ class PageContent():
     def reading_Html(url):
         reformated_url = url.replace('%3A', ':')
         headers = {'User-Agent':"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.162 Safari/537.36"}
-        req = Request(reformated_url, headers=headers)
+        req = Request(reformated_url,time.sleep(5), headers=headers)
         fp = urllib.request.urlopen(req)
         mybytes = fp.read()
         mystr = mybytes.decode("utf8")
@@ -54,11 +54,7 @@ class news_from_tejaratnews():
     def img_lnk(self):
         news_image_dec = []
         news_image_dec =self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//div[contains(@class, 'news-media__image media-left')]//img/@src")
-        modified_list = []
-        for img_src in news_image_dec:
-            if "jpg" in str(img_src):
-                modified_list.append(img_src)
-        return modified_list
+        return news_image_dec
     
     '''
     news_title returns news Titles with Xpath 
@@ -151,11 +147,7 @@ class news_from_tasnimnews():
     def img_lnk(self):
         news_image_dec = []
         news_image_dec =self.root.xpath("//article[contains(@class, 'list-item')]//div[contains(@class,'col-md-4 col-xs-4 image-container vcenter')]//img/@src")
-        modified_list = []
-        for img_src in news_image_dec:
-            if "jpg" in str(img_src):
-                modified_list.append(img_src)
-        return modified_list
+        return news_image_dec
 
 
     '''
@@ -253,11 +245,7 @@ class news_from_arzdigital():
     def img_lnk(self):
         news_image_dec = []
         news_image_dec =self.root.xpath("//div[contains(@class, 'arz-col arz-col-md arz-last-post-image')]/img/@src")
-        modified_list = []
-        for img_src in news_image_dec:
-            if "jpg" in str(img_src):
-                modified_list.append(img_src)
-        return modified_list
+        return news_image_dec
 
     '''
     news_title returns news Titles with Xpath 
