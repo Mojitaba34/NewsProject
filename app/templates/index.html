@@ -110,8 +110,9 @@
       <img src="{{ url_for('admin.static',filename='images/banner.jpeg') }}" class="w-100" alt="ad-banner">
     </div>
 
-    <div class="row">
-      {% for post in data %}
+    <div class="row mt-5">
+
+      <!-- {% for post in data %}
       <div class="col-sm-6">
         <div class="card daily-content-cards" style="width: 100%;">
           <a href="{{ post[2] }}">
@@ -129,8 +130,38 @@
           </div>
         </div>
       </div>
-      {% endfor %}
+      {% endfor %} -->
       <!-- end pf div.col-md-6 -->
+
+
+      <div class="col-md-4">
+        <div class="daily-news">
+          <div class="our-card">
+            <img src="../admin/static/images/gallery/chair2.jpg" width="25%" alt="">
+            <div class="text">
+              <h2> سر تیتر مطلب </h2>
+              <p> متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="digital-coin">
+          ARZ DIGITAL
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="corona-virus">
+            CORONA VIRUS
+        </div>
+      </div>
+
+      
+
+
+
     </div>
     <!-- end of row -->
 
