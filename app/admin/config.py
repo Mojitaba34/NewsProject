@@ -1,7 +1,12 @@
 # MYSQL.CONNECTOR Config
 MYSQL_HOST = "localhost"
+<<<<<<< HEAD
 MYSQL_USERNAME = "admin" 
 MYSQL_PASSWORD = "1234"
+=======
+MYSQL_USERNAME = "root" 
+MYSQL_PASSWORD = "" #efiAmirMoji@123
+>>>>>>> a1916f27eb67f48f8525154db788872004219fdf
 MYSQL_PORT = 3306
 MYSQL_DB_NAME = "newsdb"
 
