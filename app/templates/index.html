@@ -4,7 +4,7 @@
 <main>
 
   <!-- ad banner  -->
-  <div class="col-12 mt-sm-4 mt-0 mb-3 mb-sm-0 text-center">
+  <div class="col-12 mb-3 mb-sm-0 ad-banner text-center">
     <img src="{{ url_for('admin.static',filename='images/banner.jpeg') }}" class="w-100" alt="ad-banner">
   </div>
 
@@ -71,7 +71,7 @@
       <!-- OWL Carousel  -->
       <div class="owl-carousel owl-theme">
         {% for news in arzdigital%}
-        
+
         <div class="item">
           <div class="card" style=" width: 100%;">
             <a href="{{ news[3] }}">
@@ -106,12 +106,13 @@
     </div>
 
     <!-- ad banner  -->
-    <div class="col-12 my-4 text-center">
+    <div class="col-12 my-5 text-center">
       <img src="{{ url_for('admin.static',filename='images/banner.jpeg') }}" class="w-100" alt="ad-banner">
     </div>
 
-    <div class="row">
-      {% for post in data %}
+    <div class="row mt-5">
+
+      <!-- {% for post in data %}
       <div class="col-sm-6">
         <div class="card daily-content-cards" style="width: 100%;">
           <a href="{{ post[2] }}">
@@ -129,8 +130,227 @@
           </div>
         </div>
       </div>
-      {% endfor %}
+      {% endfor %} -->
       <!-- end pf div.col-md-6 -->
+
+
+      <div class="col-lg-5 col-12">
+
+        <div class="title text-center mb-4">
+          <a href="#x">
+            <h2> خبرهای روزانه </h2>
+          </a>
+        </div>
+
+        <div class="day-news">
+          <div class="daily-news-content first-top-new">
+
+            <div class="our-card" style="width: 100%;">
+              <img src="../admin/static/images/browser/photoshop.jpg" class="ml-3" width="50%" alt="images-of-news">
+              <div class="text">
+                <a href="#x">
+                  <h2> سر تیتر مطلب سر تیتر مطلب </h2>
+                </a>
+                <p> متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط
+                  به مطلب متن مربوط به مطلب متن مربوط به مطلب </p>
+              </div>
+            </div>
+
+          </div>
+          <!-- end of div.daily-news-content -->
+
+          <div class="daily-news-content">
+
+            <div class="our-card" style="width: 100%;">
+              <img src="../admin/static/images/browser/photoshop.jpg" class="ml-3" width="25%" alt="images-of-news">
+              <div class="text">
+                <a href="#x">
+                  <h3> سر تیتر مطلب سر تیتر مطلب </h3>
+                </a>
+                <p> متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط
+                  به مطلب متن مربوط به مطلب متن مربوط به مطلب </p>
+              </div>
+            </div>
+
+          </div>
+          <!-- end of div.daily-news-content -->
+
+          <div class="daily-news-content">
+
+            <div class="our-card" style="width: 100%;">
+              <img src="../admin/static/images/browser/photoshop.jpg" class="ml-3" width="25%" alt="images-of-news">
+              <div class="text">
+                <a href="#x">
+                  <h3> سر تیتر مطلب سر تیتر مطلب </h3>
+                </a>
+                <p> متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط
+                  به مطلب متن مربوط به مطلب متن مربوط به مطلب </p>
+              </div>
+            </div>
+
+          </div>
+          <!-- end of div.daily-news -->
+        </div>
+
+      </div>
+
+      <div class="col-lg-2 col-12">
+        <div class="title text-center mb-4">
+          <a href="#x">
+            <h2> ارزهای دیجیتالی </h2>
+          </a>
+        </div>
+        <div class="digital-coin">
+          <!-- start of digital coin table -->
+          <table class="table table-borderless">
+            <!-- item 1 -->
+            <thead class="thead-light">
+              <tr>
+                <th scope="col"><a href="#x"> بیت کوین </a></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#x"> قیمت ریالی بیت کوین </a></td>
+              </tr>
+              <tr>
+                <td><a href="#x"> قیمت دلاری بیت کوین </a></td>
+              </tr>
+              <tr>
+                <td class="d-flex" style="justify-content: space-between;">روزانه
+                  <span style="font-size: 1rem;" class="badge badge-pill badge-danger">5%</span>
+                </td>
+              </tr>
+            </tbody>
+            <!-- item 2 -->
+            <thead class="thead-light">
+              <tr>
+                <th scope="col"><a href="#x"> اتریوم </a></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#x"> قیمت ریالی اتریوم </a></td>
+              </tr>
+              <tr>
+                <td><a href="#x"> قیمت دلاری اتریوم </a></td>
+              </tr>
+              <tr>
+                <td class="d-flex" style="justify-content: space-between;">روزانه
+                  <span style="font-size: 1rem;" class="badge badge-pill badge-success">5%</span>
+                </td>
+              </tr>
+            </tbody>
+            <!-- item 3 -->
+            <thead class="thead-light">
+              <tr>
+                <th scope="col"><a href="#x"> لایت کوین </a></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#x"> قیمت ریالی اتریوم </a></td>
+              </tr>
+              <tr>
+                <td><a href="#x"> قیمت دلاری اتریوم </a></td>
+              </tr>
+              <tr>
+                <td class="d-flex" style="justify-content: space-between;">روزانه
+                  <span style="font-size: 1rem;" class="badge badge-pill badge-success">5%</span>
+                </td>
+              </tr>
+            </tbody>
+             <!-- item 4 -->
+             <thead class="thead-light">
+              <tr>
+                <th scope="col"><a href="#x"> دوج </a></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#x"> قیمت ریالی اتریوم </a></td>
+              </tr>
+              <tr>
+                <td><a href="#x"> قیمت دلاری اتریوم </a></td>
+              </tr>
+              <tr>
+                <td class="d-flex" style="justify-content: space-between;">روزانه
+                  <span style="font-size: 1rem;" class="badge badge-pill badge-success">5%</span>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+          <!-- end of digital coin table -->
+
+        </div>
+        <!-- end of div.digital-coin -->
+      </div>
+
+      <div class="col-lg-5 col-12">
+        <div class="title text-center mb-4">
+          <a href="#x">
+            <h2> اخبار در مورد ویروس کرونا </h2>
+          </a>
+        </div>
+        <div class="corona-virus">
+
+          <div class="row">
+            <div class="col-md-6">
+
+              <!-- item 1 -->
+              <div class="card" style="width: 100%">
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست </p>
+                </div>
+              </div>
+              <!-- item 2 -->
+              <div class="card" style="width: 100%">
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست </p>
+                </div>
+              </div>
+
+            </div>
+            <!-- end of div.col-md-6 inside div.col-md-5 -->
+
+            <div class="col-md-6">
+              <!-- item 1 -->
+              <div class="card" style="width: 100%">
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست </p>
+                </div>
+              </div>
+              <!-- item 2 -->
+              <div class="card" style="width: 100%">
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست </p>
+                </div>
+              </div>
+            </div>
+            <!-- end of div.col-md-6 inside div.col-md-5 -->
+
+
+          </div>
+          <!-- end of div.row inside div.col-md-5 -->
+          
+
+        </div>
+        <!-- end of div.corona-virus -->
+      </div>
+
+
+
+
+
     </div>
     <!-- end of row -->
 
@@ -143,19 +363,19 @@
     <div class="row my-5">
       <div class="col-12 d-flex justify-content-center">
         <ul class="pagination" id="pagination">
-          <li class="py-4 px-3"> <a href="/" >1</a> </li>
+          <li class="py-4 px-3"> <a href="/">1</a> </li>
           {% if maxLeft>1 %}
           <li class="py-4 px-3">...</li>
           {% endif%}
           {% for page in range(maxLeft,maxRight)%}
           {% if not loop.index == 1%}
-          <li class="py-4 px-3"> <a href="{{ url_for('home',page = page )}}" >{{page}} </a> </li>
+          <li class="py-4 px-3"> <a href="{{ url_for('home',page = page )}}">{{page}} </a> </li>
           {%endif%}
           {% endfor %}
           {% if maxRight < page_num %}
           <li class="py-4 px-3">...</li>
           {% endif%}
-          <li class="py-4 px-3"> <a href="{{ url_for('home',page = page_num )}}" >{{page_num}} </a> </li>
+          <li class="py-4 px-3"> <a href="{{ url_for('home',page = page_num )}}">{{page_num}} </a> </li>
         </ul>
       </div>
     </div>

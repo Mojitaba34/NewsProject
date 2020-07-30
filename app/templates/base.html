@@ -95,9 +95,14 @@
 
   <!-- normal view header & menu -->
   <!-- Whole Site  -->
-  <div class="container whole my-4">
+  <div class="container-fluid whole">
 
     <div id="container">
+
+      <div class="name-of-site text-center my-4">
+        <h2> اقتصاد خوان </h2>
+      </div>
+
       <!-- start of header area -->
       <header id="header">
 
@@ -120,26 +125,26 @@
           <div class="social-media">
             <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
             <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
-            <a href="#"> <i class="fa fa-twitter"></i></a>
-            <a href="#" class="search-icon"> <i class="fa fa-search"></i> </a>
+            <a href="#x"> <i class="fa fa-twitter"></i></a>
+            <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
           </div>
           
         </nav>
 
       </header>
 
-      <div class="search-box">
-        <form action="#" class="form-row" method="GET">
-          <div class="form-group mx-auto text-center col-md-8">
-            <input type="text" class="form-control form-control-2" style="border: 1px solid #000;" name="search"
-              placeholder="جستجو کنید...">
+      <div id="search-window">
+        <a href="#x"> <i class="fa fa-times text-light fa-2x"></i> </a>
+        <form class="w-75">
+          <div class="form-group">
+            <input type="text" class="form-control" id="searchInput" aria-describedby="search-input" placeholder="جستجو کنید">
+            <a href="#"> <i class="text-light fa fa-2x fa-search"></i> </a>
           </div>
         </form>
       </div>
+      
 
-      <div class="name-of-site text-center my-4">
-        <h2> اقتصاد خوان </h2>
-      </div>
+      
       <!-- end of header area -->
 
 
