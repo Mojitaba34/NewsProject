@@ -29,7 +29,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169005487-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-169005487-1');
@@ -39,21 +39,22 @@
 
 
 {% if active_page == 'arzdigital' %}
-<body onload="autoRefreshPage()">
-{% else %}
-<body>
-{% endif %}
-  <!-- mini menu toggle on mobile  -->
-  <div id="menu-toggle">
 
-    <div class="container mt-5">
-      <div id="container">
+<body onload="autoRefreshPage()">
+  {% else %}
+
+  <body>
+    {% endif %}
+    <!-- mini menu toggle on mobile  -->
+    <nav id="menu-toggle">
+        
+
         <!-- toggler-times button -->
         <div class="toggler-times w-100">
           <i class="fa fa-times"></i>
         </div>
         <!-- start of Hero Section -->
-        <section id="hero" class="mb-5">
+        <div id="hero" class="mb-5 px-4">
           <div class="text-center">
 
             <div class="w-100">
@@ -84,192 +85,202 @@
 
             </div>
           </div>
-        </section>
-      </div>
-    </div>
+        </div>
 
-  </div>
-  <!-- mini menu toggle on mobile  -->
+    </nav>
+    <!-- mini menu toggle on mobile  -->
 
 
 
-  <!-- normal view header & menu -->
-  <!-- Whole Site  -->
-  <div class="container-fluid whole">
+    <!-- normal view header & menu -->
+    <!-- Whole Site  -->
+    <div class="container-fluid whole">
 
-    <div id="container">
+      <div id="container">
 
-      <div class="name-of-site text-center my-4">
-        <h2> اقتصاد خوان </h2>
-      </div>
+        <div class="name-of-site text-center my-4">
+          <h2> اقتصاد خوان </h2>
+        </div>
 
-      <!-- start of header area -->
-      <header id="header">
+        
 
-        <!-- toggler-bars button on mobile -->
+        <!-- start of header area -->
+        <header id="header">
+
+          <!-- toggler-bars button on mobile -->
         <div class="toggler-bars w-100">
           <i class="fa fa-bars"></i>
         </div>
         <!-- toggler-bars button on mobile -->
 
-
-        <!-- menu -->
-        <nav class="header-content" id="header-content">
-          <ul class="pages">
-            <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
-            <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
-            <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a> </li>
-            <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}"> ارز های دیجیتالی </a> </li>
-            
-          </ul>
-          <div class="social-media">
-            <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-            <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
-            <a href="#x"> <i class="fa fa-twitter"></i></a>
-            <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
-          </div>
-          
-        </nav>
-
-      </header>
-
-      <div id="search-window">
-        <a href="#x"> <i class="fa fa-times text-light fa-2x"></i> </a>
-        <form class="w-75">
-          <div class="form-group">
-            <input type="text" class="form-control" id="searchInput" aria-describedby="search-input" placeholder="جستجو کنید">
-            <a href="#"> <i class="text-light fa fa-2x fa-search"></i> </a>
-          </div>
-        </form>
-      </div>
-      
-
-      
-      <!-- end of header area -->
-
-
-      {% block content %}
-
-      {% endblock %}
-
-      <!-- start of footer area -->
-      <footer id="footer">
-
-        <div class="row my-5">
-
-          <!-- Newsletter part -->
-          <div class="col-lg-4 bottom-cards">
-            <div class="card" style="width: 100%;">
-              <div class="caption mt-1">
-                <p> خبرنامه</p>
-              </div>
-              <div class="card-body text-center text-md-right">
-                <p class="card-text mt-1 text-center"> ما هم از اسپم ها مثل شما متنفریم </p>
-                <form action="#.php" method="GET" class="signin">
-                  <input type="text" name="name" required="required" placeholder="نام شما">
-                  <input type="email" name="email" required="required" placeholder="ایمیل شما">
-                  <input type="submit" value="ورود" class="our-btn">
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tags part -->
-          <div class="col-lg-4 bottom-cards">
-            <div class="card" style="width: 100%;">
-              <div class="caption mt-1">
-                <p> برچسب ها </p>
-              </div>
-              <div class="card-body text-center text-lg-right">
-                <p class="card-text mt-1">
-                  <a class="h5" href="#"> <b>کوله پشتی </b></a>
-                  <a class="small" href="#"> صوتی</a>
-                  <a class="h5" href="#"> <b>شگفت انگیز</b> </a>
-                </p>
-                <p class="card-text mt-1">
-                  <a class="small" href="#"> <b> گالری مد چهره </b></a>
-                  <a class="mx-1 h3" href="#"> <b>فرمت</b> </a>
-                  <a class="small" href="#"> <b>تصویر</b> </a>
-                </p>
-                <p class="card-text mt-1">
-                  <a class="small" href="#"> <b> چشم انداز </b></a>
-                  <a class="h2" href="#"> <b>آزادی</b> </a>
-                  <a class="h3" href="#"> <b>نجات</b> </a>
-                </p>
-                <p class="card-text mt-1">
-                  <a class="h5" href="#"> <b> استایل زندگی</b></a>
-                  <a class="small" href="#"> عکلاسی </a>
-                  <a class="small" href="#"> <b>پیکسار</b> </a>
-                  <a class="h5" href="#"> <b>سیاست</b> </a>
-                </p>
-                <p class="card-text mt-1">
-                  <a class="h4" href="#"> <b> رییس جمهور </b></a>
-                  <a class="small" href="#"> ساندلکاد</a>
-                  <a class="h4" href="#"> <b>مسافرت</b> </a>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Best Rated -->
-          <div class="col-lg-4 bottom-cards">
-            <div class="card" style="width: 100%;">
-              <div class="caption mb-3">
-                <p> تبلیغات </p>
-              </div>
-              <div class="col-12 my-4 text-center">
-                <img src="{{ url_for('admin.static',filename='images/banner.jpeg') }}" class="w-100" alt="ad-banner">
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-        <!-- end of row -->
-
-        <hr style="border-width: 1px;">
-
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <h1 class="display-3"> <b> <a href="#" class="footer-title"> اقتصاد خوان </a> </b> </h1>
-            <div class="social-media">
-              <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-              <a href="#"> <i class="fa fa-telegram"></i></a>
-              <a href="#"> <i class="fa fa-twitter"></i></a>
-              <a href="#"> <i class="mt-4 mt-sm-0 fa fa-whatsapp"></i></a>
-            </div>
-            <ul class="footer-nav">
+          <!-- menu -->
+          <nav class="header-content" id="header-content">
+            <ul class="pages">
               <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
               <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
-              <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a> </li>
-              <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}"> ارز های دیجیتالی </a> </li>
+              <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
+              </li>
+              <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}"> ارز های دیجیتالی
+                </a> </li>
+
             </ul>
-          </div>
+            <div class="social-media">
+              <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+              <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
+              <a href="#x"> <i class="fa fa-twitter"></i></a>
+              <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+            </div>
+
+          </nav>
+
+        </header>
+        <!-- end of header area -->
+
+        <!-- search-window-open -->
+        <div id="search-window">
+          <a href="#x"> <i class="fa fa-times text-light fa-2x"></i> </a>
+          <form class="w-75">
+            <div class="form-group">
+              <input type="text" class="form-control" id="searchInput" aria-describedby="search-input"
+                placeholder="جستجو کنید">
+              <a href="#"> <i class="text-light fa fa-2x fa-search"></i> </a>
+            </div>
+          </form>
         </div>
 
-      </footer>
-      <!-- end of bottem & Footer -->
 
+
+        <!-- end of header area -->
+
+
+        {% block content %}
+
+        {% endblock %}
+
+        <!-- start of footer area -->
+        <footer id="footer">
+
+          <div class="row my-5">
+
+            <!-- Newsletter part -->
+            <div class="col-lg-4 bottom-cards">
+              <div class="card" style="width: 100%;">
+                <div class="caption mt-1">
+                  <p> خبرنامه</p>
+                </div>
+                <div class="card-body text-center text-md-right">
+                  <p class="card-text mt-1 text-center"> ما هم از اسپم ها مثل شما متنفریم </p>
+                  <form action="#.php" method="GET" class="signin">
+                    <input type="text" name="name" required="required" placeholder="نام شما">
+                    <input type="email" name="email" required="required" placeholder="ایمیل شما">
+                    <input type="submit" value="ورود" class="our-btn">
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tags part -->
+            <div class="col-lg-4 bottom-cards">
+              <div class="card" style="width: 100%;">
+                <div class="caption mt-1">
+                  <p> برچسب ها </p>
+                </div>
+                <div class="card-body text-center text-lg-right">
+                  <p class="card-text mt-1">
+                    <a class="h5" href="#"> <b>کوله پشتی </b></a>
+                    <a class="small" href="#"> صوتی</a>
+                    <a class="h5" href="#"> <b>شگفت انگیز</b> </a>
+                  </p>
+                  <p class="card-text mt-1">
+                    <a class="small" href="#"> <b> گالری مد چهره </b></a>
+                    <a class="mx-1 h3" href="#"> <b>فرمت</b> </a>
+                    <a class="small" href="#"> <b>تصویر</b> </a>
+                  </p>
+                  <p class="card-text mt-1">
+                    <a class="small" href="#"> <b> چشم انداز </b></a>
+                    <a class="h2" href="#"> <b>آزادی</b> </a>
+                    <a class="h3" href="#"> <b>نجات</b> </a>
+                  </p>
+                  <p class="card-text mt-1">
+                    <a class="h5" href="#"> <b> استایل زندگی</b></a>
+                    <a class="small" href="#"> عکلاسی </a>
+                    <a class="small" href="#"> <b>پیکسار</b> </a>
+                    <a class="h5" href="#"> <b>سیاست</b> </a>
+                  </p>
+                  <p class="card-text mt-1">
+                    <a class="h4" href="#"> <b> رییس جمهور </b></a>
+                    <a class="small" href="#"> ساندلکاد</a>
+                    <a class="h4" href="#"> <b>مسافرت</b> </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Best Rated -->
+            <div class="col-lg-4 bottom-cards">
+              <div class="card" style="width: 100%;">
+                <div class="caption mb-3">
+                  <p> تبلیغات </p>
+                </div>
+                <div class="col-12 my-4 text-center">
+                  <img src="{{ url_for('admin.static',filename='images/banner.jpeg') }}" class="w-100" alt="ad-banner">
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- end of row -->
+
+          <hr style="border-width: 1px;">
+
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h1 class="display-3"> <b> <a href="#" class="footer-title"> اقتصاد خوان </a> </b> </h1>
+              <div class="social-media">
+                <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+                <a href="#"> <i class="fa fa-telegram"></i></a>
+                <a href="#"> <i class="fa fa-twitter"></i></a>
+                <a href="#"> <i class="mt-4 mt-sm-0 fa fa-whatsapp"></i></a>
+              </div>
+              <ul class="footer-nav">
+                <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
+                <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
+                <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
+                </li>
+                <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}"> ارز های
+                    دیجیتالی </a> </li>
+              </ul>
+            </div>
+          </div>
+
+        </footer>
+        <!-- end of bottem & Footer -->
+
+      </div>
     </div>
-  </div>
-  <div class="special-button bg-light">
-    <a href="#" class="our-btn"> برو <br> <span> بالا </span> </a>
-  </div>
-  <!--jQuery and popper -->
-  <script src="{{ url_for('admin.static',filename='js/jquery-3.5.0.js') }}"></script>
-  <script src="{{ url_for('admin.static',filename='js/popper.min.js') }}"></script>
+    <div class="special-button bg-light">
+      <a href="#" class="our-btn"> برو <br> <span> بالا </span> </a>
+    </div>
 
-  <!--bootstrap -->
-  <script src="{{ url_for('admin.static',filename='js/bootstrap.min.js') }}"></script>
 
-  <!--Owl carousel -->
-  <script src="{{ url_for('admin.static',filename='js/owl.carousel.min.js') }}"></script>
+    <!--jQuery and popper -->
+    <script src="{{ url_for('admin.static',filename='js/jquery-3.5.0.js') }}"></script>
+    <script src="{{ url_for('admin.static',filename='js/popper.min.js') }}"></script>
 
-  <!--js animation -->
-  <script src="{{ url_for('admin.static',filename='js/wow.min.js') }}"></script>
+    <!--bootstrap -->
+    <script src="{{ url_for('admin.static',filename='js/bootstrap.min.js') }}"></script>
 
-  <!--main js file -->
-  <script src="{{ url_for('admin.static',filename='js/main.js') }}"></script>
-</body>
+    <!--Owl carousel -->
+    <script src="{{ url_for('admin.static',filename='js/owl.carousel.min.js') }}"></script>
+
+    <!--js animation -->
+    <script src="{{ url_for('admin.static',filename='js/wow.min.js') }}"></script>
+
+
+
+    <!--main js file -->
+    <script src="{{ url_for('admin.static',filename='js/main.js') }}"></script>
+  </body>
 
 </html>
