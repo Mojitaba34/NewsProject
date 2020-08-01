@@ -80,12 +80,11 @@ def InsertTblNews(data):
     cursor = db.cursor()
     date_time = JalaliDateTime.now() # give us dateTime shamsi
     try:
-        for post in range(len(data)):
-            if CheckExistsTitleNews(data[post]['title']) == False:
-                insert_query = "INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date,status) VALUES (%s, %s, %s, %s, %s,%s)"
-                insert_val = (str(data[post]['title']),str(data[post]['content']),str(data[post]['link']),str(data[post]['news_img_link']),str(date_time.jalali_date()),0)
-                cursor.execute(insert_query,insert_val)
-            db.commit()
+        if CheckExistsTitleNews(data['title']) == False:
+            insert_query = "INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date,status) VALUES (%s, %s, %s, %s, %s,%s)"
+            insert_val = (str(data['title']),str(data['desc']),str(data['link']),str(data['img_link']),str(date_time.jalali_date()),0)
+            cursor.execute(insert_query,insert_val)
+        db.commit()
         return f'{cursor.rowcount} data inserted '
     except Exception as e:
         return f'an Erorr {e} .'

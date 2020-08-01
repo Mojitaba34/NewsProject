@@ -10,7 +10,7 @@ app = Flask(__name__ ,template_folder='templates',
                         static_folder='static')
 
 app.config["SECRET_KEY"] = config.SECRET_KEY
-app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
+app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=5)
 
 try:
     print("build Tables")

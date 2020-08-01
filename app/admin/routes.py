@@ -169,12 +169,14 @@ def NewsEdit():
 def runRob():
     if session.get("user_data") != None:
         tasnim_news = robots.news_from_tasnimnews()
-        data_tasnim = tasnim_news.getData()
         print("--------------Tasnim----------------")
-        print("tasnim=  "+db_app.InsertTblNews(data_tasnim))
+        tasnim_news.tasnim()
+        
 
 
-        tejarat_news = robots.news_from_tejaratnews()
+
+
+        """tejarat_news = robots.news_from_tejaratnews()
         data_tejarat = tejarat_news.getData()
         print("--------------Tejarat----------------")
         print("tejarat=  "+db_app.InsertTblNews(data_tejarat))
@@ -184,4 +186,5 @@ def runRob():
         data_arzdigital = arzdigital_news.getData()
         print("--------------Arzdigital----------------")
         print("arzdigital=  "+db_app.InsertTblNews(data_arzdigital))
+        return redirect(url_for("admin.dashboard"))"""
         return redirect(url_for("admin.dashboard"))
