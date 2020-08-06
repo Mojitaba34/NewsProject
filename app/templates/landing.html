@@ -110,7 +110,34 @@
     </nav>
     <!-- mini menu toggle on mobile  -->
 
+    <!-- start of header area -->
+    <header id="header">
 
+      <!-- toggler-bars button on mobile -->
+
+      <!-- toggler-bars button on mobile -->
+
+      <!-- menu -->
+      <nav class="header-content" id="header-content">
+        <ul class="pages">
+          <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
+          <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
+          <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
+          </li>
+          <li> <a href="/landing" class="{{ 'active' if active_page == 'landing' else '' }}"> لندینگ
+            </a> </li>
+        </ul>
+        <div class="social-media">
+          <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+          <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
+          <a href="#x"> <i class="fa fa-twitter"></i></a>
+          <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+        </div>
+
+      </nav>
+
+    </header>
+    <!-- end of header area -->
 
     <!-- normal view header & menu -->
     <!-- Whole Site  -->
@@ -130,35 +157,6 @@
           </div>
         </div>
 
-
-        <!-- start of header area -->
-        <header id="header">
-
-          <!-- toggler-bars button on mobile -->
-
-          <!-- toggler-bars button on mobile -->
-
-          <!-- menu -->
-          <nav class="header-content" id="header-content">
-            <ul class="pages">
-              <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
-              <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
-              <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
-              </li>
-              <li> <a href="/landing" class="{{ 'active' if active_page == 'landing' else '' }}"> لندینگ
-                </a> </li>
-            </ul>
-            <div class="social-media">
-              <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-              <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
-              <a href="#x"> <i class="fa fa-twitter"></i></a>
-              <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
-            </div>
-
-          </nav>
-
-        </header>
-        <!-- end of header area -->
 
         <!-- search-window-open -->
         <div id="search-window">
@@ -198,9 +196,10 @@
                             <h6 class="text-muted d-none d-sm-block"> زمان تقریبی خواندن مطلب 15 دقیقه </h6>
                           </div>
                           <div class="shared-by d-flex">
-                            <img src="../admin/static/images/landingpage/profile.jpg" class="img-fluid" alt="profile-photo">
+                            <img src="../admin/static/images/landingpage/profile.jpg" class="img-fluid"
+                              alt="profile-photo">
                             <div class="profile-name">
-                              <span class="text-muted">  انتشار مطلب توسط </span>
+                              <span class="text-muted"> انتشار مطلب توسط </span>
                               <h6> <a href="#x"> ملیکا عباسی </a> </h6>
                             </div>
                           </div>
@@ -221,17 +220,20 @@
 
                       <div class="col-md-6">
                         <div class="landing-news-text">
-                          <p class="text-justify"> لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
+                          <p class="text-justify"> لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و
+                            بی‌معنی در صنعت چاپ،
                             صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
                             برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از
                             نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
                             صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار
-                            خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
+                            خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem
+                            ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
                             صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
                             برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از
                             نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
                             صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار
-                            خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
+                            خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem
+                            ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
                             صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
                             برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از
                             نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
@@ -242,15 +244,18 @@
 
                       <div class="col-md-6">
                         <div class="landing-news-text">
-                          <p class="text-justify"> از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر
+                          <p class="text-justify"> از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و
+                            اندازه‌بندی‌ها چگونه در نظر
                             گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را
                             ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات
                             ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
-                            ظاهر متن باشد. معمولا طراحان گرافیک برای آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و ط  از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر
+                            ظاهر متن باشد. معمولا طراحان گرافیک برای آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و ط از
+                            اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر
                             گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را
                             ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات
                             ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
-                            ظاهر متن باشد. معمولا طراحان گرافیک برای آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و ط از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر
+                            ظاهر متن باشد. معمولا طراحان گرافیک برای آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و ط از
+                            اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر
                             گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را
                             ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات
                             ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
@@ -308,7 +313,7 @@
                         </li>
 
                         <!-- item 3 li -->
-                        <li> <a href="#x"> اخبار ارزهای دیجیتالی  </a>
+                        <li> <a href="#x"> اخبار ارزهای دیجیتالی </a>
 
                           <ul>
 
@@ -336,20 +341,28 @@
                       </div>
 
                       <div class="our-card p-1">
-                        <img src="../admin/static/images/landingpage/austria-ceu.jpg" width="75px" height="75px" alt="country">
-                        <h6 class="mr-2"> <a href="#x"> رئیس جمهور کشور اسلواکی در مورد ویروس کرونا هشدار هایی داد </a> </h6>
+                        <img src="../admin/static/images/landingpage/austria-ceu.jpg" width="75px" height="75px"
+                          alt="country">
+                        <h6 class="mr-2"> <a href="#x"> رئیس جمهور کشور اسلواکی در مورد ویروس کرونا هشدار هایی داد </a>
+                        </h6>
                       </div>
 
                       <div class="our-card p-1">
-                        <img src="../admin/static/images/landingpage/Panoramic-view-of-Nice-coastline-and-beach-with-blue-sky-France..jpg" width="75px" height="75px" alt="country">
-                        <h6 class="mr-2"> <a href="#x"> رئیس جمهور کشور اسلواکی در مورد ویروس کرونا هشدار هایی داد </a> </h6>
+                        <img
+                          src="../admin/static/images/landingpage/Panoramic-view-of-Nice-coastline-and-beach-with-blue-sky-France..jpg"
+                          width="75px" height="75px" alt="country">
+                        <h6 class="mr-2"> <a href="#x"> رئیس جمهور کشور اسلواکی در مورد ویروس کرونا هشدار هایی داد </a>
+                        </h6>
                       </div>
 
                       <div class="our-card p-1">
-                        <img src="../admin/static/images/landingpage/Ronda-andalucia-spain-shutterstock_1471041044-1437x1050.jpg" width="75px" height="75px" alt="country">
-                        <h6 class="mr-2"> <a href="#x"> رئیس جمهور کشور اسلواکی در مورد ویروس کرونا هشدار هایی داد </a> </h6>
+                        <img
+                          src="../admin/static/images/landingpage/Ronda-andalucia-spain-shutterstock_1471041044-1437x1050.jpg"
+                          width="75px" height="75px" alt="country">
+                        <h6 class="mr-2"> <a href="#x"> رئیس جمهور کشور اسلواکی در مورد ویروس کرونا هشدار هایی داد </a>
+                        </h6>
                       </div>
-                      
+
                     </div>
                     <!-- end of envoriment area -->
 
@@ -371,7 +384,7 @@
                     </div>
                     <!-- end of boors area -->
 
-          
+
                   </div>
                   <!-- end div.side-menu-container -->
                 </aside>
