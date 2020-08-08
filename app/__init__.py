@@ -16,10 +16,7 @@ try:
     print("build Tables")
     db.BuildTables() # First Step Check exists and build Tables Database
     db_admin.BuildTables() # Build Tables Admin
-
-    """print("thread started")
-    robot = robot_runner.robot_runner()
-    robot.threadRun()"""    
+   
 
 except Exception as e:
     print(f"error --- > {e}")
