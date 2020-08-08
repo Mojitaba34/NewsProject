@@ -45,6 +45,21 @@
 
   <body>
     {% endif %}
+
+    <div class="above-site-mobile">
+
+      <div class="toggler-bars">
+        <i class="fa fa-bars"></i>
+      </div>
+
+      <div class="name-of-site">
+        <a href="#x/"> <h4> اقتصاد خوان </h4></a>
+      </div>
+
+      <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+    
+    </div>
+
     <!-- mini menu toggle on mobile  -->
     <nav id="menu-toggle">
         
@@ -73,7 +88,7 @@
                   <li> <a href="/"> خانه </a> <i class="fa fa-home"></i> </li>
                   <li> <a href="/about"> درباره ی ما </a> <i class="fa fa-users"></i> </li>
                   <li> <a href="/contact"> ارتباط با ما </a> <i class="fa fa-envelope"></i> </li>
-                  <li> <a href="/arzdigital"> ارز های دیجیتالی </a> <i class="fa fa-bitcoin"></i> </li>
+                  <li> <a href="/landing"> لندینگ </a> <i class="fa fa-bitcoin"></i> </li>
                 </ul>
               </div>
 
@@ -90,7 +105,34 @@
     </nav>
     <!-- mini menu toggle on mobile  -->
 
+     <!-- start of header area -->
+     <header id="header">
 
+      <!-- toggler-bars button on mobile -->
+    
+      <!-- toggler-bars button on mobile -->
+
+      <!-- menu -->
+      <nav class="header-content" id="header-content">
+        <ul class="pages">
+          <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
+          <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
+          <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
+          </li>
+          <li> <a href="/landing" class="{{ 'active' if active_page == 'landing' else '' }}"> لندینگ
+          </a> </li>
+        </ul>
+        <div class="social-media">
+          <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+          <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
+          <a href="#x"> <i class="fa fa-twitter"></i></a>
+          <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+        </div>
+
+      </nav>
+
+    </header>
+    <!-- end of header area -->
 
     <!-- normal view header & menu -->
     <!-- Whole Site  -->
@@ -98,43 +140,18 @@
 
       <div id="container">
 
-        <div class="name-of-site text-center my-4">
-          <h2> اقتصاد خوان </h2>
+        <div class="above-site-normal">
+          <div class="name-of-site text-center my-4">
+            <a href="#x/"> <h2> اقتصاد خوان </h2></a>
+          </div>
+  
+          <div class="toggler-bars w-100">
+            <i class="fa fa-bars"></i>
+          </div>
         </div>
-
         
 
-        <!-- start of header area -->
-        <header id="header">
-
-          <!-- toggler-bars button on mobile -->
-        <div class="toggler-bars w-100">
-          <i class="fa fa-bars"></i>
-        </div>
-        <!-- toggler-bars button on mobile -->
-
-          <!-- menu -->
-          <nav class="header-content" id="header-content">
-            <ul class="pages">
-              <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
-              <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
-              <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
-              </li>
-              <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}"> ارز های دیجیتالی
-                </a> </li>
-
-            </ul>
-            <div class="social-media">
-              <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-              <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
-              <a href="#x"> <i class="fa fa-twitter"></i></a>
-              <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
-            </div>
-
-          </nav>
-
-        </header>
-        <!-- end of header area -->
+       
 
         <!-- search-window-open -->
         <div id="search-window">
@@ -236,7 +253,7 @@
 
           <div class="row">
             <div class="col-md-12 text-center">
-              <h1 class="display-3"> <b> <a href="#" class="footer-title"> اقتصاد خوان </a> </b> </h1>
+              <h1 class="display-4"> <b> <a href="#" class="footer-title"> اقتصاد خوان </a> </b> </h1>
               <div class="social-media">
                 <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
                 <a href="#"> <i class="fa fa-telegram"></i></a>

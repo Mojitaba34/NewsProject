@@ -70,3 +70,6 @@ def getdata():
     price_data = crypto()
     data = price_data.get_data()
     return data
+@app.route('/landing',methods=["GET"])
+def landing():
+    return render_template('landing.html')
