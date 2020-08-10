@@ -14,7 +14,8 @@ This routes is for Home page and passing some data to home Page
 @app.route('/home')
 def home():
     
-    limit=6
+    limit=3
+    limit_corona = 4
     row_num = db.row_count()
     page_num = math.ceil(row_num / limit)
     if int(request.args.get('page', 1, type=int)) > page_num:
@@ -23,7 +24,9 @@ def home():
     pagination_link_limit = 5
     slider_limit = 3
     ofsset=limit * (page - 1)
+    ofsset_corona=limit_corona * (page - 1)
     data = db.read_data(ofsset,limit)# reading data from data base to insert in news section
+    Corona_data = db.read_data_Corona_news(ofsset_corona,limit_corona)
     row_num = db.row_count()
     page_num = math.ceil(row_num / limit)# getting page numbers for creating pagination
     # pagination page numbers show sort
@@ -44,7 +47,7 @@ def home():
     print(db.ip_date_update(ip_address)) # update ip Date
     arzdigital_news = db.arzdigital_news()
     return render_template('index.html', data=data, arzdigital=arzdigital_news,page_num=page_num, slider_data=slider_data,
-    maxLeft=maxLeft,maxRight=maxRight,configId=config.USERID_GOOGLE)
+    maxLeft=maxLeft,maxRight=maxRight,configId=config.USERID_GOOGLE,corona_data=Corona_data)
 
 @app.route('/about')
 def about_us():

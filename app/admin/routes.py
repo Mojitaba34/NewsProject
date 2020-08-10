@@ -167,24 +167,30 @@ def NewsEdit():
 
 @admin.route('/run',methods=["GET"])
 def runRob():
+    state_tasnim = 0
+    state_tejart = 1
+    state_arzdigi = 2
+    state_Corona = 3
     if session.get("user_data") != None:
         tasnim_news = robots.news_from_tasnimnews()
+        data_tasnim = tasnim_news.getData()   
         print("--------------Tasnim----------------")
-        tasnim_news.tasnim()
-        
+        print("tasnim=  "+db_app.InsertTblNews(data_tasnim,state_tasnim))        
 
-
-
-
-        """tejarat_news = robots.news_from_tejaratnews()
+        tejarat_news = robots.news_from_tejaratnews()
         data_tejarat = tejarat_news.getData()
         print("--------------Tejarat----------------")
-        print("tejarat=  "+db_app.InsertTblNews(data_tejarat))
+        print("tejarat=  "+db_app.InsertTblNews(data_tejarat,state_tejart))
 
 
         arzdigital_news = robots.news_from_arzdigital()
         data_arzdigital = arzdigital_news.getData()
         print("--------------Arzdigital----------------")
-        print("arzdigital=  "+db_app.InsertTblNews(data_arzdigital))
-        return redirect(url_for("admin.dashboard"))"""
+        print("arzdigital=  "+db_app.InsertTblNews(data_arzdigital,state_arzdigi))
+
+        mehr_news = robots.news_from_mehrnews()
+        data_corona = mehr_news.getData()
+        print("--------------Corona----------------")
+        print("Mehr_news=  "+db_app.InsertTblNews(data_corona,state_Corona))
+
         return redirect(url_for("admin.dashboard"))
