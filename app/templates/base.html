@@ -60,7 +60,7 @@
     
     </div>
 
-    <!-- mini menu toggle on mobile  -->
+    <!-- menu on mobile  -->
     <nav id="menu-toggle">
         
 
@@ -103,18 +103,17 @@
         </div>
 
     </nav>
-    <!-- mini menu toggle on mobile  -->
-
-     <!-- start of header area -->
-     <header id="header">
-
-      <!-- toggler-bars button on mobile -->
+    <!-- menu on mobile  -->
     
-      <!-- toggler-bars button on mobile -->
 
+    <!-- start of header area -->
+    <header id="header">
       <!-- menu -->
       <nav class="header-content" id="header-content">
         <ul class="pages">
+          <li> <div class="name-of-site text-center">
+            <a href="#x/"> <h5> <strong> اقتصاد خوان </strong> </h5></a>
+          </div> </li>
           <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
           <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
           <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
@@ -123,10 +122,10 @@
           </a> </li>
         </ul>
         <div class="social-media">
-          <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-          <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
-          <a href="#x"> <i class="fa fa-twitter"></i></a>
-          <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید کانال تلگرامی مارو دنبال کنید" href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="جستجو کنید" href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
         </div>
 
       </nav>
@@ -141,13 +140,13 @@
       <div id="container">
 
         <div class="above-site-normal">
-          <div class="name-of-site text-center my-4">
-            <a href="#x/"> <h2> اقتصاد خوان </h2></a>
-          </div>
+
+          
   
           <div class="toggler-bars w-100">
             <i class="fa fa-bars"></i>
           </div>
+
         </div>
         
 
@@ -174,107 +173,110 @@
 
         {% endblock %}
 
-        <!-- start of footer area -->
-        <footer id="footer">
-
-          <div class="row my-5">
-
-            <!-- Newsletter part -->
-            <div class="col-lg-4 bottom-cards">
-              <div class="card" style="width: 100%;">
-                <div class="caption mt-1">
-                  <p> خبرنامه</p>
-                </div>
-                <div class="card-body text-center text-md-right">
-                  <p class="card-text mt-1 text-center"> ما هم از اسپم ها مثل شما متنفریم </p>
-                  <form action="#.php" method="GET" class="signin">
-                    <input type="text" name="name" required="required" placeholder="نام شما">
-                    <input type="email" name="email" required="required" placeholder="ایمیل شما">
-                    <input type="submit" value="ورود" class="our-btn">
-                  </form>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tags part -->
-            <div class="col-lg-4 bottom-cards">
-              <div class="card" style="width: 100%;">
-                <div class="caption mt-1">
-                  <p> برچسب ها </p>
-                </div>
-                <div class="card-body text-center text-lg-right">
-                  <p class="card-text mt-1">
-                    <a class="h5" href="#"> <b>کوله پشتی </b></a>
-                    <a class="small" href="#"> صوتی</a>
-                    <a class="h5" href="#"> <b>شگفت انگیز</b> </a>
-                  </p>
-                  <p class="card-text mt-1">
-                    <a class="small" href="#"> <b> گالری مد چهره </b></a>
-                    <a class="mx-1 h3" href="#"> <b>فرمت</b> </a>
-                    <a class="small" href="#"> <b>تصویر</b> </a>
-                  </p>
-                  <p class="card-text mt-1">
-                    <a class="small" href="#"> <b> چشم انداز </b></a>
-                    <a class="h2" href="#"> <b>آزادی</b> </a>
-                    <a class="h3" href="#"> <b>نجات</b> </a>
-                  </p>
-                  <p class="card-text mt-1">
-                    <a class="h5" href="#"> <b> استایل زندگی</b></a>
-                    <a class="small" href="#"> عکلاسی </a>
-                    <a class="small" href="#"> <b>پیکسار</b> </a>
-                    <a class="h5" href="#"> <b>سیاست</b> </a>
-                  </p>
-                  <p class="card-text mt-1">
-                    <a class="h4" href="#"> <b> رییس جمهور </b></a>
-                    <a class="small" href="#"> ساندلکاد</a>
-                    <a class="h4" href="#"> <b>مسافرت</b> </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Best Rated -->
-            <div class="col-lg-4 bottom-cards">
-              <div class="card" style="width: 100%;">
-                <div class="caption mb-3">
-                  <p> تبلیغات </p>
-                </div>
-                <div class="col-12 my-4 text-center">
-                  <img src="{{ url_for('admin.static',filename='images/banner.jpeg') }}" class="w-100" alt="ad-banner">
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-          <!-- end of row -->
-
-          <hr style="border-width: 1px;">
-
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <h1 class="display-4"> <b> <a href="#" class="footer-title"> اقتصاد خوان </a> </b> </h1>
-              <div class="social-media">
-                <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-                <a href="#"> <i class="fa fa-telegram"></i></a>
-                <a href="#"> <i class="fa fa-twitter"></i></a>
-                <a href="#"> <i class="mt-4 mt-sm-0 fa fa-whatsapp"></i></a>
-              </div>
-              <ul class="footer-nav">
-                <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
-                <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
-                <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
-                </li>
-                <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}"> ارز های
-                    دیجیتالی </a> </li>
-              </ul>
-            </div>
-          </div>
-
-        </footer>
-        <!-- end of bottem & Footer -->
+        
 
       </div>
+
+      <!-- start of footer area -->
+      <footer id="footer">
+
+        <div class="row my-5">
+
+          <!-- Newsletter part -->
+          <div class="col-lg-4 bottom-cards">
+            <div class="card" style="width: 100%;">
+              <div class="caption mt-1">
+                <p> خبرنامه</p>
+              </div>
+              <div class="card-body text-center text-md-right">
+                <p class="card-text mt-1 text-center"> ما هم از اسپم ها مثل شما متنفریم </p>
+                <form action="#.php" method="GET" class="signin">
+                  <input type="text" name="name" required="required" placeholder="نام شما">
+                  <input type="email" name="email" required="required" placeholder="ایمیل شما">
+                  <input type="submit" value="ورود" class="our-btn">
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tags part -->
+          <div class="col-lg-4 bottom-cards">
+            <div class="card" style="width: 100%;">
+              <div class="caption mt-1">
+                <p> برچسب ها </p>
+              </div>
+              <div class="card-body text-center text-lg-right">
+                <p class="card-text mt-1">
+                  <a class="h5" href="#"> <b>کوله پشتی </b></a>
+                  <a class="small" href="#"> صوتی</a>
+                  <a class="h5" href="#"> <b>شگفت انگیز</b> </a>
+                </p>
+                <p class="card-text mt-1">
+                  <a class="small" href="#"> <b> گالری مد چهره </b></a>
+                  <a class="mx-1 h3" href="#"> <b>فرمت</b> </a>
+                  <a class="small" href="#"> <b>تصویر</b> </a>
+                </p>
+                <p class="card-text mt-1">
+                  <a class="small" href="#"> <b> چشم انداز </b></a>
+                  <a class="h2" href="#"> <b>آزادی</b> </a>
+                  <a class="h3" href="#"> <b>نجات</b> </a>
+                </p>
+                <p class="card-text mt-1">
+                  <a class="h5" href="#"> <b> استایل زندگی</b></a>
+                  <a class="small" href="#"> عکلاسی </a>
+                  <a class="small" href="#"> <b>پیکسار</b> </a>
+                  <a class="h5" href="#"> <b>سیاست</b> </a>
+                </p>
+                <p class="card-text mt-1">
+                  <a class="h4" href="#"> <b> رییس جمهور </b></a>
+                  <a class="small" href="#"> ساندلکاد</a>
+                  <a class="h4" href="#"> <b>مسافرت</b> </a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Best Rated -->
+          <div class="col-lg-4 bottom-cards">
+            <div class="card" style="width: 100%;">
+              <div class="caption mb-3">
+                <p> تبلیغات </p>
+              </div>
+              <div class="col-12 my-4 text-center">
+                <img src="{{ url_for('admin.static',filename='images/banner.jpeg') }}" class="w-100" alt="ad-banner">
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <!-- end of row -->
+
+        <hr style="border-width: 1px;">
+
+        <div class="row">
+          <div class="col-md-12 text-center mx-auto">
+            <h2> <a href="#" class="footer-title"> اقتصاد خوان </a> </h2>
+            <div class="social-media">
+              <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+              <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید کانال تلگرامی مارو دنبال کنید" href="#x"> <i class="fa fa-telegram"></i></a>
+              <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
+              <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید تو واتس اپ باهامون درارتباط باشید " href="#x"> <i class="mt-4 mt-sm-0 fa fa-whatsapp"></i></a>
+            </div>
+            <ul class="footer-nav">
+              <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
+              <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
+              <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
+              </li>
+              <li> <a href="/landing" class="{{ 'active' if active_page == 'landing' else '' }}"> 
+                  لندینگ </a> </li>
+            </ul>
+          </div>
+        </div>
+
+      </footer>
+      <!-- end of bottem & Footer -->
+
     </div>
     <div class="special-button bg-light">
       <a href="#" class="our-btn"> برو <br> <span> بالا </span> </a>

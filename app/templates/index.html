@@ -19,10 +19,9 @@
 
             <img src="{{post[3]}}" width="auto" height="650px" class="d-block w-100" alt="images-for-carousel">
             <!-- text in it -->
-            <div class="row"
-              style="padding: 5px 20px; position: absolute; right:0; bottom:0; color: #fff; z-index: 100;">
+            <div class="row" style="padding: 5px 20px; position: absolute; right:0; bottom:0; left: 0; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(31, 24, 41, 0.6)); z-index: 100; ">
               <div class="col-md-8 concept text-center p-3 text-sm-right"
-                style="background-color: rgba(255,255,255,0.9) ;color: #000; border-radius: 10px;">
+                style="color: #fff; z-index: 10000; position: absolute; bottom: 0;">
                 <a href="{{ post[2] }}">
                   <h2 class="carousel-title"> <b> {{ post[0] }}</b> </h2>
                 </a>
@@ -33,9 +32,8 @@
             <!-- text in it -->
           </div>
           {% endfor %}
-
-
         </div>
+        
         <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
@@ -49,8 +47,8 @@
   </section>
   <!-- end of Hero Section -->
 
-   <!-- ad banner  -->
-   <div class="col-12 mb-3 mb-sm-0 ad-banner text-center">
+  <!-- ad banner  -->
+  <div class="col-12 mb-3 mb-sm-0 ad-banner text-center">
     <img src="{{ url_for('admin.static',filename='images/banner.jpeg') }}" class="w-100" alt="ad-banner">
   </div>
 
@@ -65,7 +63,7 @@
     <div class="row cards-container">
 
       <div class="w-100">
-        <h1 class="text-center display-sm-2 mb-5"> <b> اخبار ارز دیجیتال</b> </h1>
+        <h2 class="text-center mb-5"> <b> اخبار ارز دیجیتال</b> </h2>
       </div>
 
 
@@ -103,7 +101,7 @@
     <!-- start of main content area  -->
 
     <div class="w-100">
-      <h1 class="text-center mb-5 display-sm-2"> <b>اخبار روز</b> </h1>
+      <h2 class="text-center mb-5 "> <b>اخبار روز</b> </h2>
     </div>
 
     <!-- ad banner  -->
@@ -139,7 +137,7 @@
 
         <div class="title text-center mb-4">
           <a href="#x">
-            <h2> خبرهای روزانه </h2>
+            <h3> خبرهای روزانه </h3>
           </a>
         </div>
         {% for post in data %}
@@ -147,29 +145,77 @@
           <div class="daily-news-content first-top-new">
 
             <div class="our-card" style="width: 100%;">
+<<<<<<< app/templates/index.html
+              <img src="../admin/static/images/browser/photoshop.jpg" alt="images-of-news">
+              <div class="text">
+                <h4>
+                  <a href="#x"> سر تیتر مطلب سر تیتر مطلب </a>
+                </h4>
+                <p> متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط
+                  به مطلب متن مربوط به مطلب متن مربوط به مطلب </p>
+=======
               <img src="{{post[3]}}" class="ml-3" width="25%" alt="images-of-news">
               <div class="text">
                 <h3>
                   <a  href="{{post[2]}}"> {{post[0]}} </a>
                 </h3>
                 <p> {{post[1]}} </p>
+>>>>>>> app/templates/index.html
               </div>
             </div>
 
           </div>
           <!-- end of div.daily-news-content -->
+<<<<<<< app/templates/index.html
+
+          <div class="daily-news-content">
+
+            <div class="our-card" style="width: 100%;">
+              <img src="../admin/static/images/browser/photoshop.jpg" alt="images-of-news">
+              <div class="text">
+                <h4>
+                  <a href="#x"> سر تیتر مطلب سر تیتر مطلب </a>
+                </h4>
+                <p> متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط
+                  به مطلب متن مربوط به مطلب متن مربوط به مطلب </p>
+              </div>
+            </div>
+
+          </div>
+          <!-- end of div.daily-news-content -->
+
+          <div class="daily-news-content">
+
+            <div class="our-card" style="width: 100%;">
+              <img src="../admin/static/images/browser/photoshop.jpg" alt="images-of-news">
+              <div class="text">
+                <h4>
+                  <a href="#x"> سر تیتر مطلب سر تیتر مطلب </a>
+                </h4>
+                <p> متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط
+                  به مطلب متن مربوط به مطلب متن مربوط به مطلب </p>
+              </div>
+            </div>
+
+          </div>
+          <!-- end of div.daily-news-content -->
+         
+        </div>
+        <!-- end of div.daily-news -->
+=======
         </div>
         {% endfor %}
 
+>>>>>>> app/templates/index.html
       </div>
       <!-- end of div.col-md-6 -->
 
-      
+
 
       <div class="col-lg-6 col-12">
         <div class="title text-center mb-4">
           <a href="#x">
-            <h2> اخبار در مورد ویروس کرونا </h2>
+            <h3> اخبار در مورد ویروس کرونا </h3>
           </a>
         </div>
         <div class="corona-virus">
@@ -180,10 +226,29 @@
 
               <!-- item 1 -->
               <div class="card" style="width: 100%">
+<<<<<<< app/templates/index.html
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top"
+                  alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به
+                    پست متن مربوط به پست </p>
+                </div>
+              </div>
+              <!-- item 2 -->
+              <div class="card" style="width: 100%">
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top"
+                  alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به
+                    پست متن مربوط به پست </p>
+=======
                 <img src="{{data[3]}}" class="img-fluid" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title"><a href="{{data[2]}}"> {{data[0]}} </a></h5>
                   <p class="card-text">{{data[0]}}</p>
+>>>>>>> app/templates/index.html
                 </div>
               </div>
 
@@ -191,9 +256,37 @@
             {% endfor %}
             <!-- end of div.col-md-6 inside div.col-md-5 -->
 
+<<<<<<< app/templates/index.html
+            <div class="col-md-6">
+              <!-- item 1 -->
+              <div class="card" style="width: 100%">
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top"
+                  alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به
+                    پست متن مربوط به پست </p>
+                </div>
+              </div>
+              <!-- item 2 -->
+              <div class="card" style="width: 100%">
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top"
+                  alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به
+                    پست متن مربوط به پست </p>
+                </div>
+              </div>
+            </div>
+            <!-- end of div.col-md-6 inside div.col-md-5 -->
+
+
+=======
+>>>>>>> app/templates/index.html
           </div>
           <!-- end of div.row inside div.col-md-5 -->
-          
+
 
         </div>
         <!-- end of div.corona-virus -->
@@ -203,31 +296,31 @@
 
 
       <!-- digital coin news bottom of the screen  -->
-      <div class="digital-coin" >
+      <div class="digital-coin">
 
-        
 
-          <ul> 
 
-            <span class="text-danger"> اخبار ارزهای دیجیتالی :  </span>
-            <!-- item 1 -->
-            <li class="coin-name"> بیت کوین : </li>
-            <li> قیمت به دلار </li>
-            <li> قیمت به تومن </li>
-            <li> روزانه <span class="badge badge-pill badge-success">5%</span> </li>
-            <!-- item 2 -->
-            <li class="coin-name">  اتریوم : </li>
-            <li> قیمت به دلار </li>
-            <li> قیمت به تومن </li>
-            <li> روزانه <span class="badge badge-pill badge-danger">5%</span> </li>
-            <!-- item 3 -->
-            <li class="coin-name"> لایت کوین : </li>
-            <li> قیمت به دلار </li>
-            <li> قیمت به تومن </li>
-            <li> روزانه <span class="badge badge-pill badge-danger">5%</span> </li>
+        <ul>
 
-          </ul>
-          
+          <span class="text-danger"> اخبار ارزهای دیجیتالی : </span>
+          <!-- item 1 -->
+          <li class="coin-name"> بیت کوین : </li>
+          <li> قیمت به دلار </li>
+          <li> قیمت به تومن </li>
+          <li> روزانه <span class="badge badge-pill badge-success">5%</span> </li>
+          <!-- item 2 -->
+          <li class="coin-name"> اتریوم : </li>
+          <li> قیمت به دلار </li>
+          <li> قیمت به تومن </li>
+          <li> روزانه <span class="badge badge-pill badge-danger">5%</span> </li>
+          <!-- item 3 -->
+          <li class="coin-name"> لایت کوین : </li>
+          <li> قیمت به دلار </li>
+          <li> قیمت به تومن </li>
+          <li> روزانه <span class="badge badge-pill badge-danger">5%</span> </li>
+
+        </ul>
+
       </div>
 
 

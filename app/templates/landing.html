@@ -65,9 +65,8 @@
 
     </div>
 
-    <!-- mini menu toggle on mobile  -->
+    <!-- menu on mobile  -->
     <nav id="menu-toggle">
-
 
       <!-- toggler-times button -->
       <div class="toggler-times w-100">
@@ -108,30 +107,31 @@
       </div>
 
     </nav>
-    <!-- mini menu toggle on mobile  -->
+    <!-- menu on mobile  -->
+
+
 
     <!-- start of header area -->
     <header id="header">
 
-      <!-- toggler-bars button on mobile -->
-
-      <!-- toggler-bars button on mobile -->
-
       <!-- menu -->
       <nav class="header-content" id="header-content">
         <ul class="pages">
+          <li> <div class="name-of-site text-center">
+            <a href="#x/"> <h5> <strong> اقتصاد خوان </strong> </h5></a>
+          </div> </li>
           <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
           <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
           <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
           </li>
           <li> <a href="/landing" class="{{ 'active' if active_page == 'landing' else '' }}"> لندینگ
-            </a> </li>
+          </a> </li>
         </ul>
         <div class="social-media">
-          <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-          <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
-          <a href="#x"> <i class="fa fa-twitter"></i></a>
-          <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید کانال تلگرامی مارو دنبال کنید" href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="جستجو کنید" href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
         </div>
 
       </nav>
@@ -146,12 +146,6 @@
       <div id="container">
 
         <div class="above-site-normal">
-          <div class="name-of-site text-center my-4">
-            <a href="#x/">
-              <h2> اقتصاد خوان </h2>
-            </a>
-          </div>
-
           <div class="toggler-bars w-100">
             <i class="fa fa-bars"></i>
           </div>
@@ -486,21 +480,21 @@
           <hr style="border-width: 1px;">
 
           <div class="row">
-            <div class="col-md-12 text-center">
-              <h1 class="display-4"> <b> <a href="#" class="footer-title"> اقتصاد خوان </a> </b> </h1>
+            <div class="col-md-12 text-center mx-auto">
+              <h2> <a href="#" class="footer-title"> اقتصاد خوان </a> </h2>
               <div class="social-media">
-                <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-                <a href="#"> <i class="fa fa-telegram"></i></a>
-                <a href="#"> <i class="fa fa-twitter"></i></a>
-                <a href="#"> <i class="mt-4 mt-sm-0 fa fa-whatsapp"></i></a>
+                <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+                <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید کانال تلگرامی مارو دنبال کنید" href="#x"> <i class="fa fa-telegram"></i></a>
+                <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
+                <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید تو واتس اپ باهامون درارتباط باشید " href="#x"> <i class="mt-4 mt-sm-0 fa fa-whatsapp"></i></a>
               </div>
               <ul class="footer-nav">
                 <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
                 <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
                 <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
                 </li>
-                <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'arzdigital' else '' }}"> ارز های
-                    دیجیتالی </a> </li>
+                <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'landing' else '' }}"> 
+                  لندینگ </a> </li>
               </ul>
             </div>
           </div>
