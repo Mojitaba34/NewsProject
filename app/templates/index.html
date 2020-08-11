@@ -80,7 +80,7 @@
             <div class="card-body">
               <h6 class="card-subtitle mb-2 text-muted">{{ news[5] }}</h6>
               <a href="{{ news[3] }}">
-                <h4 class="card-title"><b>{{ news[1] }}</b></h4>
+                <h5 class="card-title"><b>{{ news[1] }}</b></h5>
               </a>
               <p class="card-text">{{ news[2] }}</p>
             </div>
@@ -133,7 +133,7 @@
 
         <div class="title text-center mb-4">
           <a href="#x">
-            <h3> خبرهای روزانه </h3>
+            <h4> خبرهای روزانه </h4>
           </a>
         </div>
         {% for post in data %}
@@ -141,11 +141,13 @@
           <div class="daily-news-content first-top-new">
 
             <div class="our-card" style="width: 100%;">
-              <img src="{{post[3]}}" class="ml-3" width="25%" alt="images-of-news">
+              <img src="{{post[3]}}" class="ml-3 img-fluid" alt="images-of-news">
               <div class="text">
-                <h3>
-                  <a  href="{{post[2]}}"> {{post[0]}} </a>
-                </h3>
+                <h5>
+                  <strong>
+                    <a  href="{{post[2]}}"> {{post[0]}} </a>
+                  </strong>
+                </h5>
                 <p> {{post[1]}} </p>
               </div>
             </div>
@@ -163,7 +165,7 @@
       <div class="col-lg-6 col-12">
         <div class="title text-center mb-4">
           <a href="#x">
-            <h3> خبرهای ویروس کرونا </h3>
+            <h4> خبرهای ویروس کرونا </h4>
           </a>
         </div>
         <div class="corona-virus">
