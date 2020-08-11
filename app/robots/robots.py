@@ -11,7 +11,7 @@ import time
 import requests
 from app.admin import config
 import lxml.html as html
-from app import db
+from app.admin import db
 import json
 
 

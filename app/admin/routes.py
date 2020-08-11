@@ -1,7 +1,6 @@
 from flask import session,render_template,redirect,url_for,request,flash,jsonify
 from app.admin import admin
 from app.admin import db
-from app import db as db_app
 from app.admin import getData
 from app.robots import robots
 
@@ -175,22 +174,22 @@ def runRob():
         tasnim_news = robots.news_from_tasnimnews()
         data_tasnim = tasnim_news.getData()   
         print("--------------Tasnim----------------")
-        print("tasnim=  "+db_app.InsertTblNews(data_tasnim,state_tasnim))        
+        print("tasnim=  "+db.InsertTblNews(data_tasnim,state_tasnim))        
 
         tejarat_news = robots.news_from_tejaratnews()
         data_tejarat = tejarat_news.getData()
         print("--------------Tejarat----------------")
-        print("tejarat=  "+db_app.InsertTblNews(data_tejarat,state_tejart))
+        print("tejarat=  "+db.InsertTblNews(data_tejarat,state_tejart))
 
 
         arzdigital_news = robots.news_from_arzdigital()
         data_arzdigital = arzdigital_news.getData()
         print("--------------Arzdigital----------------")
-        print("arzdigital=  "+db_app.InsertTblNews(data_arzdigital,state_arzdigi))
+        print("arzdigital=  "+db.InsertTblNews(data_arzdigital,state_arzdigi))
 
         mehr_news = robots.news_from_mehrnews()
         data_corona = mehr_news.getData()
         print("--------------Corona----------------")
-        print("Mehr_news=  "+db_app.InsertTblNews(data_corona,state_Corona))
+        print("Mehr_news=  "+db.InsertTblNews(data_corona,state_Corona))
 
         return redirect(url_for("admin.dashboard"))

@@ -1,5 +1,4 @@
 from flask import Flask
-from app import db
 from app.admin import db as db_admin
 from app.robots import robot_runner
 from app.admin import config
@@ -14,7 +13,6 @@ app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=5)
 
 try:
     print("build Tables")
-    db.BuildTables() # First Step Check exists and build Tables Database
     db_admin.BuildTables() # Build Tables Admin
    
 

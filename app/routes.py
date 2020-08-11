@@ -1,7 +1,7 @@
 from app import app
 from flask import Flask , render_template, request, redirect, url_for,flash, jsonify, make_response
 from app.robots.robots import crypto
-from app import db
+from app.admin import db
 import math, json
 from app.admin import config
 

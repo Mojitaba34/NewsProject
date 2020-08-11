@@ -1,5 +1,4 @@
 from app.admin import db as db_admin
-from app import db
 from app.robots import robots
 import time
 import threading
