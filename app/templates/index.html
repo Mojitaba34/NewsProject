@@ -140,11 +140,12 @@
             <h3> خبرهای روزانه </h3>
           </a>
         </div>
-
+        {% for post in data %}
         <div class="day-news">
           <div class="daily-news-content first-top-new">
 
             <div class="our-card" style="width: 100%;">
+<<<<<<< app/templates/index.html
               <img src="../admin/static/images/browser/photoshop.jpg" alt="images-of-news">
               <div class="text">
                 <h4>
@@ -152,11 +153,20 @@
                 </h4>
                 <p> متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط به مطلب متن مربوط
                   به مطلب متن مربوط به مطلب متن مربوط به مطلب </p>
+=======
+              <img src="{{post[3]}}" class="ml-3" width="25%" alt="images-of-news">
+              <div class="text">
+                <h3>
+                  <a  href="{{post[2]}}"> {{post[0]}} </a>
+                </h3>
+                <p> {{post[1]}} </p>
+>>>>>>> app/templates/index.html
               </div>
             </div>
 
           </div>
           <!-- end of div.daily-news-content -->
+<<<<<<< app/templates/index.html
 
           <div class="daily-news-content">
 
@@ -192,6 +202,11 @@
          
         </div>
         <!-- end of div.daily-news -->
+=======
+        </div>
+        {% endfor %}
+
+>>>>>>> app/templates/index.html
       </div>
       <!-- end of div.col-md-6 -->
 
@@ -206,8 +221,43 @@
         <div class="corona-virus">
 
           <div class="row">
+            {% for data in corona_data %}
             <div class="col-md-6">
 
+              <!-- item 1 -->
+              <div class="card" style="width: 100%">
+<<<<<<< app/templates/index.html
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top"
+                  alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به
+                    پست متن مربوط به پست </p>
+                </div>
+              </div>
+              <!-- item 2 -->
+              <div class="card" style="width: 100%">
+                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top"
+                  alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
+                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به
+                    پست متن مربوط به پست </p>
+=======
+                <img src="{{data[3]}}" class="img-fluid" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="{{data[2]}}"> {{data[0]}} </a></h5>
+                  <p class="card-text">{{data[0]}}</p>
+>>>>>>> app/templates/index.html
+                </div>
+              </div>
+
+            </div>
+            {% endfor %}
+            <!-- end of div.col-md-6 inside div.col-md-5 -->
+
+<<<<<<< app/templates/index.html
+            <div class="col-md-6">
               <!-- item 1 -->
               <div class="card" style="width: 100%">
                 <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top"
@@ -228,35 +278,12 @@
                     پست متن مربوط به پست </p>
                 </div>
               </div>
-
-            </div>
-            <!-- end of div.col-md-6 inside div.col-md-5 -->
-
-            <div class="col-md-6">
-              <!-- item 1 -->
-              <div class="card" style="width: 100%">
-                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top"
-                  alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
-                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به
-                    پست متن مربوط به پست </p>
-                </div>
-              </div>
-              <!-- item 2 -->
-              <div class="card" style="width: 100%">
-                <img src="../admin/static/images/landingpage/right-img.png" class="img-fluid" class="card-img-top"
-                  alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><a href="#x"> آیا درمان ویروس کرونا پیدا شده ؟؟ </a></h5>
-                  <p class="card-text">متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به پست متن مربوط به
-                    پست متن مربوط به پست </p>
-                </div>
-              </div>
             </div>
             <!-- end of div.col-md-6 inside div.col-md-5 -->
 
 
+=======
+>>>>>>> app/templates/index.html
           </div>
           <!-- end of div.row inside div.col-md-5 -->
 
