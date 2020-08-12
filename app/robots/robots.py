@@ -1,14 +1,10 @@
 
-from selenium import webdriver   # for webdriver
-from selenium.webdriver.support.ui import WebDriverWait  # for implicit and explict waits
-from selenium.webdriver.chrome.options import Options  # for suppressing the browser
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-
+from urllib.request import Request, urlopen
 
 import time
 import requests
+import urllib.request
 from app.admin import config
 import lxml.html as html
 from app.admin import db
@@ -16,43 +12,28 @@ import json
 
 
 
+
 class PageContent():
+
     '''
     This is a Class for read Page Html Content for access Page with Xpath to extaract data with it 
     Here we have a Staticmethod
     This function have url argument and with request object we can get page Html content and decode 
     And Finaly returns a Html content
+
     '''
+    @staticmethod
+    def reading_Html(url):
+        reformated_url = url.replace('%3A', ':')
+        headers = {'User-Agent':"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.162 Safari/537.36"}
+        req = Request(reformated_url, headers=headers)
+        fp = urllib.request.urlopen(req)
+        mybytes = fp.read()
+        mystr = mybytes.decode("utf8")
+        fp.close()
+        return mystr
 
-    def main(self,url):
-       PATH = r"C:\Program Files (x86)/chromedriver.exe"
-       self.option = webdriver.ChromeOptions()
-       self.option.add_argument('headless')
-       self.driver = webdriver.Chrome(PATH,options=self.option)
-       self.driver.get(url)
-       return self.driver.page_source
 
-
-   #  def images_data(self,url):
-   #     PATH = r"C:\Program Files (x86)\chromedriver.exe"
-   #     self.option = webdriver.ChromeOptions()
-   #     self.option.add_argument('headless')
-   #     self.driver = webdriver.Chrome(PATH,options=self.option)
-   #     self.driver.get(url)
-   #     try:
-   #       self.element = WebDriverWait(self.driver, 20).until(
-   #          EC.presence_of_element_located((By.CLASS_NAME, "media-object wp-post-image lazy-loaded"))
-   #       )
-   #       return self.element
-   #      #  articals = self.element.find_element_by_class_name("news-media media news-media__row news-media__l")
-   #      #  for artical in articals:
-   #      #     image_link = artical.find_element_by_class_name("media-object wp-post-image lazy-loaded")
-   #      #     if "jpg" in str(image_link.src):
-   #      #         print(image_link.src)
-   #     finally:
-   #        self.driver.quit()
-
-      
 
 class news_from_tejaratnews():
     '''
@@ -67,9 +48,7 @@ class news_from_tejaratnews():
     def __init__(self):
       url = "https://tejaratnews.com/category/%d8%a7%d9%82%d8%aa%d8%b5%d8%a7%d8%af-%d8%ac%d9%87%d8%a7%d9%86"
       self.content = PageContent()
-      self.response = self.content.main(url)
-    #   self.images_data = html.fromstring(self.content.images_data(url))
-      self.root = html.fromstring(self.response)
+      self.root = html.fromstring(self.content.reading_Html(url))
 
 
     '''
@@ -96,18 +75,6 @@ class news_from_tejaratnews():
         return title_lst
 
     '''
-    new_content returns contents of news with Xpath 
-
-    Xpath returns a list of new_content in the site 
-    
-    '''
-
-    def news_content(self):
-        content_list = []
-        content_list = self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//p[contains(@class, 'news-media__description hidden-xs')]/text()")
-        return content_list
-
-    '''
     news_link returns news Link with Xpath 
 
     Xpath returns a list of news links in the site 
@@ -119,6 +86,21 @@ class news_from_tejaratnews():
         link_news = self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//div[contains(@class, 'news-media__title')]//a/@href")
         return link_news
 
+
+    def news_content(self,links):
+        news_content = []
+        modifed_text = ""
+        content = PageContent()
+        for link in links:
+            root = html.fromstring(content.reading_Html(link))
+            for text in root.xpath("//div[contains(@class, 'single-post-content')]/p[position() < last()]//text()"):
+                modifed_text = modifed_text + str(text)
+            news_content.append(modifed_text)
+            modifed_text = ""
+        return news_content
+
+
+
     '''
     returning a dictionary data for store in dataBase
 
@@ -127,7 +109,7 @@ class news_from_tejaratnews():
         data= {
             'news_image_link': self.img_lnk(),
             'news_title': self.news_title(),
-            'news_content': self.news_content(),
+            'news_content': self.news_content(self.news_link()),
             'news_link':self.news_link()
         }
         posts=[]
@@ -162,8 +144,7 @@ class news_from_tasnimnews():
     def __init__(self):
       url = "https://www.tasnimnews.com/fa/service/85/%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF-%D8%AC%D9%87%D8%A7%D9%86"
       self.content = PageContent()
-      self.response = self.content.main(url)
-      self.root = html.fromstring(self.response)
+      self.root = html.fromstring(self.content.reading_Html(url))
 
 
     '''
@@ -191,17 +172,18 @@ class news_from_tasnimnews():
         title_lst = self.root.xpath("//article[contains(@class, 'list-item')]//div[contains(@class,'col-md-8 col-xs-8 text-container vcenter')]//h2[contains(@class,'title')]/text()")
         return title_lst
 
-    '''
-    new_content returns contents of news with Xpath 
+    def news_content(self,links):
+        news_content = []
+        modifed_text = ""
+        content = PageContent()
+        for link in links:
+            root = html.fromstring(content.reading_Html(link))
+            for text in root.xpath("//article[contains(@class, 'single-news')]//p[position() < last()]//text()"):
+                modifed_text = modifed_text + str(text)
+            news_content.append(modifed_text)
+            modifed_text = ""
+        return news_content
 
-    Xpath returns a list of new_content in the site 
-    
-    '''
-
-    def news_content(self):
-        content_list = []
-        content_list = self.root.xpath("//article[contains(@class, 'list-item')]//div[contains(@class,'col-md-8 col-xs-8 text-container vcenter')]//h4[contains(@class,'lead')]/text()")
-        return content_list
 
     '''
     news_link returns news Link with Xpath 
@@ -219,7 +201,6 @@ class news_from_tasnimnews():
         link_add = "https://www.tasnimnews.com"
         for lnk in link_news:
             modified_link.append(str(link_add)+ str(lnk))
-        
         return modified_link
 
     '''
@@ -230,7 +211,7 @@ class news_from_tasnimnews():
         data= {
             'news_image_link': self.img_lnk(),
             'news_title': self.news_title(),
-            'news_content': self.news_content(),
+            'news_content': self.news_content(self.news_link()),
             'news_link':self.news_link()
         }
         posts=[]
@@ -261,8 +242,7 @@ class news_from_arzdigital():
     def __init__(self):
       url = "https://arzdigital.com/category/news/world-news/"
       self.content = PageContent()
-      self.response = self.content.main(url)
-      self.root = html.fromstring(self.response)
+      self.root = html.fromstring(self.content.reading_Html(url))
 
 
 
@@ -289,17 +269,19 @@ class news_from_arzdigital():
         title_lst = self.root.xpath("//div[contains(@class, 'arz-row-sb arz-posts')]//h3[contains(@class,'arz-last-post-title')]/text()")
         return title_lst
 
-    '''
-    new_content returns contents of news with Xpath 
 
-    Xpath returns a list of new_content in the site 
-    
-    '''
-
-    def news_content(self):
-        content_list = []
-        content_list = self.root.xpath("//div[contains(@class, 'arz-row-sb arz-posts')]//div[contains(@class,'arz-last-post-text')]/p/text()")
-        return content_list
+        
+    def news_content(self,links):
+        news_content = []
+        modifed_text = ""
+        content = PageContent()
+        for link in links:
+            root = html.fromstring(content.reading_Html(link))
+            for text in root.xpath("//article//p[position() < last()]//text()"):
+                modifed_text = modifed_text + str(text)
+            news_content.append(modifed_text)
+            modifed_text = ""
+        return news_content
 
     '''
     news_link returns news Link with Xpath 
@@ -321,7 +303,7 @@ class news_from_arzdigital():
         data= {
             'news_image_link': self.img_lnk(),
             'news_title': self.news_title(),
-            'news_content': self.news_content(),
+            'news_content': self.news_content(self.news_link()),
             'news_link':self.news_link()
         }
         posts=[]
@@ -338,8 +320,7 @@ class news_from_mehrnews():
       url = "https://www.mehrnews.com/tag/%D9%88%DB%8C%D8%B1%D9%88%D8%B3+%DA%A9%D8%B1%D9%88%D9%86%D8%A7"
       self.news_link_url = "https://www.mehrnews.com"
       self.content = PageContent()
-      self.response = self.content.main(url)
-      self.root = html.fromstring(self.response)
+      self.root = html.fromstring(self.content.reading_Html(url))
 
     def image_links(self):
         img_links = []
@@ -351,10 +332,19 @@ class news_from_mehrnews():
         news_title = self.root.xpath("//section[contains(@class,'box list list-bordered list-thumbs thumbs-lg highlights no-header  _types')]/div/ul//li//h3/a/text()")
         return news_title
 
-    def news_content(self):
-        news_contenct = []
-        news_contenct = self.root.xpath("//section[contains(@class,'box list list-bordered list-thumbs thumbs-lg highlights no-header  _types')]/div/ul//li//p/text()")
-        return news_contenct
+        
+    def news_content(self,links):
+        news_content = []
+        modifed_text = ""
+        content = PageContent()
+        for link in links:
+            root = html.fromstring(content.reading_Html(link))
+            for text in root.xpath("//div[contains(@class,'item-body')]//p/text()"):
+                modifed_text = modifed_text + str(text)
+            news_content.append(modifed_text)
+            modifed_text = ""
+        return news_content
+
 
     def news_link(self):
         news_link = []
@@ -374,7 +364,7 @@ class news_from_mehrnews():
         data= {
             'news_image_link': self.image_links(),
             'news_title': self.news_title(),
-            'news_content': self.news_content(),
+            'news_content': self.news_content(self.news_link()),
             'news_link':self.news_link()
         }
         posts=[]

@@ -14,8 +14,8 @@ This routes is for Home page and passing some data to home Page
 @app.route('/home')
 def home():
     
-    limit=3
-    limit_corona = 4
+    limit=6
+    limit_corona = 8
     row_num = db.row_count()
     page_num = math.ceil(row_num / limit)
     if int(request.args.get('page', 1, type=int)) > page_num:
