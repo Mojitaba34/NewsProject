@@ -17,16 +17,15 @@
             {% endif %}
             <!-- 1nd image with text in it -->
 
-            <img src="{{post[3]}}" width="auto" height="650px" class="d-block w-100" alt="images-for-carousel">
+            <img src="{{post[4]}}" width="auto" height="650px" class="d-block w-100" alt="images-for-carousel">
             <!-- text in it -->
             <div class="row" style="padding: 5px 20px; position: absolute; right:0; bottom:0; left: 0; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(31, 24, 41, 0.6)); z-index: 100; ">
               <div class="col-md-8 concept text-center p-3 text-sm-right"
                 style="color: #fff; z-index: 10000; position: absolute; bottom: 0;">
-                <a href="{{ post[2] }}">
-                  <h2 class="carousel-title"> <b> {{ post[0] }}</b> </h2>
+                <a href="{{post[0]}}">
+                  <h2 class="carousel-title"> <b> {{ post[1] }}</b> </h2>
                 </a>
-                <p class="text-sm-right h5 mt-4 d-none d-sm-block">{{ post[1]|truncate(500) }}
-                </p>
+                <p class="text-sm-right h5 mt-4 d-none d-sm-block">{{ post[2]|truncate(500) }}</p>
               </div>
             </div>
             <!-- text in it -->
@@ -79,7 +78,7 @@
 
             <div class="card-body">
               <h6 class="card-subtitle mb-2 text-muted">{{ news[5] }}</h6>
-              <a href="{{ news[3] }}">
+              <a href="{{ news[0] }}">
                 <h5 class="card-title"><b>{{ news[1] }}</b></h5>
               </a>
               <p class="card-text">{{ news[2]|truncate(250) }}</p>
@@ -119,14 +118,14 @@
           <div class="daily-news-content first-top-new">
 
             <div class="our-card" style="width: 100%;">
-              <img src="{{post[3]}}" class="ml-3 img-fluid" alt="images-of-news">
+              <img src="{{post[4]}}" class="ml-3 img-fluid" alt="images-of-news">
               <div class="text">
                 <h5>
                   <strong>
-                    <a  href="{{post[2]}}"> {{post[0]}} </a>
+                    <a  href="{{ url_for('landing',slug=post[0])}}"> {{post[1]}} </a>
                   </strong>
                 </h5>
-                <p> {{post[1]|truncate(150)}} </p>
+                <p> {{post[2]|truncate(150)}} </p>
               </div>
             </div>
 
@@ -154,9 +153,9 @@
 
               <!-- item 1 -->
               <div class="card" style="width: 100%">
-                <img src="{{data[3]}}" class="img-fluid" class="card-img-top" alt="...">
+                <img src="{{data[4]}}" class="img-fluid" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title"><a href="{{data[2]}}"> <strong> {{data[0]}} </strong> </a></h5>
+                  <h5 class="card-title"><a href="{{data[0]}}"> <strong> {{data[1]}} </strong> </a></h5>
                   <p class="card-text">{{data[1]|truncate(150)}}</p>
                 </div>
               </div>
@@ -214,15 +213,15 @@
         <ul class="pagination" id="pagination">
           <li class="py-4 px-3"> <a href="/">1</a> </li>
           {% if maxLeft>1 %}
-          <li class="py-4 px-3">...</li>
+            <li class="py-4 px-3">...</li>
           {% endif%}
           {% for page in range(maxLeft,maxRight)%}
-          {% if not loop.index == 1%}
-          <li class="py-4 px-3"> <a href="{{ url_for('home',page = page )}}">{{page}} </a> </li>
-          {%endif%}
+            {% if not loop.index == 1%}
+              <li class="py-4 px-3"> <a href="{{ url_for('home',page = page )}}">{{page}} </a> </li>
+            {%endif%}
           {% endfor %}
           {% if maxRight < page_num %}
-          <li class="py-4 px-3">...</li>
+            <li class="py-4 px-3">...</li>
           {% endif%}
           <li class="py-4 px-3"> <a href="{{ url_for('home',page = page_num )}}">{{page_num}} </a> </li>
         </ul>

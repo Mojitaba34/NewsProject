@@ -4,6 +4,7 @@ from app.admin import config
 from persiantools.jdatetime import JalaliDateTime
 import datetime
 import time
+from slugify import slugify_unicode
 
 def BuildTables():
     db = get_database_connection()
@@ -35,6 +36,7 @@ def BuildTables():
         ( 
             id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT ,
             news_title VARCHAR(500),
+            news_slug VARCHAR(1000),
             news_content TEXT,
             news_link TEXT,
             news_img_link TEXT,
@@ -346,8 +348,10 @@ def InsertTblNews(data,state):
     try:
         for news_Data in data:
             if CheckExistsTitleNews(news_Data['title']) == False:
-                insert_query = "INSERT INTO tbl_news (news_title, news_content, news_link, news_img_link, news_date,status) VALUES (%s, %s, %s, %s, %s,%s)"
-                insert_val = (str(news_Data['title']),str(news_Data['content']),str(news_Data['link']),str(news_Data['news_img_link']),str(date_time.jalali_date()),str(state))
+                slug = slugify_unicode(str(news_Data['title']),allow_unicode=True)
+                print(slug)
+                insert_query = "INSERT INTO tbl_news (news_title,news_slug, news_content, news_link, news_img_link, news_date,status) VALUES (%s ,%s , %s, %s, %s, %s,%s)"
+                insert_val = (str(news_Data['title']),slug,str(news_Data['content']),str(news_Data['link']),str(news_Data['news_img_link']),str(date_time.jalali_date()),str(state))
                 cursor.execute(insert_query,insert_val)
             db.commit()
         return f'{cursor.rowcount} data inserted '
@@ -422,7 +426,7 @@ Geting data from DataBase to import in index page
 def read_data(ofsset, limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT news_title,news_content,news_link,news_img_link,news_date FROM tbl_news ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
+    cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
     data = list(cursor.fetchall())
     return data
 
@@ -433,7 +437,7 @@ Geting data from DataBase to import in index page for Corona News
 def read_data_Corona_news(ofsset, limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE status = 3 ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
+    cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE status = 3 ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
     data = list(cursor.fetchall())
     return data
 
@@ -457,7 +461,7 @@ Geting data from DataBase to import in to the Slider
 def read_data_for_slider(limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT news_title,news_content,news_link,news_img_link FROM tbl_news  WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT %s', ("%" + "tejaratnews" + "%", limit))
+    cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news  WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT %s', ("%" + "tejaratnews" + "%", limit))
     data = list(cursor.fetchall())
     return data
 
@@ -539,7 +543,16 @@ arzdigital news QUERY
 def arzdigital_news():
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM tbl_news WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT 10"  , ("%" + "arzdigital" + "%",))
+    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT 10;"  , ("%" + "arzdigital" + "%",))
+    data = cursor.fetchall()
+    cursor.close()
+    return data
+
+
+def check_slug(text):
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE tbl_news.news_slug = %s ; "  , (text, ))
     data = cursor.fetchall()
     cursor.close()
     return data

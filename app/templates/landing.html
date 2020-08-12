@@ -1,14 +1,16 @@
 {% set active_page = 'landing'%}
-
-
+{% for post in data%}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title> egtesadkhan.com | اقتصاد خوان </title>
+  <meta name="description" content="{{post[2]|truncate(156)}}">
+  <meta name="keywords" content="">
+  <meta name="author" content="Pro-dev">
+  <meta charset="utf-8">
+  <title> egtesadkhan.com|اقتصاد خوان - {{post[1]}}</title>
 
   <!--bootstrap -->
   <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/bootstrap.min.css') }}">
@@ -72,7 +74,7 @@
         </a>
       </div>
 
-      <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+      <a href="" class="search-icon"> <i class="fa fa-search"></i> </a>
 
     </div>
 
@@ -135,8 +137,6 @@
           <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
           <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
           </li>
-          <li> <a href="/landing" class="{{ 'active' if active_page == 'landing' else '' }}"> لندینگ
-          </a> </li>
         </ul>
         <div class="social-media">
           <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
@@ -185,9 +185,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-lg-9 col-12">
-
-
-                  <div id="landing-content">
+                    <div id="landing-content">
                     <div class="row">
 
 
@@ -195,17 +193,17 @@
 
                         <div class="landing-news-title mb-4 ">
                           <div class="d-flex" style="justify-content: space-between;">
-                            <h4> آیا وزارت آمریکا تحریم هارا تشدید میکند؟ </h4>
-                            <h6 class="text-muted d-none d-sm-block"> زمان تقریبی خواندن مطلب 15 دقیقه </h6>
+                            <h4> {{ post[1] }} </h4>
+                            <h6 class="text-muted d-none d-sm-block"> زمان تقریبی خواندن مطلب {{time_read}} دقیقه </h6>
                           </div>
-                          <h5> <strong> اخبار اقتصادی </strong> </h5>
-                          <h6 class="text-muted"> 1399-03-25 </h6>
+                          <h5> <strong> اقتصاد </strong> </h5>
+                          <h6 class="text-muted"> {{post[5]}} </h6>
                           <div class="shared-by d-flex">
                             <img src="../admin/static/images/landingpage/profile.jpg" class="img-fluid"
                               alt="profile-photo">
                             <div class="profile-name">
                               <span class="text-muted"> انتشار مطلب توسط </span>
-                              <h6> <a href="#x"> ملیکا عباسی </a> </h6>
+                              <h6> <a href="#x"> مدیر </a> </h6>
                             </div>
                           </div>
                         </div>
@@ -216,7 +214,7 @@
                       <div class="col-md-12">
 
                         <div class="landing-news-image mb-4">
-                          <img src="../admin/static/images/landingpage/photo-1504711434969-e33886168f5c.jpg"
+                          <img src="{{post[4]}}"
                             class="img-fluid" alt="news-image">
                         </div>
 
@@ -225,50 +223,14 @@
 
                       <div class="col-md-12">
                         <div class="landing-news-text">
-                          <p class="text-justify"> لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و
-                            بی‌معنی در صنعت چاپ،
-                            صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
-                            برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از
-                            نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
-                            صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار
-                            خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem
-                            ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
-                            صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
-                            برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از
-                            نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
-                            صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار
-                            خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem
-                            ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
-                            صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
-                            برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از
-                            نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
-                            صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار
-                            خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد</p>
-                            <p class="text-justify"> لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و
-                              بی‌معنی در صنعت چاپ،
-                              صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
-                              برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از
-                              نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
-                              صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار
-                              خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem
-                              ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
-                              صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
-                              برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از
-                              نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
-                              صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار
-                              خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem
-                              ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ،
-                              صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
-                              برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از
-                              نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
-                              صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار
-                              خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد</p>
+                          <p class="text-justify">{{post[2]}}</p>
+                          <p><a href="{{post[3]}}">[منبع خبر]</a></p>
                         </div>
                       </div>
                     </div>
                     <!-- end of div.row isnide div.col-md-9 -->
                     <div id="pos-footer-sticky-9576"></div>
-                  </div>
+                  </div>   
                   <div id="pos-article-text-10942"></div>
                   <!-- end of div#landing-content -->
                 </div>
@@ -538,3 +500,4 @@
   </body>
 
 </html>
+{% endfor %}

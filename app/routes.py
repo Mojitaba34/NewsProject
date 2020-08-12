@@ -4,6 +4,8 @@ from app.robots.robots import crypto
 from app.admin import db
 import math, json
 from app.admin import config
+import readtime
+import math
 
 
 '''
@@ -73,6 +75,13 @@ def getdata():
     price_data = crypto()
     data = price_data.get_data()
     return data
-@app.route('/landing',methods=["GET"])
-def landing():
-    return render_template('landing.html')
+
+
+@app.route('/<slug>',methods=["GET"])
+def landing(slug):
+    data = db.check_slug(slug)
+    for post in data:
+        text = post[2]
+    time = readtime.of_text(text)
+    min = int(time.seconds) / 60
+    return render_template('landing.html',data=data,time_read=str(math.floor(min)))
