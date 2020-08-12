@@ -25,7 +25,7 @@ class PageContent():
     '''
 
     def main(self,url):
-       PATH = r"/usr/bin/chromedriver"
+       PATH = r"C:\Program Files (x86)/chromedriver.exe"
        self.option = webdriver.ChromeOptions()
        self.option.add_argument('headless')
        self.driver = webdriver.Chrome(PATH,options=self.option)

@@ -96,9 +96,9 @@
 
   <hr class="my-5">
 
-  <section id="content" dir="rtl">
 
-    <!-- start of main content area  -->
+  <!-- start of section content -->
+  <section id="content" dir="rtl">
 
     <div class="w-100">
       <h2 class="text-center mb-5 "> <b>اخبار روز</b> </h2>
@@ -107,28 +107,6 @@
 
     <div class="row mt-5">
 
-      <!-- {% for post in data %}
-      <div class="col-sm-6">
-        <div class="card daily-content-cards" style="width: 100%;">
-          <a href="{{ post[2] }}">
-            <img src="{{ post[3] }}" class="card-img-top img-fluid" alt="gras-grun">
-          </a>
-
-          <div class="card-body text-sm-right text-center">
-            <h6 class="card-subtitle mb-2 text-muted">{{post[4]}}<span class="mr-2 hvr-underline-from-left pb-2">
-              </span> </h6>
-            <a href="{{ post[2]}}">
-              <h4 class="card-title"><b>{{ post[0] }}</b>
-              </h4>
-            </a>
-            <p class="card-text">{{ post[1] }}</p>
-          </div>
-        </div>
-      </div>
-      {% endfor %} -->
-      <!-- end pf div.col-md-6 -->
-
-      
       <div class="col-lg-6 col-12">
 
         <div class="title text-center mb-4">
@@ -172,13 +150,13 @@
 
           <div class="row">
             {% for data in corona_data %}
-            <div class="col-md-6">
+            <div class="col-md-6 mx-auto">
 
               <!-- item 1 -->
               <div class="card" style="width: 100%">
                 <img src="{{data[3]}}" class="img-fluid" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title"><a href="{{data[2]}}"> {{data[0]}} </a></h5>
+                  <h5 class="card-title"><a href="{{data[2]}}"> <strong> {{data[0]}} </strong> </a></h5>
                   <p class="card-text">{{data[0]}}</p>
                 </div>
               </div>
@@ -186,24 +164,17 @@
             </div>
             {% endfor %}
             <!-- end of div.col-md-6 inside div.col-md-5 -->
-
           </div>
           <!-- end of div.row inside div.col-md-5 -->
-
-
         </div>
         <!-- end of div.corona-virus -->
       </div>
       <!-- end of div.col-md-6 -->
 
-      <div class="col-12 my-5 text-center">
-        <div id="pos-article-display-10941"></div>
-      </div>
+     
 
       <!-- digital coin news bottom of the screen  -->
       <div class="digital-coin">
-
-
 
         <ul>
 
@@ -227,12 +198,11 @@
         </ul>
 
       </div>
-
+      <!-- end of div.digital-coin -->
 
 
     </div>
     <!-- end of row -->
-
 
     <!-- end of main row in content area -->
 
@@ -259,8 +229,12 @@
       </div>
     </div>
 
+    <div class="col-12 my-4 text-center">
+      <div id="pos-article-display-10941"></div>
+    </div>
+
   </section>
-  <!-- end of sections -->
+  <!-- end of section content -->
 
 </main>
 <!-- end of main -->
