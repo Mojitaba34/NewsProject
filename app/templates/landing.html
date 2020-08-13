@@ -39,15 +39,15 @@
 
     gtag('config', 'UA-169005487-1');
   </script>
-    <script type="text/javascript">
-    (function(){
-    var now = new Date();
-    var head = document.getElementsByTagName('head')[0];
-    var script = document.createElement('script');
-    script.async = true;
-    var script_address = 'https://cdn.yektanet.com/js/egtesadkhan.com/native-egtesadkhan.com-10672.js';
-    script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
-    head.appendChild(script);
+  <script type="text/javascript">
+    (function () {
+      var now = new Date();
+      var head = document.getElementsByTagName('head')[0];
+      var script = document.createElement('script');
+      script.async = true;
+      var script_address = 'https://cdn.yektanet.com/js/egtesadkhan.com/native-egtesadkhan.com-10672.js';
+      script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
+      head.appendChild(script);
     })();
   </script>
 
@@ -90,7 +90,7 @@
         <div class="text-center">
 
           <div class="w-100">
-            <h1 class="display-3 mt-4 hero-title"> فاکس نیوز برای همه کاربران ایرانی </h1>
+            <h1 class="mt-4 hero-title"> فاکس نیوز برای همه کاربران ایرانی </h1>
           </div>
 
           <div class="w-100 mt-3">
@@ -130,19 +130,29 @@
       <!-- menu -->
       <nav class="header-content" id="header-content">
         <ul class="pages">
-          <li> <div class="name-of-site text-center">
-            <a href="#x/"> <h5> <strong> اقتصاد خوان </strong> </h5></a>
-          </div> </li>
+          <li>
+            <div class="name-of-site text-center">
+              <a href="#x/">
+                <h5> <strong> اقتصاد خوان </strong> </h5>
+              </a>
+            </div>
+          </li>
           <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
           <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
           <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
           </li>
         </ul>
         <div class="social-media">
-          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید کانال تلگرامی مارو دنبال کنید" href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
-          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
-          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="جستجو کنید" href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover"
+            data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i
+              class="fa fa-instagram"></i></a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover"
+            data-content="میتونید کانال تلگرامی مارو دنبال کنید" href="https://t.me/egtesadkhan"> <i
+              class="fa fa-telegram"></i></a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover"
+            data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
+          <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="جستجو کنید" href="#x"
+            class="search-icon"> <i class="fa fa-search"></i> </a>
         </div>
 
       </nav>
@@ -152,7 +162,7 @@
 
     <!-- normal view header & menu -->
     <!-- Whole Site  -->
-    <div class="container-fluid whole">
+    <div class="container-fluid landing-whole whole">
 
       <div id="container">
 
@@ -182,32 +192,24 @@
         <main>
 
           <section id="landing">
-            <div class="container">
+            <div class="container-fluid">
               <div class="row">
                 <div class="col-lg-9 col-12">
                   {% for post in data%}
                     <div id="landing-content">
                     <div class="row">
-
-
                       <div class="col-md-12">
-
                         <div class="landing-news-title mb-4 ">
                           <div class="d-flex" style="justify-content: space-between;">
-                            <h4> {{ post[1] }} </h4>
-                            <h6 class="text-muted d-none d-sm-block"> زمان تقریبی خواندن مطلب {{time_read}} دقیقه </h6>
+                            <h4 style="text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);"> <strong> {{ post[1] }} </strong> </h4>
+                            <h6 class="text-muted d-none d-sm-block" style="font-size: 1rem;"> زمان تقریبی خواندن مطلب
+                              {{time_read}} دقیقه </h6>
                           </div>
-                          <h5> <strong> اقتصاد </strong> </h5>
-                          <h6 class="text-muted"> {{post[5]}} </h6>
-                          <div class="shared-by d-flex">
-                            <img src="../admin/static/images/landingpage/profile.jpg" class="img-fluid"
-                              alt="profile-photo">
-                            <div class="profile-name">
-                              <span class="text-muted"> انتشار مطلب توسط </span>
-                              <h6> <a href="#x"> مدیر </a> </h6>
-                            </div>
-                          </div>
+                          <h5 class="text-muted"> <strong> اقتصاد </strong> </h5>
+                          <h6> {{post[5]}} </h6>
+
                         </div>
+                        <!-- end of div.landing-news-title -->
 
                       </div>
                       <!-- end of div.col-md-12 isnide div.col-md-9 -->
@@ -215,8 +217,7 @@
                       <div class="col-md-12">
 
                         <div class="landing-news-image mb-4">
-                          <img src="{{post[4]}}"
-                            class="img-fluid" alt="news-image">
+                          <img src="{{post[4]}}" class="img-fluid" alt="news-image">
                         </div>
 
                       </div>
@@ -225,14 +226,24 @@
                       <div class="col-md-12">
                         <div class="landing-news-text">
                           <p class="text-justify">{{post[2]}}</p>
+                          <!-- shared content by -->
+                          <div class="shared-by d-flex">
+                            <img src="../admin/static/images/landingpage/profile.jpg"
+                              alt="profile-photo">
+                            <div class="profile-name mr-3">
+                              <span class="text-muted"> انتشار مطلب توسط </span>
+                              <h6> <a href="#x"> مدیر </a> </h6>
+                            </div>
+                          </div>
                           <p><a href="{{post[3]}}">[منبع خبر]</a></p>
                         </div>
                       </div>
+
                     </div>
                     <!-- end of div.row isnide div.col-md-9 -->
                     
                     <div id="pos-footer-sticky-9576"></div>
-                  </div>   
+                  </div>
                   <div id="pos-article-text-10942"></div>
                   <!-- end of div#landing-content -->
                   {% endfor %}
@@ -260,6 +271,8 @@
                           </ul>
                         </li>
                       </ul>
+                      <div id="pos-article-display-10941"></div>
+                      <!--yektanet-->
                     </div>
                     <!-- end of sidemenu 1 area -->
                     <div id="pos-article-display-10941"></div> <!--yektanet-->
@@ -270,16 +283,15 @@
                         <h6 class="py-1"> <strong> اخبار روز</strong> </h6>
                         <i class="fa fa-chevron-down"></i>
                       </div>
-
+                      {% for today in today_news %}
                       <ul>
-                        {% for news in today_news %}
-                          <div class="our-card p-1">
-                            <img src="{{news[2]}}" width="75px" height="75px"alt="{{news[1]}}">
-                            <h6 class="mr-2"> <a href="{{news[0]}}"> {{news[1]}} </a></h6>
-                          </div>
-                        {% endfor %}
+                        <div class="our-card p-1">
+                          <img class="country" src="{{today[2]}}" alt="{{today[1]}}">
+                          <p style="line-height: 1.2;" class="mr-2"> <a href="{{today[0]}}"> {{today[1]}}</a>
+                          </p>
+                        </div>
                       </ul>
-
+                      {% endfor %}
                     </div>
                     <!-- end of envoriment area -->
 
@@ -401,18 +413,24 @@
             <div class="col-md-12 text-center mx-auto">
               <h2> <a href="#" class="footer-title"> اقتصاد خوان </a> </h2>
               <div class="social-media">
-                <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-                <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید کانال تلگرامی مارو دنبال کنید" href="#x"> <i class="fa fa-telegram"></i></a>
-                <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
-                <a data-toggle="popover" data-placement="top" data-trigger="hover" data-content="میتونید تو واتس اپ باهامون درارتباط باشید " href="#x"> <i class="fa fa-whatsapp"></i></a>
+                <a data-toggle="popover" data-placement="top" data-trigger="hover"
+                  data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i
+                    class="fa fa-instagram"></i></a>
+                <a data-toggle="popover" data-placement="top" data-trigger="hover"
+                  data-content="میتونید کانال تلگرامی مارو دنبال کنید" href="#x"> <i class="fa fa-telegram"></i></a>
+                <a data-toggle="popover" data-placement="top" data-trigger="hover"
+                  data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
+                <a data-toggle="popover" data-placement="top" data-trigger="hover"
+                  data-content="میتونید تو واتس اپ باهامون درارتباط باشید " href="#x"> <i
+                    class="fa fa-whatsapp"></i></a>
               </div>
               <ul class="footer-nav">
                 <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
                 <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
                 <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
                 </li>
-                <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'landing' else '' }}"> 
-                  لندینگ </a> </li>
+                <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'landing' else '' }}">
+                    لندینگ </a> </li>
               </ul>
             </div>
           </div>
