@@ -557,6 +557,15 @@ def check_slug(text):
     cursor.close()
     return data
 
+
+def related_news(state):
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute("SELECT news_slug,news_title FROM tbl_news WHERE tbl_news.status = %s ORDER BY tbl_news.news_date DESC LIMIT 8 ; "  , (state, ))
+    data = cursor.fetchall()
+    cursor.close()
+    return data
+
 def sitemap():
     db = get_database_connection()
     cursor = db.cursor()

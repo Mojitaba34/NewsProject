@@ -1,16 +1,16 @@
 {% set active_page = 'landing'%}
-{% for post in data%}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{post[2]|truncate(156)}}">
+  <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="author" content="Pro-dev">
   <meta charset="utf-8">
-  <title> egtesadkhan.com|اقتصاد خوان - {{post[1]}}</title>
+  <title> egtesadkhan.com|اقتصاد خوان - </title>
 
   <!--bootstrap -->
   <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/bootstrap.min.css') }}">
@@ -185,6 +185,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-lg-9 col-12">
+                  {% for post in data%}
                     <div id="landing-content">
                     <div class="row">
 
@@ -229,10 +230,12 @@
                       </div>
                     </div>
                     <!-- end of div.row isnide div.col-md-9 -->
+                    
                     <div id="pos-footer-sticky-9576"></div>
                   </div>   
                   <div id="pos-article-text-10942"></div>
                   <!-- end of div#landing-content -->
+                  {% endfor %}
                 </div>
                 <!-- end of div.col-md-9 -->
 
@@ -254,44 +257,13 @@
                         <li> <a href="#x"> اخبار مرتبط </a>
 
                           <ul>
-
-                            <li> <a href="#x"> سخنان ترامپ در مورد تحریم ها </a> </li>
-                            <li> <a href="#x"> جواب وزارت خارجه کشور به دولت آمریکا </a> </li>
-                            <li> <a href="#x"> سخنان ترامپ در مورد تحریم ها </a> </li>
-                            <li> <a href="#x"> جواب وزارت خارجه کشور به دولت آمریکا </a> </li>
+                            {% for related in related_news %}
+                              <li> <a href="{{related[0]}}"> {{related[1]}} </a> </li>
+                            {% endfor %}
 
                           </ul>
 
                         </li>
-
-                        <!-- item 2 li -->
-                        <li> <a href="#x"> اخبار سیاسی </a>
-
-                          <ul>
-
-                            <li> <a href="#x"> سخنان ترامپ در مورد تحریم ها </a> </li>
-                            <li> <a href="#x"> جواب وزارت خارجه کشور به دولت آمریکا </a> </li>
-                            <li> <a href="#x"> سخنان ترامپ در مورد تحریم ها </a> </li>
-                            <li> <a href="#x"> جواب وزارت خارجه کشور به دولت آمریکا </a> </li>
-
-                          </ul>
-
-                        </li>
-
-                        <!-- item 3 li -->
-                        <li> <a href="#x"> اخبار ارزهای دیجیتالی </a>
-
-                          <ul>
-
-                            <li> <a href="#x"> سخنان ترامپ در مورد تحریم ها </a> </li>
-                            <li> <a href="#x"> جواب وزارت خارجه کشور به دولت آمریکا </a> </li>
-                            <li> <a href="#x"> سخنان ترامپ در مورد تحریم ها </a> </li>
-                            <li> <a href="#x"> جواب وزارت خارجه کشور به دولت آمریکا </a> </li>
-
-                          </ul>
-
-                        </li>
-
 
                       </ul>
                       <div id="pos-article-display-10941"></div> <!--yektanet-->
@@ -303,7 +275,7 @@
                     <div class="side-menu envoriment mb-3 category-list">
 
                       <div class="title">
-                        <h6 class="py-1"> <strong> اخبار کشور ها </strong> </h6>
+                        <h6 class="py-1"> <strong> اخبار روز</strong> </h6>
                         <i class="fa fa-chevron-down"></i>
                       </div>
 
@@ -340,7 +312,7 @@
                     <div class="side-menu boors mb-3 category-list">
 
                       <div class="title">
-                        <h6 class="py-1"> <strong> اخبار بورس </strong> </h6>
+                        <h6 class="py-1"> <strong> اخبار کرونا </strong> </h6>
                         <i class="fa fa-chevron-down"></i>
                       </div>
 
@@ -500,4 +472,3 @@
   </body>
 
 </html>
-{% endfor %}
