@@ -85,6 +85,7 @@ def landing(slug):
     text = [post[2] for post in data]
     time = readtime.of_text(text)
     min = int(time.seconds) / 60
+    #related_news = 
     return render_template('landing.html',data=data,time_read=str(math.floor(min)))
 
 

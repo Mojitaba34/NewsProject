@@ -552,7 +552,7 @@ def arzdigital_news():
 def check_slug(text):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE tbl_news.news_slug = %s ; "  , (text, ))
+    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date,status FROM tbl_news WHERE tbl_news.news_slug = %s ; "  , (text, ))
     data = cursor.fetchall()
     cursor.close()
     return data
