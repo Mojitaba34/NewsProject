@@ -80,8 +80,7 @@ def getdata():
 @app.route('/<slug>',methods=["GET"])
 def landing(slug):
     data = db.check_slug(slug)
-    for post in data:
-        text = post[2]
+    text = [post[2] for post in data]
     time = readtime.of_text(text)
     min = int(time.seconds) / 60
     return render_template('landing.html',data=data,time_read=str(math.floor(min)))
