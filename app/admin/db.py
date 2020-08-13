@@ -558,7 +558,7 @@ def check_slug(text):
     return data
 
 
-def related_news(state):
+def related_news_sidebar(state):
     db = get_database_connection()
     cursor = db.cursor()
     cursor.execute("SELECT news_slug,news_title FROM tbl_news WHERE tbl_news.status = %s ORDER BY tbl_news.news_date DESC LIMIT 8 ; "  , (state, ))
@@ -567,15 +567,21 @@ def related_news(state):
     return data
 
 
-def Today_news():
+def Today_news_sidebar():
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title,news_img_link FROM tbl_news ORDER BY tbl_news.news_date DESC LIMIT 5 ; " )
+    cursor.execute("SELECT news_slug,news_title,news_img_link FROM tbl_news LIMIT 5 ; " )
     data = cursor.fetchall()
     cursor.close()
     return data
 
-
+def arz_news_sidebar():
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute("SELECT news_slug,news_title FROM tbl_news WHERE tbl_news.status = 2 ORDER BY tbl_news.news_date DESC LIMIT 5 ; " )
+    data = cursor.fetchall()
+    cursor.close()
+    return data
 
 def sitemap():
     db = get_database_connection()

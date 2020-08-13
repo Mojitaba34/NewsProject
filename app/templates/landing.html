@@ -288,15 +288,14 @@
                     <div class="side-menu boors mb-3 category-list">
 
                       <div class="title">
-                        <h6 class="py-1"> <strong> اخبار کرونا </strong> </h6>
+                        <h6 class="py-1"> <strong>  اخبار ارز </strong> </h6>
                         <i class="fa fa-chevron-down"></i>
                       </div>
 
                       <ul>
-                        <li> <a href="#x"> سهام های شرکت پتروشیمی سهام های خود را به فزوش میرساند </a> </li>
-                        <li> <a href="#x"> سهام های شرکت امین برای ارز اولیه این هفته ارزه میشود </a> </li>
-                        <li> <a href="#x"> سهام های شرکت سایپا در بهترین وضعیت خود قرار دارند!</a> </li>
-                        <li> <a href="#x"> سهام های شرکت سوما در ایام آینده قرار است از نو ارزه شود</a> </li>
+                      {% for last in arz_news %}
+                        <li> <a href="{{last[0]}}"> {{last[1]}} </a> </li>
+                      {% endfor %}
                       </ul>
 
                     </div>
