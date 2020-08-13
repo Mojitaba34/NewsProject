@@ -1,12 +1,12 @@
 from app import app
-from flask import Flask , render_template, request, redirect, url_for,flash, jsonify, make_response
+from flask import Flask , render_template, request, redirect, url_for,flash, jsonify, make_response,abort
 from app.robots.robots import crypto
 from app.admin import db
 import math, json
 from app.admin import config
 import readtime
 import math
-
+from urllib.parse import urlparse
 
 '''
 This routes is for Home page and passing some data to home Page
@@ -80,7 +80,49 @@ def getdata():
 @app.route('/<slug>',methods=["GET"])
 def landing(slug):
     data = db.check_slug(slug)
+    if data == []:
+        abort(404)
     text = [post[2] for post in data]
     time = readtime.of_text(text)
     min = int(time.seconds) / 60
     return render_template('landing.html',data=data,time_read=str(math.floor(min)))
+
+
+@app.route("/sitemap")
+@app.route("/sitemap/")
+@app.route("/sitemap.xml")
+def sitemap():
+    """
+        Route to dynamically generate a sitemap of your website/application.
+        lastmod and priority tags omitted on static pages.
+        lastmod included on dynamic content such as blog posts.
+    """
+
+    host_components = urlparse(request.host_url)
+    host_base = host_components.scheme + "://" + host_components.netloc
+
+    # Static routes with static content
+    static_urls = list()
+    for rule in app.url_map.iter_rules():
+        if not str(rule).startswith("/admin") and not str(rule).startswith("/user") and not str(rule).startswith("/_"):
+            if "GET" in rule.methods and len(rule.arguments) == 0:
+                url = {
+                    "loc": f"{host_base}{str(rule)}"
+                }
+                static_urls.append(url)
+
+    # Dynamic routes with dynamic content
+    dynamic_urls = list()
+    news_post = db.sitemap()
+    for post in news_post:
+        url = {
+            "loc": "{}/{}".format(host_base,post[0]),
+            "lastmod": post[1]
+            }
+        dynamic_urls.append(url)
+
+    xml_sitemap = render_template("sitemap.xml", static_urls=static_urls, dynamic_urls=dynamic_urls, host_base=host_base)
+    response = make_response(xml_sitemap)
+    response.headers["Content-Type"] = "application/xml"
+
+    return response

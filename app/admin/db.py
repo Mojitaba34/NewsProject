@@ -556,3 +556,11 @@ def check_slug(text):
     data = cursor.fetchall()
     cursor.close()
     return data
+
+def sitemap():
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute("SELECT news_slug,news_date FROM tbl_news ;")
+    data = cursor.fetchall()
+    cursor.close()
+    return data
