@@ -21,7 +21,7 @@
             <div class="row"
               style="padding: 5px; position: absolute; right:0; bottom:0; left: 0; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(31, 24, 41, 0.6)); z-index: 100; ">
               <div class="col-md-12 concept text-center p-3 text-sm-center"
-                style="color: #fff; z-index: 10000; position: absolute; bottom: 0;">
+                style="color: #fff; z-index: 10000; position: absolute; bottom: 0; text-shadow: 0 0 10px #fff;">
                 <a href="{{post[0]}}">
                   <h2 class="carousel-title"> <b> {{ post[1] }}</b> </h2>
                 </a>
@@ -119,10 +119,14 @@
         </div>
         {% for post in data %}
         <div class="day-news">
-          <div class="daily-news-content first-top-new">
+          <div class="daily-news-content">
 
             <div class="our-card" style="width: 100%;">
-              <img src="{{post[4]}}" class="ml-3 img-fluid" alt="images-of-news">
+
+              <div class="ml-3 image-news-container" style="overflow: hidden; width: 50%; height: 50%; border-radius: 4px;">
+                <img src="{{post[4]}}" width=100%%" height=100%%" alt="images-of-news">
+              </div>
+
               <div class="text">
                 <h5>
                   <strong>
@@ -131,6 +135,7 @@
                 </h5>
                 <p> {{post[2]|truncate(150)}} </p>
               </div>
+
             </div>
 
           </div>
