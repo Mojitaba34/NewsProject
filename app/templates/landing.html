@@ -245,32 +245,24 @@
                   <div class="side-menu-container">
                     <!-- start of category area -->
                     <div class="side-menu related-items mb-3 category-list">
-
                       <div class="title">
                         <h6 class="py-1"> <strong> موضوعات مرتبط </strong> </h6>
                         <i class="fa fa-chevron-down"></i>
                       </div>
-
                       <ul>
-
                         <!-- item 1 li -->
                         <li> <a href="#x"> اخبار مرتبط </a>
-
                           <ul>
                             {% for related in related_news %}
                               <li> <a href="{{related[0]}}"> {{related[1]}} </a> </li>
                             {% endfor %}
 
                           </ul>
-
                         </li>
-
                       </ul>
-                      <div id="pos-article-display-10941"></div> <!--yektanet-->
                     </div>
                     <!-- end of sidemenu 1 area -->
-
-
+                    <div id="pos-article-display-10941"></div> <!--yektanet-->
                     <!-- start of envoriment area -->
                     <div class="side-menu envoriment mb-3 category-list">
 
@@ -280,28 +272,12 @@
                       </div>
 
                       <ul>
-                        <div class="our-card p-1">
-                          <img src="../admin/static/images/landingpage/austria-ceu.jpg" width="75px" height="75px"
-                            alt="country">
-                          <h6 class="mr-2"> <a href="#x"> رئیس جمهور کشور اسلواکی در مورد ویروس کرونا هشدار هایی داد </a>
-                          </h6>
-                        </div>
-  
-                        <div class="our-card p-1">
-                          <img
-                            src="../admin/static/images/landingpage/Panoramic-view-of-Nice-coastline-and-beach-with-blue-sky-France..jpg"
-                            width="75px" height="75px" alt="country">
-                          <h6 class="mr-2"> <a href="#x"> رئیس جمهور کشور اسلواکی در مورد ویروس کرونا هشدار هایی داد </a>
-                          </h6>
-                        </div>
-  
-                        <div class="our-card p-1">
-                          <img
-                            src="../admin/static/images/landingpage/Ronda-andalucia-spain-shutterstock_1471041044-1437x1050.jpg"
-                            width="75px" height="75px" alt="country">
-                          <h6 class="mr-2"> <a href="#x"> رئیس جمهور کشور اسلواکی در مورد ویروس کرونا هشدار هایی داد </a>
-                          </h6>
-                        </div>
+                        {% for news in today_news %}
+                          <div class="our-card p-1">
+                            <img src="{{news[2]}}" width="75px" height="75px"alt="{{news[1]}}">
+                            <h6 class="mr-2"> <a href="{{news[0]}}"> {{news[1]}} </a></h6>
+                          </div>
+                        {% endfor %}
                       </ul>
 
                     </div>

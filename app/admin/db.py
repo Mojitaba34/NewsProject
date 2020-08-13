@@ -566,6 +566,17 @@ def related_news(state):
     cursor.close()
     return data
 
+
+def Today_news():
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute("SELECT news_slug,news_title,news_img_link FROM tbl_news ORDER BY tbl_news.news_date DESC LIMIT 5 ; " )
+    data = cursor.fetchall()
+    cursor.close()
+    return data
+
+
+
 def sitemap():
     db = get_database_connection()
     cursor = db.cursor()

@@ -87,7 +87,8 @@ def landing(slug):
     time = readtime.of_text(text)
     min = int(time.seconds) / 60
     related_news = db.related_news(state[0])
-    return render_template('landing.html',data=data,related_news=related_news ,time_read=str(math.floor(min)))
+    Today_news = db.Today_news()
+    return render_template('landing.html',data=data,related_news=related_news,today_news=Today_news ,time_read=str(math.floor(min)))
 
 
 @app.route("/sitemap")
