@@ -373,19 +373,57 @@ class news_from_mehrnews():
         return posts #TODO: InsertTblNews()
 
 
-class crypto():
+
+class Bors_news():
 
     def __init__(self):
-        self.CoinList = ['BTCUSDT','ETHUSDT','XRPUSDT','BCHUSDT','LTCUSDT','BNBUSDT','LINKUSDT']
-        # https://api.binance.com/api/v3/ticker/price?symbol=ZENBTC
-        #API = 'https://api.binance.com/api/v3/ticker/price?symbol={}'
+      url = "https://tejaratnews.com/category/%d8%a8%d8%a7%d8%b2%d8%a7%d8%b1/%d8%a8%d9%88%d8%b1%d8%b3?all=true"
+      self.content = PageContent()
+      self.root = html.fromstring(self.content.reading_Html(url))
 
-    def get_data(self):
-        dict_data = {}
-        for coin in self.CoinList:
-            r = requests.get(f'https://api.binance.com/api/v3/ticker/price?symbol={coin}')
-            data = json.loads(r.text)
-            dict_data.__setitem__(data['symbol'],round(float(data["price"]),2))
-        return dict_data
+    def image_links(self):
+        img_links = []
+        img_links = self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//div[contains(@class, 'news-media__image media-left')]//img/@data-src")
+        return img_links
+
+    def news_title(self):
+        news_title = []
+        news_title = self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//div[contains(@class, 'news-media__title')]//a/text()")
+        return news_title
+
+    def news_content(self,links):
+        news_content = []
+        modifed_text = ""
+        content = PageContent()
+        for link in links:
+            root = html.fromstring(content.reading_Html(link))
+            for text in root.xpath("//div[contains(@class, 'single-post-content')]/p[position() < last()]//text()"):
+                modifed_text = modifed_text + str(text)
+            news_content.append(modifed_text)
+            modifed_text = ""
+        return news_content
 
 
+
+    def news_link(self):
+        link_news = []
+        link_news = self.root.xpath("//article[contains(@class, 'news-media media news-media__row news-media__l')]//div[contains(@class, 'news-media__title')]//a/@href")
+        return link_news
+
+
+
+    '''
+    returning a dictionary data for store in dataBase
+
+    '''
+    def getData(self):
+        data= {
+            'news_image_link': self.image_links(),
+            'news_title': self.news_title(),
+            'news_content': self.news_content(self.news_link()),
+            'news_link':self.news_link()
+        }
+        posts=[]
+        for post in range(len(self.news_title())):
+            posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
+        return posts #TODO: InsertTblNews()

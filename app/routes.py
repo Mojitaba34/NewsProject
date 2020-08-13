@@ -1,6 +1,5 @@
 from app import app
 from flask import Flask , render_template, request, redirect, url_for,flash, jsonify, make_response,abort
-from app.robots.robots import crypto
 from app.admin import db
 import math, json
 from app.admin import config
@@ -16,8 +15,9 @@ This routes is for Home page and passing some data to home Page
 @app.route('/home')
 def home():
     
-    limit=6
-    limit_corona = 8
+    limit= 6
+    limit_corona = 6
+    bors_news_limit = 3
     row_num = db.row_count()
     page_num = math.ceil(row_num / limit)
     if int(request.args.get('page', 1, type=int)) > page_num:
@@ -29,6 +29,7 @@ def home():
     ofsset_corona=limit_corona * (page - 1)
     data = db.read_data(ofsset,limit)# reading data from data base to insert in news section
     Corona_data = db.read_data_Corona_news(ofsset_corona,limit_corona)
+    bors_news_data = db.bors_news(bors_news_limit)
     row_num = db.row_count()
     page_num = math.ceil(row_num / limit)# getting page numbers for creating pagination
     # pagination page numbers show sort
@@ -49,7 +50,7 @@ def home():
     print(db.ip_date_update(ip_address)) # update ip Date
     arzdigital_news = db.arzdigital_news()
     return render_template('index.html', data=data, arzdigital=arzdigital_news,page_num=page_num, slider_data=slider_data,
-    maxLeft=maxLeft,maxRight=maxRight,configId=config.USERID_GOOGLE,corona_data=Corona_data)
+    maxLeft=maxLeft,maxRight=maxRight,configId=config.USERID_GOOGLE,corona_data=Corona_data,bors_news_data=bors_news_data)
 
 @app.route('/about')
 def about_us():
@@ -69,12 +70,6 @@ def contact_us():
 @app.route('/arzdigital', methods=["GET", "POST"])
 def arzdigital():
     return render_template('digital.html')
-
-@app.route('/_pricesData', methods=["GET","POST"])
-def getdata():
-    price_data = crypto()
-    data = price_data.get_data()
-    return data
 
 
 @app.route('/<slug>',methods=["GET"])

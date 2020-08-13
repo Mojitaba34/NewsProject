@@ -170,6 +170,7 @@ def runRob():
     state_tejart = 1
     state_arzdigi = 2
     state_Corona = 3
+    state_bors = 4
     if session.get("user_data") != None:
         tasnim_news = robots.news_from_tasnimnews()
         data_tasnim = tasnim_news.getData()   
@@ -191,5 +192,10 @@ def runRob():
         data_corona = mehr_news.getData()
         print("--------------Corona----------------")
         print("Mehr_news=  "+db.InsertTblNews(data_corona,state_Corona))
+
+        Bors_news_data = robots.Bors_news()
+        data_bors = Bors_news_data.getData()
+        print("--------------Corona----------------")
+        print("Bors=  "+db.InsertTblNews(data_bors,state_bors))
 
         return redirect(url_for("admin.dashboard"))

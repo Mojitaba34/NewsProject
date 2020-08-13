@@ -189,24 +189,11 @@
       <div class="digital-coin">
 
         <ul>
-
-          <span class="text-danger"> اخبار ارزهای دیجیتالی : </span>
-          <!-- item 1 -->
-          <li class="coin-name"> بیت کوین : </li>
-          <li> قیمت به دلار </li>
-          <li> قیمت به تومن </li>
-          <li> روزانه <span class="badge badge-pill badge-success">5%</span> </li>
-          <!-- item 2 -->
-          <li class="coin-name"> اتریوم : </li>
-          <li> قیمت به دلار </li>
-          <li> قیمت به تومن </li>
-          <li> روزانه <span class="badge badge-pill badge-danger">5%</span> </li>
-          <!-- item 3 -->
-          <li class="coin-name"> لایت کوین : </li>
-          <li> قیمت به دلار </li>
-          <li> قیمت به تومن </li>
-          <li> روزانه <span class="badge badge-pill badge-danger">5%</span> </li>
-
+          {% for data in bors_news_data %}
+          <span class="text-danger"> اخبار بورس : </span>
+          <li class="card-title"><a href="{{data[0]}}">{{ data[1]}} <span>:</span> </a></li>
+          <li>{{data[2]|truncate(80)}}</li>
+          {% endfor %}
         </ul>
 
       </div>

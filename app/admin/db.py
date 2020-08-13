@@ -590,3 +590,11 @@ def sitemap():
     data = cursor.fetchall()
     cursor.close()
     return data
+    
+def bors_news(limit):
+    db = get_database_connection()
+    cursor = db.cursor()
+    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news  WHERE status = 4 ORDER BY news_date DESC LIMIT %s",(limit,))
+    data = cursor.fetchall()
+    cursor.close()
+    return data
