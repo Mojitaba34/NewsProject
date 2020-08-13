@@ -16,23 +16,24 @@
           <div class="carousel-item" data-interval="5000">
             {% endif %}
             <!-- 1nd image with text in it -->
-
             <img src="{{post[4]}}" width="auto" height="650px" class="d-block w-100" alt="images-for-carousel">
             <!-- text in it -->
-            <div class="row" style="padding: 5px 20px; position: absolute; right:0; bottom:0; left: 0; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(31, 24, 41, 0.6)); z-index: 100; ">
-              <div class="col-md-8 concept text-center p-3 text-sm-right"
+            <div class="row"
+              style="padding: 5px; position: absolute; right:0; bottom:0; left: 0; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(31, 24, 41, 0.6)); z-index: 100; ">
+              <div class="col-md-12 concept text-center p-3 text-sm-center"
                 style="color: #fff; z-index: 10000; position: absolute; bottom: 0;">
                 <a href="{{post[0]}}">
                   <h2 class="carousel-title"> <b> {{ post[1] }}</b> </h2>
                 </a>
-                <p class="text-sm-right h5 mt-4 d-none d-sm-block">{{ post[2]|truncate(500) }}</p>
+                <p class="text-sm-justify h5 p-4 d-none d-sm-block" style="line-height: 1.4;">
+                  {{ post[2]|truncate(500) }}</p>
               </div>
             </div>
             <!-- text in it -->
           </div>
           {% endfor %}
         </div>
-        
+
         <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
@@ -48,7 +49,7 @@
 
 
   <div class="col-12 mb-3 mb-sm-0 ad-banner text-center">
-    
+
   </div>
 
 
@@ -71,10 +72,13 @@
         {% for news in arzdigital%}
 
         <div class="item">
-          <div class="card" style=" width: 100%;">
-            <a href="{{ news[3] }}">
-              <img src="{{ news[4] }}" class="card-img-top" alt="{{ news[3] }}">
-            </a>
+          <div class="card" style="width: 100%;">
+
+            <div class="image-container">
+              <a class="d-inline" style="width: 100%;" href="{{ news[3] }}">
+                <img src="{{ news[4] }}" class="card-img-top" alt="{{ news[3] }}">
+              </a>
+            </div>
 
             <div class="card-body">
               <h6 class="card-subtitle mb-2 text-muted">{{ news[5] }}</h6>
@@ -122,7 +126,7 @@
               <div class="text">
                 <h5>
                   <strong>
-                    <a  href="{{ url_for('landing',slug=post[0])}}"> {{post[1]}} </a>
+                    <a href="{{ url_for('landing',slug=post[0])}}"> {{post[1]}} </a>
                   </strong>
                 </h5>
                 <p> {{post[2]|truncate(150)}} </p>
@@ -153,7 +157,11 @@
 
               <!-- item 1 -->
               <div class="card" style="width: 100%">
-                <img src="{{data[4]}}" class="img-fluid" class="card-img-top" alt="...">
+                <div class="corona-image-container">
+                  <div class="bg">
+                    <img src="{{data[4]}}" class="img-fluid card-img-top" alt="corona-virus">
+                  </div>
+                </div>
                 <div class="card-body">
                   <h5 class="card-title"><a href="{{data[0]}}"> <strong> {{data[1]}} </strong> </a></h5>
                   <p class="card-text">{{data[1]|truncate(150)}}</p>
@@ -170,7 +178,7 @@
       </div>
       <!-- end of div.col-md-6 -->
 
-     
+
 
       <!-- digital coin news bottom of the screen  -->
       <div class="digital-coin">
@@ -213,15 +221,15 @@
         <ul class="pagination" id="pagination">
           <li class="py-4 px-3"> <a href="/">1</a> </li>
           {% if maxLeft>1 %}
-            <li class="py-4 px-3">...</li>
+          <li class="py-4 px-3">...</li>
           {% endif%}
           {% for page in range(maxLeft,maxRight)%}
-            {% if not loop.index == 1%}
-              <li class="py-4 px-3"> <a href="{{ url_for('home',page = page )}}">{{page}} </a> </li>
-            {%endif%}
+          {% if not loop.index == 1%}
+          <li class="py-4 px-3"> <a href="{{ url_for('home',page = page )}}">{{page}} </a> </li>
+          {%endif%}
           {% endfor %}
           {% if maxRight < page_num %}
-            <li class="py-4 px-3">...</li>
+          <li class="py-4 px-3">...</li>
           {% endif%}
           <li class="py-4 px-3"> <a href="{{ url_for('home',page = page_num )}}">{{page_num}} </a> </li>
         </ul>
