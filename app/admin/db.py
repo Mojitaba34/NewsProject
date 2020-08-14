@@ -65,6 +65,16 @@ def BuildTables():
         );
         """)
 
+        # Create tbl_keyWords If not Exists
+        cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_keywords
+        (
+            id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+            news_id INTEGER,
+            FOREIGN KEY (news_id) REFERENCES tbl_news(id),
+            keyword VARCHAR(100)
+        );
+        """)
+
         # inserting 3 deafult value into table for robots
         cursor.execute("""
             INSERT INTO tbl_robots(id, state_news, time_crawler) VALUES 
@@ -598,3 +608,57 @@ def bors_news(limit):
     data = cursor.fetchall()
     cursor.close()
     return data
+
+def keywords():
+    db = get_database_connection()
+    cursor = db.cursor() 
+    cursor.execute("SELECT id,news_title from tbl_news")
+    data = cursor.fetchall()
+    cursor.close()
+    return data
+
+
+def insert_keyword(keywords):
+    db = get_database_connection()
+    cursor = db.cursor()
+    # if CheckExistsNewsID(id) == False:
+    insert = "INSERT INTO tbl_keywords (keyword) VALUES (%s)"
+    val = (str(keywords),)
+    cursor.execute(insert,val)
+    db.commit()
+
+
+def CheckExistsNewsID(id):
+    """ This Method for get all titles in database and check with input title
+        now, if title equal by database titles this data not insert to table News
+        thats Mean check data exists ro not
+    """
+    if (id != None):
+        # import connection database and build a cursor
+        db = get_database_connection()
+        cursor = db.cursor()
+
+        # This try run query in mysql and fetch all data id
+        try:
+            cursor.execute(
+            """SELECT news_id FROM tbl_keywords;"""
+            )
+            data_db = cursor.fetchall()
+        except Exception as _:
+            return False
+
+        if cursor.rowcount > 0 :
+            db_id = [] # this list for database id
+
+            for id_val in data_db:
+                db_id.append(id_val[0]) # append ips in db_id
+
+            return True if id in db_id else False # this if for check exists ip in db_id
+        else:
+            print('khali ast')
+            return False
+    else:
+        return False
+    db.close()
+
+

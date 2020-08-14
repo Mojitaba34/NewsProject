@@ -3,6 +3,7 @@ from app.admin import admin
 from app.admin import db
 from app.admin import getData
 from app.robots import robots
+from string import digits
 
 """
 This Method and Url For --dashboard-- and --index-- in admin Panel
@@ -171,31 +172,50 @@ def runRob():
     state_arzdigi = 2
     state_Corona = 3
     state_bors = 4
+    keyword_text = ""
     if session.get("user_data") != None:
-        tasnim_news = robots.news_from_tasnimnews()
-        data_tasnim = tasnim_news.getData()   
-        print("--------------Tasnim----------------")
-        print("tasnim=  "+db.InsertTblNews(data_tasnim,state_tasnim))        
+        # tasnim_news = robots.news_from_tasnimnews()
+        # data_tasnim = tasnim_news.getData()   
+        # print("--------------Tasnim----------------")
+        # print("tasnim=  "+db.InsertTblNews(data_tasnim,state_tasnim))        
 
-        tejarat_news = robots.news_from_tejaratnews()
-        data_tejarat = tejarat_news.getData()
-        print("--------------Tejarat----------------")
-        print("tejarat=  "+db.InsertTblNews(data_tejarat,state_tejart))
+        # tejarat_news = robots.news_from_tejaratnews()
+        # data_tejarat = tejarat_news.getData()
+        # print("--------------Tejarat----------------")
+        # print("tejarat=  "+db.InsertTblNews(data_tejarat,state_tejart))
 
 
-        arzdigital_news = robots.news_from_arzdigital()
-        data_arzdigital = arzdigital_news.getData()
-        print("--------------Arzdigital----------------")
-        print("arzdigital=  "+db.InsertTblNews(data_arzdigital,state_arzdigi))
+        # arzdigital_news = robots.news_from_arzdigital()
+        # data_arzdigital = arzdigital_news.getData()
+        # print("--------------Arzdigital----------------")
+        # print("arzdigital=  "+db.InsertTblNews(data_arzdigital,state_arzdigi))
 
-        mehr_news = robots.news_from_mehrnews()
-        data_corona = mehr_news.getData()
-        print("--------------Corona----------------")
-        print("Mehr_news=  "+db.InsertTblNews(data_corona,state_Corona))
+        # mehr_news = robots.news_from_mehrnews()
+        # data_corona = mehr_news.getData()
+        # print("--------------Corona----------------")
+        # print("Mehr_news=  "+db.InsertTblNews(data_corona,state_Corona))
 
-        Bors_news_data = robots.Bors_news()
-        data_bors = Bors_news_data.getData()
-        print("--------------Corona----------------")
-        print("Bors=  "+db.InsertTblNews(data_bors,state_bors))
+        # Bors_news_data = robots.Bors_news()
+        # data_bors = Bors_news_data.getData()
+        # print("--------------Corona----------------")
+        # print("Bors=  "+db.InsertTblNews(data_bors,state_bors))
 
+        data = db.keywords()
+        for title in data:
+            text_data = title[1].split(' ')
+            if text_data[-1] == '':
+                del text_data[-1]
+            data_list = []
+            for txt in text_data:
+                if len(txt) >= 3:
+                    data_list.append(txt)
+            data = list(dict.fromkeys(data_list))
+            if 'داد' or 'می کند' or 'می شود' or 'می یابد' or 'کرد' or 'است'or 'رسید' in data:
+                del data[-1]
+            for text in data:
+                keyword_text = keyword_text + (text + ' ')
+            remove_digits = str.maketrans('', '', digits)
+            res = keyword_text.translate(remove_digits)
+            keyword_text = ""
+            db.insert_keyword(res)
         return redirect(url_for("admin.dashboard"))
