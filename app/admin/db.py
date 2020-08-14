@@ -567,10 +567,10 @@ def related_news_sidebar(state):
     return data
 
 
-def Today_news_sidebar():
+def bors_news_sidebar():
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title,news_img_link FROM tbl_news LIMIT 5 ; " )
+    cursor.execute("SELECT news_slug,news_title,news_img_link FROM tbl_news WHERE tbl_news.status = 4 LIMIT 5 ; " )
     data = cursor.fetchall()
     cursor.close()
     return data
