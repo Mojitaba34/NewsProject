@@ -426,7 +426,7 @@ Geting data from DataBase to import in index page
 def read_data(ofsset, limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
+    cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE tbl_news.status = 0 OR tbl_news.status = 1 OR tbl_news.status = 4 ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
     data = list(cursor.fetchall())
     return data
 
