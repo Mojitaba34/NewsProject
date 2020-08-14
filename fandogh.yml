@@ -1,28 +1,33 @@
 kind: ExternalService
 name: newsapp
 spec:
-  image: registery.fandogh.cloud/bachloarproject/news:1399322.1
-  image_pull_policy: Always
+  image: newsapp:13990525.1
   image_pull_secret: "private-registry-secret"
-  replicas: 4
+  replicas: 2
   port: 80
-  path: /
   allow_http: false
   env:
-    - name: DEBUG
-      value: 1
-    - name: API_KEY
-      value: SOME_LONG_RANDOM_STRING
+    - name: MYSQL_HOST
+      value: 127.0.0.1
+    - name: MYSQL_USERNAME
+      value: root
+    - name: MYSQL_PASSWORD
+      value: ${DB_PASSWORD}
+    - name: MYSQL_PORT
+      value: 3306
+    - name: MYSQL_DB_NAME
+      value: newsdb
+    - name: SECRET_KEY
+      value: ${SEC_KEY}
+  static_path: /static/
+
+      
 
   domains:
      - name: egtesadkhan.com
 
-  port_mapping:
-    - port: 8081
-      target_port: 8081
-      protocol: tcp
   resources:
-    memory: 2457Mi
+    memory: 1500Mi
 
   liveness_probe:
     initial_delay_seconds: 12
