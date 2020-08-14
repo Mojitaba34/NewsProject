@@ -22,14 +22,6 @@ def BuildTables():
         );
         """)
         
-        # Create tbl_robots If not Exists
-        cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_robots
-        (
-            id INTEGER PRIMARY KEY NOT NULL,
-            state_news TINYINT(1),
-            time_crawler int(5)
-        );
-        """)
 
         # Create tbl_news If not Exists
         cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_news
@@ -69,21 +61,11 @@ def BuildTables():
         cursor.execute(""" CREATE TABLE IF NOT EXISTS tbl_keywords
         (
             id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-            news_id INTEGER,
+            news_id INTEGER NOT NULL,
             FOREIGN KEY (news_id) REFERENCES tbl_news(id),
             keyword VARCHAR(100)
         );
         """)
-
-        # inserting 3 deafult value into table for robots
-        cursor.execute("""
-            INSERT INTO tbl_robots(id, state_news, time_crawler) VALUES 
-                (1, 1, 10),
-                (2, 1, 30),
-                (3, 1, 60);
-                
-        """)
-
 
         return 'table admin and robot created successfully'
 
@@ -356,20 +338,61 @@ def InsertTblNews(data,state):
     cursor = db.cursor()
     date_time = JalaliDateTime.now() # give us dateTime shamsi
     try:
+        count = 0
         for news_Data in data:
             if CheckExistsTitleNews(news_Data['title']) == False:
                 slug = slugify_unicode(str(news_Data['title']),allow_unicode=True)
-                print(slug)
                 insert_query = "INSERT INTO tbl_news (news_title,news_slug, news_content, news_link, news_img_link, news_date,status) VALUES (%s ,%s , %s, %s, %s, %s,%s)"
                 insert_val = (str(news_Data['title']),slug,str(news_Data['content']),str(news_Data['link']),str(news_Data['news_img_link']),str(date_time.jalali_date()),str(state))
                 cursor.execute(insert_query,insert_val)
             db.commit()
-        return f'{cursor.rowcount} data inserted '
+            lastId = get_last_news_id()
+            keyword = keyword_generator(str(news_Data['title']))
+            insert_keyword(lastId,keyword)
+            count += 1
+        return f'{count} data inserted'
     except Exception as e:
         return f'an Erorr {e} .'
-    
     db.close()
-    return 'none'
+
+
+
+def keyword_generator(title):
+    text_data = title.split(' ')
+    if text_data[-1] == '':
+        del text_data[-1]
+    data_list = []
+    for txt in text_data:
+        if len(txt) > 3 and 'داد' and 'می کند' and 'کند' and 'می شود' and 'می یابد' and 'کرد' and 'است'and 'رسید' not in txt:
+            data_list.append(txt)
+    data = list(dict.fromkeys(data_list))
+    keyword_text = ''
+    digits = '0123456789'
+    sign = '!@#$%^&*()_+=-\\/'
+    for text in data:
+        keyword_text = keyword_text + (text + ',')
+    remove_digits = str.maketrans('', '', digits)
+    remove_sign = str.maketrans('', '', sign)
+    res = keyword_text.translate(remove_digits)
+    res = res.translate(remove_sign)
+    return res
+
+
+def get_last_news_id():
+    """
+        This method return last news id returned for us
+    """
+    db = get_database_connection()
+    cursor = db.cursor()
+    try:
+        cursor.execute(
+        """SELECT id FROM tbl_news ORDER BY tbl_news.id DESC LIMIT 1;"""
+        )
+        data_db = cursor.fetchone()
+        return data_db[0]
+    except Exception as e :
+        return e
+
 
 
 """
@@ -562,7 +585,7 @@ def arzdigital_news():
 def check_slug(text):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date,status FROM tbl_news WHERE tbl_news.news_slug = %s ; "  , (text, ))
+    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date,status,id FROM tbl_news WHERE tbl_news.news_slug = %s ; "  , (text, ))
     data = cursor.fetchall()
     cursor.close()
     return data
@@ -609,56 +632,27 @@ def bors_news(limit):
     cursor.close()
     return data
 
-def keywords():
-    db = get_database_connection()
-    cursor = db.cursor() 
-    cursor.execute("SELECT id,news_title from tbl_news")
-    data = cursor.fetchall()
-    cursor.close()
-    return data
 
 
-def insert_keyword(keywords):
+def insert_keyword(last_id,keywords):
     db = get_database_connection()
     cursor = db.cursor()
-    # if CheckExistsNewsID(id) == False:
-    insert = "INSERT INTO tbl_keywords (keyword) VALUES (%s)"
-    val = (str(keywords),)
-    cursor.execute(insert,val)
-    db.commit()
+    try:
+        insert = "INSERT INTO tbl_keywords (news_id,keyword) VALUES (%s,%s)"
+        val = (last_id,str(keywords))
+        cursor.execute(insert,val)
+        db.commit()
+    except Exception as ex:
+        return ex
 
 
-def CheckExistsNewsID(id):
-    """ This Method for get all titles in database and check with input title
-        now, if title equal by database titles this data not insert to table News
-        thats Mean check data exists ro not
-    """
-    if (id != None):
-        # import connection database and build a cursor
-        db = get_database_connection()
-        cursor = db.cursor()
-
-        # This try run query in mysql and fetch all data id
-        try:
-            cursor.execute(
-            """SELECT news_id FROM tbl_keywords;"""
-            )
-            data_db = cursor.fetchall()
-        except Exception as _:
-            return False
-
-        if cursor.rowcount > 0 :
-            db_id = [] # this list for database id
-
-            for id_val in data_db:
-                db_id.append(id_val[0]) # append ips in db_id
-
-            return True if id in db_id else False # this if for check exists ip in db_id
-        else:
-            print('khali ast')
-            return False
-    else:
-        return False
-    db.close()
-
-
+def get_news_keywords(newsid):
+    db = get_database_connection()
+    cursor = db.cursor()
+    try:
+        cursor.execute("SELECT keyword FROM tbl_keywords WHERE tbl_keywords.news_id = %s;" , (newsid, ))
+        data = cursor.fetchall()
+        cursor.close()
+        return data
+    except Exception as ex:
+        return ex

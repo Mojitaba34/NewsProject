@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="keywords" content="">
+    <meta name="keywords" content=" {% for key in keywords %} {{key}} {% endfor %}">
   <meta name="author" content="Pro-dev">
   <meta charset="utf-8">
   <title> egtesadkhan.com|اقتصاد خوان - </title>
@@ -361,32 +361,9 @@
                   <p> برچسب ها </p>
                 </div>
                 <div class="card-body text-center text-lg-right">
-                  <p class="card-text mt-1">
-                    <a class="h5" href="#"> <b>کوله پشتی </b></a>
-                    <a class="small" href="#"> صوتی</a>
-                    <a class="h5" href="#"> <b>شگفت انگیز</b> </a>
-                  </p>
-                  <p class="card-text mt-1">
-                    <a class="small" href="#"> <b> گالری مد چهره </b></a>
-                    <a class="mx-1 h3" href="#"> <b>فرمت</b> </a>
-                    <a class="small" href="#"> <b>تصویر</b> </a>
-                  </p>
-                  <p class="card-text mt-1">
-                    <a class="small" href="#"> <b> چشم انداز </b></a>
-                    <a class="h2" href="#"> <b>آزادی</b> </a>
-                    <a class="h3" href="#"> <b>نجات</b> </a>
-                  </p>
-                  <p class="card-text mt-1">
-                    <a class="h5" href="#"> <b> استایل زندگی</b></a>
-                    <a class="small" href="#"> عکلاسی </a>
-                    <a class="small" href="#"> <b>پیکسار</b> </a>
-                    <a class="h5" href="#"> <b>سیاست</b> </a>
-                  </p>
-                  <p class="card-text mt-1">
-                    <a class="h4" href="#"> <b> رییس جمهور </b></a>
-                    <a class="small" href="#"> ساندلکاد</a>
-                    <a class="h4" href="#"> <b>مسافرت</b> </a>
-                  </p>
+                {% for key in keywords%}
+                    <a class="h5" href=""> <b>{{key}}</b></a>
+                {% endfor %}
                 </div>
               </div>
             </div>

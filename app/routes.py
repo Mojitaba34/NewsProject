@@ -49,7 +49,6 @@ def home():
     db.insert_ip(ip_address)# inserting ip address
     print(db.ip_date_update(ip_address)) # update ip Date
     arzdigital_news = db.arzdigital_news()
-    db.insert_keyword()
     return render_template('index.html', data=data, arzdigital=arzdigital_news,page_num=page_num, slider_data=slider_data,
     maxLeft=maxLeft,maxRight=maxRight,configId=config.USERID_GOOGLE,corona_data=Corona_data,bors_news_data=bors_news_data)
 
@@ -76,22 +75,28 @@ def arzdigital():
 @app.route('/<slug>',methods=["GET"])
 def landing(slug):
     data = db.check_slug(slug)
+    ls = []
     if data == []:
         abort(404)
+
+    #TODO : This is not Good for shoud be fix
     text = [post[2] for post in data]
     state = [post[6] for post in data]
-    print('text----->',text)
-    print('state---->',state)
+    newsid = [post[7] for post in data]
+
     time = readtime.of_text(text[0])
     min = int(time.seconds) / 60
+
     related_news = db.related_news_sidebar(state[0])
     bors_news = db.bors_news_sidebar()
     arznews = db.arz_news_sidebar()
-    return render_template('landing.html',data=data,related_news=related_news,bors_news=bors_news,arz_news = arznews ,time_read=str(math.floor(min)))
+
+    keywords = db.get_news_keywords(newsid[0])
+    list_keywords = str(keywords[0][0]).split(',')
+    return render_template('landing.html',data=data,related_news=related_news,keywords = list_keywords,bors_news=bors_news,arz_news = arznews ,time_read=str(math.floor(min)))
 
 
-@app.route("/sitemap")
-@app.route("/sitemap/")
+
 @app.route("/sitemap.xml")
 def sitemap():
     """
