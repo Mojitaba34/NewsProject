@@ -1,24 +1,8 @@
 kind: ExternalService
 name: newsapp
 spec:
-  image: newsapp:13990525.1
-  image_pull_secret: "private-registry-secret"
-  replicas: 2
-  port: 80
+  image: newsapp:13990525.6
   allow_http: false
-  env:
-    - name: MYSQL_HOST
-      value: 127.0.0.1
-    - name: MYSQL_USERNAME
-      value: root
-    - name: MYSQL_PASSWORD
-      value: ${DB_PASSWORD}
-    - name: MYSQL_PORT
-      value: 3306
-    - name: MYSQL_DB_NAME
-      value: newsdb
-    - name: SECRET_KEY
-      value: ${SEC_KEY}
   static_path: /static/
 
       
@@ -29,19 +13,5 @@ spec:
   resources:
     memory: 1500Mi
 
-  liveness_probe:
-    initial_delay_seconds: 12
-    period_seconds: 60
-    timeout_seconds: 12
-    http_get:
-      path: "/are-you-live"
-      port: 80
-  readiness_probe:
-    initial_delay_seconds: 5
-    period_seconds: 10
-    timeout_seconds: 12
-    http_get:
-      path: "/are-you-ready"
-      port: 80
   
 
