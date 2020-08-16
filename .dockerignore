@@ -1,10 +1,10 @@
 .vscode/
 venv/
+.venv/
 .fandogh/
 .gitignore
 LICENSE
 README.md
-
 app/test/
 app/__pycache__/
 app/admin/__pycache__/

@@ -50,7 +50,7 @@ def home():
     print(db.ip_date_update(ip_address)) # update ip Date
     arzdigital_news = db.arzdigital_news()
     return render_template('index.html', data=data, arzdigital=arzdigital_news,page_num=page_num, slider_data=slider_data,
-    maxLeft=maxLeft,maxRight=maxRight,configId=config.USERID_GOOGLE,corona_data=Corona_data,bors_news_data=bors_news_data)
+    maxLeft=maxLeft,maxRight=maxRight,configId='UA-169005487-1',corona_data=Corona_data,bors_news_data=bors_news_data)
 
 @app.route('/about')
 def about_us():
