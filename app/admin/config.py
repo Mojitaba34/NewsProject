@@ -1,10 +1,9 @@
-import os
 # MYSQL.CONNECTOR Config
-MYSQL_HOST = os.getenv("HOST")
-MYSQL_USERNAME = os.getenv("USERNAME")
-MYSQL_PASSWORD = os.getenv("PASSWORD")
+MYSQL_HOST = "localhost"
+MYSQL_USERNAME = "root" 
+MYSQL_PASSWORD = "" #efiAmirMoji@123
 MYSQL_PORT = 3306
-MYSQL_DB_NAME = os.getenv("DB_NAME")
+MYSQL_DB_NAME = "newsdb"
 
 # APP_SECRETKEY
-SECRET_KEY = os.getenv("SEC_KEY")
+SECRET_KEY = 'c07fc84ea77edced0582cbb80095795d'
