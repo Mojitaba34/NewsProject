@@ -172,7 +172,6 @@ def runRob():
     state_arzdigi = 2
     state_Corona = 3
     state_bors = 4
-    keyword_text = ""
     if session.get("user_data") != None:
         tasnim_news = robots.news_from_tasnimnews()
         data_tasnim = tasnim_news.getData()   
