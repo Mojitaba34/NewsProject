@@ -146,18 +146,17 @@
       </div>
       <!-- end of div.col-md-6 -->
 
-
-
+      {% if not bors_news_data == []%}
       <div class="col-lg-6 col-12">
         <div class="title text-center mb-4">
           <a href="#x">
-            <h4> خبرهای ویروس کرونا </h4>
+            <h4> اخبار بورس </h4>
           </a>
         </div>
         <div class="corona-virus">
 
           <div class="row">
-            {% for data in corona_data %}
+            {% for data in bors_news_data %}
             <div class="col-md-6 mx-auto">
 
               <!-- item 1 -->
@@ -181,6 +180,7 @@
         </div>
         <!-- end of div.corona-virus -->
       </div>
+      {% endif%}
       <!-- end of div.col-md-6 -->
 
 
@@ -189,8 +189,8 @@
       <div class="digital-coin">
 
         <ul>
-          {% for data in bors_news_data %}
-          <span class="text-danger"> اخبار بورس : </span>
+          {% for data in corona_data %}
+          <span class="text-danger">اخبار ویروس کرونا</span>
           <li class="card-title"><a href="{{data[0]}}">{{ data[1]}} <span>:</span> </a></li>
           <li>{{data[2]|truncate(80)}}</li>
           {% endfor %}

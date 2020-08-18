@@ -459,21 +459,25 @@ Geting data from DataBase to import in index page
 def read_data(ofsset, limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE tbl_news.status = 0 OR tbl_news.status = 1 OR tbl_news.status = 4 ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
-    data = list(cursor.fetchall())
-    return data
-
+    try:
+        cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE tbl_news.status = 0 OR tbl_news.status = 1 OR tbl_news.status = 4 ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
+        data = list(cursor.fetchall())
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 """
 Geting data from DataBase to import in index page for Corona News
 """
-def read_data_Corona_news(ofsset, limit):
+def read_data_Corona_news(limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE status = 3 ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
-    data = list(cursor.fetchall())
-    return data
-
+    try:
+        cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE status = 3 ORDER BY news_date DESC LIMIT %s;', (limit,))
+        data = list(cursor.fetchall())
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 
 """
@@ -483,10 +487,12 @@ We need a rows number to figure out how many pages do we have
 def row_count():
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT COUNT(*) FROM tbl_news')
-    data = cursor.fetchone()
-    return data[0]
-
+    try:
+        cursor.execute('SELECT COUNT(*) FROM tbl_news WHERE NOT status = 3 AND NOT status = 4')
+        data = cursor.fetchone()
+        return data[0]
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 """
 Geting data from DataBase to import in to the Slider
@@ -494,10 +500,12 @@ Geting data from DataBase to import in to the Slider
 def read_data_for_slider(limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news  WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT %s', ("%" + "tejaratnews" + "%", limit))
-    data = list(cursor.fetchall())
-    return data
-
+    try:
+        cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news  WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT %s', ("%" + "tejaratnews" + "%", limit))
+        data = list(cursor.fetchall())
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 """
 Inserting ip address in to the db
@@ -576,61 +584,79 @@ arzdigital news QUERY
 def arzdigital_news():
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT 10;"  , ("%" + "arzdigital" + "%",))
-    data = cursor.fetchall()
-    cursor.close()
-    return data
-
+    try:
+        cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT 10;"  , ("%" + "arzdigital" + "%",))
+        data = cursor.fetchall()
+        cursor.close()
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 def check_slug(text):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date,status,id FROM tbl_news WHERE tbl_news.news_slug = %s ; "  , (text, ))
-    data = cursor.fetchall()
-    cursor.close()
-    return data
-
+    try:
+        cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date,status,id FROM tbl_news WHERE tbl_news.news_slug = %s ; "  , (text, ))
+        data = cursor.fetchall()
+        cursor.close()
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 def related_news_sidebar(state):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title FROM tbl_news WHERE tbl_news.status = %s ORDER BY tbl_news.news_date DESC LIMIT 8 ; "  , (state, ))
-    data = cursor.fetchall()
-    cursor.close()
-    return data
-
+    try:
+        cursor.execute("SELECT news_slug,news_title FROM tbl_news WHERE tbl_news.status = %s ORDER BY tbl_news.news_date DESC LIMIT 8 ; "  , (state, ))
+        data = cursor.fetchall()
+        cursor.close()
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 def bors_news_sidebar():
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title,news_img_link FROM tbl_news WHERE tbl_news.status = 4 LIMIT 5 ; " )
-    data = cursor.fetchall()
-    cursor.close()
-    return data
+    try:
+        cursor.execute("SELECT news_slug,news_title,news_img_link FROM tbl_news WHERE tbl_news.status = 4 LIMIT 5 ; " )
+        data = cursor.fetchall()
+        cursor.close()
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 def arz_news_sidebar():
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title FROM tbl_news WHERE tbl_news.status = 2 ORDER BY tbl_news.news_date DESC LIMIT 5 ; " )
-    data = cursor.fetchall()
-    cursor.close()
-    return data
+    try:
+        cursor.execute("SELECT news_slug,news_title FROM tbl_news WHERE tbl_news.status = 2 ORDER BY tbl_news.news_date DESC LIMIT 5 ; " )
+        data = cursor.fetchall()
+        cursor.close()
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 def sitemap():
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_date FROM tbl_news ;")
-    data = cursor.fetchall()
-    cursor.close()
-    return data
+    try:
+        cursor.execute("SELECT news_slug,news_date FROM tbl_news ;")
+        data = cursor.fetchall()
+        cursor.close()
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
     
-def bors_news(limit):
+def bors_news(ofsset,limit):
     db = get_database_connection()
     cursor = db.cursor()
-    cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news  WHERE status = 4 ORDER BY news_date DESC LIMIT %s",(limit,))
-    data = cursor.fetchall()
-    cursor.close()
-    return data
+    try:
+        cursor.execute("SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news  WHERE status = 4 ORDER BY news_date DESC LIMIT %s, %s",(ofsset,limit))
+        data = cursor.fetchall()
+        cursor.close()
+        return data
+    except Exception as e:
+        return f"ERROR -> {e}"
 
 
 
