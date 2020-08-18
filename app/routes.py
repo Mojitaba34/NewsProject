@@ -16,22 +16,20 @@ This routes is for Home page and passing some data to home Page
 def home():
     
     limit= 6
-    limit_corona = 6
-    bors_news_limit = 3
+    limit_corona = 3
+    bors_news_limit = 6
     row_num = db.row_count()
-    page_num = math.ceil(row_num / limit)
+    page_num = math.floor(row_num / limit)
     if int(request.args.get('page', 1, type=int)) > page_num:
         return render_template('404.html')
     page = request.args.get('page', 1, type=int)
     pagination_link_limit = 5
     slider_limit = 3
     ofsset=limit * (page - 1)
-    ofsset_corona=limit_corona * (page - 1)
+    ofsset_bors=bors_news_limit * (page - 1)
     data = db.read_data(ofsset,limit)# reading data from data base to insert in news section
-    Corona_data = db.read_data_Corona_news(ofsset_corona,limit_corona)
-    bors_news_data = db.bors_news(bors_news_limit)
-    row_num = db.row_count()
-    page_num = math.ceil(row_num / limit)# getting page numbers for creating pagination
+    Corona_data = db.read_data_Corona_news(limit_corona)
+    bors_news_data = db.bors_news(ofsset_bors,bors_news_limit)
     # pagination page numbers show sort
     maxLeft = (page - math.ceil(pagination_link_limit/2)+1)# max Left pages number show from active page
     maxRight = (page + math.ceil(pagination_link_limit/2)-1)# max Right pages number show from active page

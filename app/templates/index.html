@@ -21,8 +21,8 @@
             <div class="row"
               style="padding: 5px; position: absolute; right:0; bottom:0; left: 0; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(31, 24, 41, 0.6)); z-index: 100; ">
               <div class="col-md-12 concept text-center p-3 text-sm-center"
-                style="color: #fff; z-index: 10000; position: absolute; bottom: 0; text-shadow: 0 0 10px #fff;">
-                <a href="{{post[0]}}">
+                style="color: #fff; z-index: 10000; position: absolute; bottom: 0; ">
+                <a href="{{post[0]}}" style="text-shadow: 0 0 10px #fff;">
                   <h2 class="carousel-title"> <b> {{ post[1] }}</b> </h2>
                 </a>
                 <p class="text-sm-justify h5 p-4 d-none d-sm-block" style="line-height: 1.4;">
@@ -110,7 +110,7 @@
 
     <div class="row mt-5">
 
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-6 col-12 mt-lg-0 mt-3">
 
         <div class="title text-center mb-4">
           <a href="#x">
@@ -124,7 +124,7 @@
             <div class="our-card" style="width: 100%;">
 
               <div class="ml-sm-3 image-news-container" style="overflow: hidden; border-radius: 4px;">
-                <img src="{{post[4]}}" width=100%%" height=100%%" alt="images-of-news">
+                <img src="{{post[4]}}" width=100%" height=100%" alt="images-of-news">
               </div>
 
               <div class="text">
@@ -146,18 +146,17 @@
       </div>
       <!-- end of div.col-md-6 -->
 
-
-
-      <div class="col-lg-6 col-12">
+      {% if not bors_news_data == []%}
+      <div class="col-lg-6 col-12 mt-lg-0 mt-3">
         <div class="title text-center mb-4">
           <a href="#x">
-            <h4> خبرهای ویروس کرونا </h4>
+            <h4> اخبار بورس </h4>
           </a>
         </div>
         <div class="corona-virus">
 
           <div class="row">
-            {% for data in corona_data %}
+            {% for data in bors_news_data %}
             <div class="col-md-6 mx-auto">
 
               <!-- item 1 -->
@@ -181,6 +180,7 @@
         </div>
         <!-- end of div.corona-virus -->
       </div>
+      {% endif%}
       <!-- end of div.col-md-6 -->
 
 
@@ -189,8 +189,8 @@
       <div class="digital-coin">
 
         <ul>
-          {% for data in bors_news_data %}
-          <span class="text-danger"> اخبار بورس : </span>
+          {% for data in corona_data %}
+          <span class="text-danger">اخبار ویروس کرونا</span>
           <li class="card-title"><a href="{{data[0]}}">{{ data[1]}} <span>:</span> </a></li>
           <li>{{data[2]|truncate(80)}}</li>
           {% endfor %}

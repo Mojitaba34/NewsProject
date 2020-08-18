@@ -135,6 +135,7 @@
 
       <!-- menu -->
       <nav class="header-content" id="header-content">
+
         <ul class="pages">
           <li>
             <div class="name-of-site text-center">
@@ -148,6 +149,7 @@
           <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
           </li>
         </ul>
+
         <div class="social-media">
           <a data-toggle="popover" data-placement="bottom" data-trigger="hover"
             data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i
@@ -159,6 +161,10 @@
             data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
           <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="جستجو کنید" href="#x"
             class="search-icon"> <i class="fa fa-search"></i> </a>
+
+            <div class="date">
+              امروز - <span id="weekDate">  </span> <span id="monthDate">  </span>
+            </div>
         </div>
 
       </nav>
@@ -206,13 +212,14 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="landing-news-title mb-4 ">
-                          <div class="d-flex" style="justify-content: space-between;">
-                            <h4 style="text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);"> <strong> {{ post[1] }} </strong> </h4>
-                            <h6 class="text-muted d-none d-sm-block" style="font-size: 1rem;"> زمان تقریبی خواندن مطلب
-                              {{time_read}} دقیقه </h6>
-                          </div>
+                          
+                          <h4 style="text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);"> <strong> {{ post[1] }} </strong> </h4>
                           <h5 class="text-muted"> <strong> اقتصاد </strong> </h5>
+                          <div class="d-flex" style="justify-content: space-between;">
                           <h6> {{post[5]}} </h6>
+                          <h6 class="text-muted d-none d-sm-block" style="font-size: 1rem;"> زمان تقریبی خواندن مطلب
+                            {{time_read}} دقیقه </h6>
+                          </div>
 
                         </div>
                         <!-- end of div.landing-news-title -->
@@ -437,6 +444,9 @@
     <script src="{{ url_for('admin.static',filename='js/wow.min.js') }}"></script>
 
     <script src="{{ url_for('admin.static',filename='js/particles.js') }}"></script>
+
+    <!--date js file -->
+    <script src="{{ url_for('admin.static',filename='js/date.js') }}"></script>
 
     <!--main js file -->
     <script src="{{ url_for('admin.static',filename='js/main.js') }}"></script>
