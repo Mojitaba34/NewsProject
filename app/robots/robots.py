@@ -116,7 +116,7 @@ class news_from_tejaratnews():
         data_len = self.news_title()
         for post in range(len(data_len)):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
-        return posts#TODO: InsertTblNews()
+        return posts
         
 
 
@@ -217,7 +217,7 @@ class news_from_tasnimnews():
         posts=[]
         for post in range(len(self.news_title())):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
-        return posts#TODO: InsertTblNews()
+        return posts
 
 
 
@@ -309,7 +309,7 @@ class news_from_arzdigital():
         posts=[]
         for post in range(len(self.news_title())):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
-        return posts #TODO: InsertTblNews()
+        return posts
 
 
 
@@ -370,7 +370,7 @@ class news_from_mehrnews():
         posts=[]
         for post in range(len(self.news_title())):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
-        return posts #TODO: InsertTblNews()
+        return posts
 
 
 
@@ -426,4 +426,4 @@ class Bors_news():
         posts=[]
         for post in range(len(self.news_title())):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
-        return posts #TODO: InsertTblNews()
+        return posts
