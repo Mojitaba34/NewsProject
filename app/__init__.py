@@ -10,6 +10,8 @@ app = Flask(__name__ ,template_folder='templates',
 
 app.config["SECRET_KEY"] = config.SECRET_KEY
 app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=5)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 
 try:
     print("build Tables")
@@ -21,6 +23,6 @@ except Exception as e:
 
 from app import routes # route import 
 from app.admin.routes import admin # admin route import
-app.register_blueprint(admin,url_prefix='/admin') # add admin route with blueprint
+app.register_blueprint(admin,url_prefix='/auth/{}/admin'.format(config.ADMIN_URL)) # add admin route with blueprint
 from app import error_handlers # error Handling
 

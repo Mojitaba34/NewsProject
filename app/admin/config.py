@@ -8,3 +8,5 @@ MYSQL_DB_NAME = os.getenv('MYSQL_DB_NAME')
 
 # APP_SECRETKEY
 SECRET_KEY = os.getenv('SEC_KEY')
+
+ADMIN_URL = os.getenv('AD_URL')

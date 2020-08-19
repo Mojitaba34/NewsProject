@@ -10,6 +10,10 @@
     <meta name="keywords" content=" {% for key in keywords %} {{key}} {% endfor %}">
   <meta name="author" content="Pro-dev">
   <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  
   <title> egtesadkhan.com|اقتصاد خوان - </title>
 
   <!--bootstrap -->
@@ -242,7 +246,7 @@
                           <p class="text-justify">{{post[2]}}</p>
                           <!-- shared content by -->
                           <div class="shared-by d-flex">
-                            <img src="../admin/static/images/landingpage/profile.jpg"
+                            <img src="{{ url_for('admin.static',filename='images/landingpage/profile.jpg') }}"
                               alt="profile-photo">
                             <div class="profile-name mr-3">
                               <span class="text-muted"> انتشار مطلب توسط </span>

@@ -3,8 +3,7 @@ name: newsapp
 spec:
   image: newsapp:13990529.1
   allow_http: false
-  static_path: /static/
-
+  static_path: /var/www/static/
       
 
   domains:
@@ -19,6 +18,9 @@ spec:
       value: efiAmirMoji@123
     - name: MYSQL_DB_NAME
       value: newsdb
+    - name: AD_URL
+      value: efi-moji-amir
+    hidden: true
     
   resources:
     memory: 1548Mi
