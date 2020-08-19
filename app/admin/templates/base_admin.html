@@ -11,6 +11,7 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('admin.static',filename='images/favicon.png') }} ">
     <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link href="{{ url_for('admin.static',filename='extra-libs/c3/c3.min.css' )}}" rel="stylesheet">
     <link href="{{ url_for('admin.static',filename='extra-libs/jvector/jquery-jvectormap-2.0.2.css' )}}" rel="stylesheet" />
@@ -211,12 +212,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
                                     class="hide-menu">Robots</span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="{{url_for('admin.news_robot')}}" class="sidebar-link"><span
-                                            class="hide-menu">News Robots</span></a>
-                                </li>
-                                <li class="sidebar-item"><a href="{{ url_for('admin.crypto_robot') }}" class="sidebar-link"><span
-                                            class="hide-menu">Crypto Robots</span></a>
-                                </li>
+                                
                             </ul>
                             <li class="list-divider"></li>
                             <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url_for('admin.logout')}}" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
@@ -337,6 +333,7 @@
                 // it is unnecessary to have to manually call the modal.
                 // $('#addBookDialog').modal('show');
            });
+
         </script>
 </body>
 

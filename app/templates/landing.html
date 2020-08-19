@@ -82,12 +82,8 @@
     <!-- menu on mobile  -->
     <nav id="menu-toggle">
         
-        <!-- toggler-times button -->
-        <div class="toggler-times w-100">
-          <i class="fa fa-times"></i>
-        </div>
         <!-- start of Hero Section -->
-        <div id="hero" class="mb-5 px-4">
+        <div id="hero" class="mb-5 px-3">
           <div class="text-center">
 
             <div class="w-100">
@@ -109,10 +105,16 @@
                 </ul>
               </div>
 
+              <!-- social media apps in mobile view -->
               <div class="social-media mt-5">
                 <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
                 <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
                 <a href="#"> <i class="fa fa-twitter"></i></a>
+              </div>
+
+              <!-- date in mobile menu  -->
+              <div class="date mt-4">
+                <span id="weekDate_1">  </span>  <span id="monthDate_1">  </span>
               </div>
 
             </div>
@@ -132,7 +134,6 @@
 
     <!-- start of header area -->
     <header id="header">
-
       <!-- menu -->
       <nav class="header-content" id="header-content">
 
@@ -163,7 +164,7 @@
             class="search-icon"> <i class="fa fa-search"></i> </a>
 
             <div class="date">
-              امروز - <span id="weekDate">  </span> <span id="monthDate">  </span>
+              <span id="weekDate">  </span> <span id="monthDate">  </span>
             </div>
         </div>
 
@@ -419,8 +420,6 @@
                 <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
                 <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a>
                 </li>
-                <li> <a href="/arzdigital" class="{{ 'active' if active_page == 'landing' else '' }}">
-                    لندینگ </a> </li>
               </ul>
             </div>
           </div>
