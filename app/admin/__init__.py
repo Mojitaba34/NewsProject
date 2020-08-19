@@ -1,6 +1,5 @@
 from flask import (Flask,Blueprint,render_template,request,flash,redirect,url_for,Response,session)
 from app.admin import db
-from app.admin import config
 from app.admin import api
 
 

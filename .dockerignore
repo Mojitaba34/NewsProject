@@ -3,6 +3,7 @@ venv/
 .venv/
 .fandogh/
 .gitignore
+fandogh.yml
 LICENSE
 README.md
 app/test/

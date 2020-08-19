@@ -1,7 +1,7 @@
 kind: ExternalService
 name: newsapp
 spec:
-  image: newsapp:13990525.6
+  image: newsapp:13990529.1
   allow_http: false
   static_path: /static/
 
@@ -10,8 +10,18 @@ spec:
   domains:
      - name: egtesadkhan.com
 
+  env:
+    - name: MYSQL_HOST
+      value: newshost
+    - name: MYSQL_USERNAME
+      value: root
+    - name: MYSQL_PASSWORD
+      value: efiAmirMoji@123
+    - name: MYSQL_DB_NAME
+      value: newsdb
+    
   resources:
-    memory: 1500Mi
+    memory: 1548Mi
 
   
 
