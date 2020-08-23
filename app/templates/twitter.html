@@ -1,0 +1,421 @@
+{% set active_page = 'landing'%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content=" {% for key in keywords %} {{key}} {% endfor %}">
+    <meta name="author" content="Pro-dev">
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title> egtesadkhan.com|اقتصاد خوان - </title>
+
+    <!--bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/bootstrap.min.css') }}">
+
+    <!--Font awesome -->
+    <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/font-awesome.min.css') }}">
+
+    <!--Owl carousel -->
+    <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/owl.theme.default.css') }}">
+
+    <!--css animation -->
+    <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/hover-min.css') }}">
+
+    <!--main css files -->
+    <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/responsive.css') }}">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169005487-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-169005487-1');
+    </script>
+    <script type="text/javascript">
+        (function () {
+            var now = new Date();
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.async = true;
+            var script_address = 'https://cdn.yektanet.com/js/egtesadkhan.com/native-egtesadkhan.com-10672.js';
+            script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
+            head.appendChild(script);
+        })();
+    </script>
+
+</head>
+
+
+{% if active_page == 'arzdigital' %}
+
+<body onload="autoRefreshPage()">
+    {% else %}
+
+    <body>
+        {% endif %}
+
+        <!-- Start of fixed menu on mobie view -->
+        <div class="above-site-mobile">
+
+            <div class="toggler-bars">
+                <i class="fa fa-bars"></i>
+            </div>
+
+            <div class="name-of-site">
+                <a href="/">
+                    <h4> <strong> اقتصاد خوان </strong> </h4>
+                </a>
+            </div>
+
+            <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+
+        </div>
+        <!-- end of fixed menu on mobie view -->
+
+
+        <!-- menu on mobile  -->
+        <nav id="menu-toggle">
+
+            <!-- start of Hero Section -->
+            <div id="hero" class="mb-5 px-3">
+                <div class="text-center">
+
+                    <div class="w-100">
+                        <h1 class="mt-4 hero-title"> <strong> اقتصاد خوان </strong> </h1>
+                    </div>
+
+                    <div class="w-100 mt-3">
+
+                        <form action="#" class="form-row search-box text-center" method="GET">
+                            <input type="text" class="form-control my-4" name="search" placeholder="جستجو کنید...">
+                            <a href="#"> <i class="fa fa-search zarebin-2"></i> </a>
+                        </form>
+
+                        <div class="header-content-mobile">
+                            <ul class="pages">
+                                <li> <a href="/"> خانه </a> <i class="fa fa-home"></i> </li>
+                                <li> <a href="/about"> درباره ی ما </a> <i class="fa fa-users"></i> </li>
+                                <li> <a href="/contact"> ارتباط با ما </a> <i class="fa fa-envelope"></i> </li>
+                            </ul>
+                        </div>
+
+                        <!-- social media apps in mobile view -->
+                        <div class="social-media mt-5">
+                            <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+                            <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
+                            <a href="#"> <i class="fa fa-twitter"></i></a>
+                        </div>
+
+                        <!-- date in mobile menu  -->
+                        <div class="date mt-4">
+                            <span id="weekDate"> </span> <span id="monthDate"> </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+        <!-- end of nav#menu-toggle -->
+
+
+        <div class="close-mobile-menu">
+            <!-- div that clicking on it will close the mobile menu -->
+        </div>
+        <!-- end of menu on mobile  -->
+
+
+
+        <div class="container">
+            <!-- start of header area -->
+            <header id="header">
+              <!-- menu -->
+              <nav class="header-content" id="header-content">
+      
+                <ul class="pages">
+      
+                  <li> <a class="search-icon" href="#x"> <img src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" style="position: relative; bottom: 6px;" width="175" height="auto" alt="search"> </a></li>
+                  <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
+                  <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
+                  <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a></li>
+                  <li> <a href="/twitter" class="{{ 'active' if active_page == 'twitter' else '' }}"> twitter </a> </li>
+                  
+                </ul>
+      
+              <div class="d-flex">
+              
+                  <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="جستجو کنید" class="search-icon" href="#x"> <img src="{{ url_for('admin.static',filename='images/search.svg') }}" width="20" height="20" alt="search"> </a>
+                  
+                  <div class="date mr-3">
+                    <span id="weekDate_1">  </span> <span id="monthDate_1">  </span>
+                  </div>
+      
+              </div>
+      
+              </nav>
+      
+            </header>
+            <!-- end of header area -->
+          </div>
+          <!-- end of div.container -->
+
+
+        <!-- normal view header & menu -->
+        <!-- Whole Site  -->
+        <div class="container-fluid landing-whole whole">
+
+            <div id="container">
+
+                <div class="above-site-normal">
+                    <div class="toggler-bars w-100">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                </div>
+
+                <!-- search-window-open -->
+                <div id="search-window">
+                    <a href="#x"> <i class="fa fa-times text-light fa-2x"></i> </a>
+                    <form class="w-75">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="searchInput" aria-describedby="search-input"
+                                placeholder="جستجو کنید">
+                            <a href="#"> <i class="text-light fa fa-2x fa-search"></i> </a>
+                        </div>
+                    </form>
+                </div>
+                <!-- end of header area -->
+
+
+
+                <!-- start of main area -->
+                <main>
+
+                    <section id="landing">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-9 col-12">
+                                    {% for post in data%}
+                                    <div id="landing-content">
+
+                                        <div class="row">
+
+                                            <!--------------------------
+                                            your code goes here 
+                                            main content of page goes here 
+                                            -------------------------------->
+
+                                        </div>
+                                        <!-- end of div.row isnide div.col-md-9 -->
+
+                                        <div id="pos-footer-sticky-9576"></div>
+                                    </div>
+                                    <div id="pos-article-text-10942"></div>
+                                    <!-- end of div#landing-content -->
+                                    {% endfor %}
+                                </div>
+                                <!-- end of div.col-md-9 -->
+
+
+                                <!-- start of aside tag side menu -->
+                                <aside class="col-lg-3 col-12">
+
+                                    <div class="side-menu-container">
+                                        <!-- start of category area -->
+                                        <div class="side-menu related-items mb-3 category-list">
+                                            <div class="title">
+                                                <h6 class="py-1"> <strong> موضوعات مرتبط </strong> </h6>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </div>
+                                            <ul>
+                                                <!-- item 1 li -->
+                                                <li> <a href="#x"> اخبار مرتبط </a>
+                                                    <ul>
+                                                        {% for related in related_news %}
+                                                        <li> <a href="{{related[0]}}"> {{related[1]}} </a> </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- end of sidemenu 1 area -->
+                                        <!-- start of envoriment area -->
+                                        <div class="side-menu envoriment mb-3 category-list">
+
+                                            <div class="title">
+                                                <h6 class="py-1"> <strong> اخبار بورس</strong> </h6>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </div>
+                                            {% for today in bors_news %}
+                                            <ul>
+                                                <div class="our-card p-1">
+                                                    <img class="country" src="{{today[2]}}" alt="{{today[1]}}">
+                                                    <p style="line-height: 1.2;" class="mr-2"> <a href="{{today[0]}}">
+                                                            {{today[1]}}</a>
+                                                    </p>
+                                                </div>
+                                            </ul>
+                                            {% endfor %}
+                                        </div>
+                                        <!-- end of envoriment area -->
+
+                                        <!-- start of boors area -->
+                                        <div class="side-menu boors mb-3 category-list">
+
+                                            <div class="title">
+                                                <h6 class="py-1"> <strong> اخبار ارز </strong> </h6>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </div>
+
+                                            <ul>
+                                                {% for last in arz_news %}
+                                                <li> <a href="{{last[0]}}"> {{last[1]}} </a> </li>
+                                                {% endfor %}
+                                            </ul>
+
+                                        </div>
+                                        <!-- end of boors area -->
+
+
+                                    </div>
+                                    <!-- end div.side-menu-container -->
+                                </aside>
+                                <!-- end of aside tag side menu --> -->
+
+
+                            </div>
+                            <!-- end of div.row -->
+                        </div>
+                        <!-- end of div.container -->
+                    </section>
+                    <!-- end of section#landing -->
+                </main>
+                <!-- end of main area -->
+
+            </div>
+
+        </div>
+
+
+        <!-- start of footer area -->
+    <footer id="footer">
+
+        <div class="back-up">
+          <p class="m-0"> پشتیبانی : 0921 776 9760 </p>
+        </div>
+  
+        <div class="row d-flex my-4" style="align-items: center;">
+  
+          <div class="col-md-4">
+            <div class="card">
+              <img src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" height="auto" width="75%" alt="logo">
+              <div class="card-body">
+  
+                <div class="d-flex" style="align-items: center;">
+                  <i class="fa fa-envelope fa-2x ml-3 text-dark"></i>
+                  <p class="card-title m-0">info@egtesadkhan.com</p>
+                </div>
+  
+                <div class="d-flex" style="align-items: center;">
+                  <i style="position: relative; right: 6px;" class="fa fa-map-marker fa-2x ml-3 text-dark"></i>
+                  <p class="m-0">
+                    ایران ، تبریز
+                  </p>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+  
+          <!-- Tags part -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body"">
+                  <h5 class=" card-title">اقتصاد خوان</h5>
+                <p> <a href="#"> درباره ما </a> </p>
+                <p> <a href="#"> ارتباط با ما </a> </p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Best Rated -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body"">
+                  <h5 class=" card-title">خبرنامه</h5>
+  
+                <form>
+                  <div class="form-group mail">
+                    <input type="email" class="form-control"
+                      style="box-shadow: 0 0 10px rgba(128, 128, 128,0.5); border: unset; border-radius: 25px;"
+                      id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ایمیل خود را وارد کنید">
+                    <input class="send-email" value="ارسال" type="submit">
+                  </div>
+                </form>
+  
+                <div class="social-media">
+                  <a class="instagram" data-toggle="popover" data-placement="top" data-trigger="hover"
+                    data-content="میتونید مارو تو اینستاگرام دنبال کنید" href="https://www.instagram.com/egtesadkhan/"> <i
+                      class="fa fa-instagram"></i></a>
+                  <a class="telegram" data-toggle="popover" data-placement="top" data-trigger="hover"
+                    data-content="میتونید کانال تلگرامی مارو دنبال کنید" href="#x"> <i class="fa fa-telegram"></i></a>
+                  <a class="twitter" data-toggle="popover" data-placement="top" data-trigger="hover"
+                    data-content="میتونید مارو تو توییتر دنبال کنید" href="#x"> <i class="fa fa-twitter"></i></a>
+                  <a class="whatsapp" data-toggle="popover" data-placement="top" data-trigger="hover"
+                    data-content="میتونید تو واتس اپ باهامون درارتباط باشید " href="#x"> <i
+                      class="fa fa-whatsapp"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+  
+        </div>
+        <!-- end of row -->
+  
+        <div class="rules text-center text-light py-2">
+          <p> تمامی حقوق برای اقتصاد خوان محفوط میباشد 1399 &copy; </p>
+        </div>
+  
+      </footer>
+      <!-- end of bottem & Footer -->
+
+        <div class="special-button-landing bg-light">
+            <a href="#" class="our-btn"> برو <br> <span> بالا </span> </a>
+        </div>
+
+
+        <!--jQuery and popper -->
+        <script src="{{ url_for('admin.static',filename='js/jquery-3.5.0.js') }}"></script>
+        <script src="{{ url_for('admin.static',filename='js/popper.min.js') }}"></script>
+
+        <!--bootstrap -->
+        <script src="{{ url_for('admin.static',filename='js/bootstrap.min.js') }}"></script>
+
+        <!--Owl carousel -->
+        <script src="{{ url_for('admin.static',filename='js/owl.carousel.min.js') }}"></script>
+
+        <!--js animation -->
+        <script src="{{ url_for('admin.static',filename='js/wow.min.js') }}"></script>
+
+        <script src="{{ url_for('admin.static',filename='js/particles.js') }}"></script>
+
+        <!--date js file -->
+        <script src="{{ url_for('admin.static',filename='js/date.js') }}"></script>
+
+        <!--main js file -->
+        <script src="{{ url_for('admin.static',filename='js/main.js') }}"></script>
+    </body>
+
+</html>
