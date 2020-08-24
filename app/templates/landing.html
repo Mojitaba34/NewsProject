@@ -83,50 +83,51 @@
     <!-- end of fixed menu on mobie view -->
 
 
-    <!-- menu on mobile  -->
-    <nav id="menu-toggle">
-        
-        <!-- start of Hero Section -->
-        <div id="hero" class="mb-5 px-3">
-          <div class="text-center">
+        <!-- menu on mobile  -->
+        <nav id="menu-toggle">
 
-            <div class="w-100">
-              <h1 class="mt-4 hero-title"> <strong> اقتصاد خوان </strong> </h1>
-            </div>
-
-            <div class="w-100 mt-3">
-
-              <form action="#" class="form-row search-box text-center" method="GET">
-                <input type="text" class="form-control my-4" name="search" placeholder="جستجو کنید...">
-                <a href="#"> <i class="fa fa-search zarebin-2"></i> </a>
-              </form>
-
-              <div class="header-content-mobile">
-                <ul class="pages">
-                  <li> <a href="/"> خانه </a> <i class="fa fa-home"></i> </li>
-                  <li> <a href="/about"> درباره ی ما </a> <i class="fa fa-users"></i> </li>
-                  <li> <a href="/contact"> ارتباط با ما </a> <i class="fa fa-envelope"></i> </li>
-                </ul>
+          <!-- start of Hero Section -->
+          <div id="hero" class="mb-5 px-3">
+            <div class="text-center">
+    
+              <div class="w-100">
+                <a class="logo" href="#/"> <img
+                  src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" alt="search"> </a>
               </div>
-
-              <!-- social media apps in mobile view -->
-              <div class="social-media mt-5">
-                <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
-                <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
-                <a href="#"> <i class="fa fa-twitter"></i></a>
+    
+              <div class="w-100 mt-3">
+    
+                <form action="#" class="form-row search-box text-center" method="GET">
+                  <input type="text" class="form-control my-4" name="search" placeholder="جستجو کنید...">
+                  <a href="#"> <i class="fa fa-search zarebin-2"></i> </a>
+                </form>
+    
+                <div class="header-content-mobile">
+                  <ul class="pages">
+                    <li> <a href="/"> خانه </a> <i class="fa fa-home"></i> </li>
+                    <li> <a href="/about"> درباره ی ما </a> <i class="fa fa-users"></i> </li>
+                    <li> <a href="/contact"> ارتباط با ما </a> <i class="fa fa-envelope"></i> </li>
+                  </ul>
+                </div>
+    
+                <!-- social media apps in mobile view -->
+                <div class="social-media mt-5">
+                  <a href="https://www.instagram.com/egtesadkhan/"> <i class="fa fa-instagram"></i></a>
+                  <a href="https://t.me/egtesadkhan"> <i class="fa fa-telegram"></i></a>
+                  <a href="#"> <i class="fa fa-twitter"></i></a>
+                </div>
+    
+                <!-- date in mobile menu  -->
+                <div class="date mt-4">
+                  <span id="weekDate"> </span> <span id="monthDate"> </span>
+                </div>
+    
               </div>
-
-              <!-- date in mobile menu  -->
-              <div class="date mt-4">
-                <span id="weekDate">  </span>  <span id="monthDate">  </span>
-              </div>
-
             </div>
           </div>
-        </div>
-
-    </nav>
-    <!-- end of nav#menu-toggle -->
+    
+        </nav>
+        <!-- end of nav#menu-toggle -->
 
 
     <div class="close-mobile-menu">
@@ -414,16 +415,16 @@
             </div>
             <!-- end of row -->
       
-            <div class="rules text-center text-light py-2">
-              <p> تمامی حقوق برای اقتصاد خوان محفوط میباشد 1399 &copy; </p>
-            </div>
-      
           </footer>
           <!-- end of bottem & Footer -->
 
-    <div class="special-button-landing bg-light">
-      <a href="#" class="our-btn"> برو <br> <span> بالا </span> </a>
-    </div>
+          <div class="rules text-center text-light py-2">
+            <p> تمامی حقوق برای اقتصاد خوان محفوط میباشد 1399 &copy; </p>
+          </div>
+
+        <div class="special-button bg-light">
+          <a href="#" class="our-btn"> برو <br> <span> بالا </span> </a>
+        </div>
 
 
     <!--jQuery and popper -->

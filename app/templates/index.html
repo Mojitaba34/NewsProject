@@ -252,15 +252,6 @@
   <!-- start of section content -->
   <section id="content" dir="rtl">
 
-    <div class="w-100 main-titles">
-
-
-      <h2 class="text-right"> <b> اخبار روز </b> </h2>
-      <hr class="line-next-to-title">
-
-    </div>
-
-
     <div class="row mt-5">
 
       <div class="col-lg-6 col-12 mt-lg-0 mt-3">
@@ -272,36 +263,72 @@
   
         </div>
 
-        {% for post in data %}
+        <!-- { % for post in data % } -->
         <div class="day-news">
-          <div class="daily-news-content">
+          
+          <div class="row">
 
-            <div class="our-card" style="width: 100%;">
+            <div class="col-md-6">
 
-              <div class="ml-sm-3 image-news-container" style="overflow: hidden; border-radius: 4px;">
-                <img src="{{post[4]}}" width=100%" height=100%" alt="images-of-news">
+              <!-- item 1 -->
+              <div class="our-card">
+                <img src="{{ url_for('admin.static',filename='images/camera-blue.jpg') }}" class="ml-2" alt="picture">
+                <div class="category-info">
+                  <a href="#">
+                    <p class="text-muted"> طبیعت </p>
+                  </a>
+                  <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p>
+                </div>
               </div>
-
-              <div class="text">
-                <h5>
-                  <strong>
-                    <a href="{{ url_for('landing',slug=post[0])}}"> {{post[1]}} </a>
-                  </strong>
-                </h5>
-                <p> {{post[2]|truncate(150)}} </p>
+              <!-- item 2 -->
+              <div class="our-card">
+                <img src="{{ url_for('admin.static',filename='images/blue-sky-girl.jpg') }}" class="ml-2" alt="picture">
+                <div class="category-info">
+                  <a href="#">
+                    <p class="text-muted"> طبیعت </p>
+                  </a>
+                  <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p>
+                </div>
               </div>
 
             </div>
 
+            <div class="col-md-6">
+
+              <!-- item 1 -->
+              <div class="our-card">
+                <img src="{{ url_for('admin.static',filename='images/c-4.jpg') }}" class="ml-2" alt="picture">
+                <div class="category-info">
+                  <a href="#">
+                    <p class="text-muted"> طبیعت </p>
+                  </a>
+                  <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p>
+                </div>
+              </div>
+              <!-- item 2 -->
+              <div class="our-card">
+                <img src="{{ url_for('admin.static',filename='images/blue-sky-girl.jpg') }}" class="ml-2" alt="picture">
+                <div class="category-info">
+                  <a href="#">
+                    <p class="text-muted"> طبیعت </p>
+                  </a>
+                  <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p>
+                </div>
+              </div>         
+
+            </div>
+
           </div>
-          <!-- end of div.daily-news-content -->
+          <!-- end of row -->
         </div>
-        {% endfor %}
+        <!-- { % endfor % } -->
 
       </div>
       <!-- end of div.col-md-6 -->
 
-      {% if not bors_news_data == []%}
+
+
+      <!-- { % if not bors_news_data == []% } -->
       <div class="col-lg-6 col-12 mt-lg-0 mt-3">
 
         <div class="w-100 main-titles">
@@ -314,31 +341,62 @@
         <div class="corona-virus">
 
           <div class="row">
-            {% for data in bors_news_data %}
-            <div class="col-md-6 mx-auto">
 
+            <div class="col-md-6">
               <!-- item 1 -->
-              <div class="card" style="width: 100%">
-                <div class="corona-image-container">
-                  <div class="bg">
-                    <img src="{{data[4]}}" class="img-fluid card-img-top" alt="corona-virus">
-                  </div>
+              <div class="our-card">
+                <img src="{{ url_for('admin.static',filename='images/watch.jpg') }}" class="ml-2" alt="picture">
+                <div class="category-info">
+                  <a href="#">
+                    <p class="text-muted"> طبیعت </p>
+                  </a>
+                  <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p>
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title"><a href="{{data[0]}}"> <strong> {{data[1]}} </strong> </a></h5>
-                  <p class="card-text">{{data[2]|truncate(150)}}</p>
+              </div>
+              <!-- item 2 -->
+              <div class="our-card">
+                <img src="{{ url_for('admin.static',filename='images/blue-sky-girl.jpg') }}" class="ml-2" alt="picture">
+                <div class="category-info">
+                  <a href="#">
+                    <p class="text-muted"> طبیعت </p>
+                  </a>
+                  <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p>
                 </div>
               </div>
 
             </div>
-            {% endfor %}
-            <!-- end of div.col-md-6 inside div.col-md-5 -->
+
+            
+            <div class="col-md-6">
+              <!-- item 1 -->
+              <div class="our-card">
+                <img src="{{ url_for('admin.static',filename='images/insta-mobile.jpg') }}" class="ml-2" alt="picture">
+                <div class="category-info">
+                  <a href="#">
+                    <p class="text-muted"> طبیعت </p>
+                  </a>
+                  <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p>
+                </div>
+              </div>
+              <!-- item 2 -->
+              <div class="our-card">
+                <img src="{{ url_for('admin.static',filename='images/watch.jpg') }}" class="ml-2" alt="picture">
+                <div class="category-info">
+                  <a href="#">
+                    <p class="text-muted"> طبیعت </p>
+                  </a>
+                  <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p>
+                </div>
+              </div>
+
+            </div>
+
           </div>
-          <!-- end of div.row inside div.col-md-5 -->
+          <!-- end of div.row inside div.col-md-6 -->
         </div>
         <!-- end of div.corona-virus -->
       </div>
-      {% endif%}
+      <!-- { % endif% } -->
       <!-- end of div.col-md-6 -->
 
 
