@@ -107,6 +107,7 @@
                     <li> <a href="/"> خانه </a> <i class="fa fa-home"></i> </li>
                     <li> <a href="/about"> درباره ی ما </a> <i class="fa fa-users"></i> </li>
                     <li> <a href="/contact"> ارتباط با ما </a> <i class="fa fa-envelope"></i> </li>
+                    <li> <a href="/contact"> توییتر </a> <i class="fa fa-envelope"></i> </li>
                   </ul>
                 </div>
     
@@ -136,7 +137,7 @@
     <!-- end of menu on mobile  -->
 
 
-    <div class="container">
+    <div class="container-fluid">
       <!-- start of header area -->
       <header id="header">
         <!-- menu -->
@@ -144,12 +145,13 @@
 
           <ul class="pages">
 
-            <li> <a class="logo" href="#x"> <img src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" alt="search"> </a></li>
+            <li> <a class="logo" href="#/"> <img
+                  src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" alt="search"> </a></li>
             <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
             <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
             <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a></li>
-            <li> <a href="/twitter" class="{{ 'active' if active_page == 'twitter' else '' }}"> twitter </a> </li>
-            
+            <li> <a href="/twitter" class="{{ 'active' if active_page == 'twitter' else '' }}"> توییتر </a> </li>
+
           </ul>
 
         <div class="d-flex">
@@ -343,7 +345,7 @@
           <footer id="footer">
 
             <div class="back-up">
-              <p class="m-0"> پشتیبانی : 0921 776 9760 </p>
+              <p class="m-0"> پشتیبانی : <span dir="ltr"> 0921 776 9760 </span>  </p>
             </div>
       
             <div class="row d-flex my-4" style="align-items: center;">
@@ -374,8 +376,8 @@
                 <div class="card">
                   <div class="card-body"">
                       <h5 class=" card-title">اقتصاد خوان</h5>
-                    <p> <a href="#"> درباره ما </a> </p>
-                    <p> <a href="#"> ارتباط با ما </a> </p>
+                      <p> <a href="/about"> درباره ما </a> </p>
+                      <p> <a href="/contact"> ارتباط با ما </a> </p>
                   </div>
                 </div>
               </div>
@@ -390,7 +392,7 @@
                       <div class="form-group mail">
                         <input type="email" class="form-control"
                           style="box-shadow: 0 0 10px rgba(128, 128, 128,0.5); border: unset; border-radius: 25px;"
-                          id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ایمیل خود را وارد کنید">
+                          id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" ایمیل شما ">
                         <input class="send-email" value="ارسال" type="submit">
                       </div>
                     </form>
@@ -419,7 +421,7 @@
           <!-- end of bottem & Footer -->
 
           <div class="rules text-center text-light py-2">
-            <p> تمامی حقوق برای اقتصاد خوان محفوط میباشد 1399 &copy; </p>
+            <p> تمامی حقوق برای اقتصاد خوان محفوظ میباشد 1399 &copy; </p>
           </div>
 
         <div class="special-button bg-light">
