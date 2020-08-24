@@ -70,12 +70,11 @@
       </div>
 
       <div class="name-of-site">
-        <a href="/">
-          <h4> <strong> اقتصاد خوان </strong> </h4>
-        </a>
+        <a class="logo" href="#/"> <h3> <strong> اقتصادخوان </strong> </h3> </a>
       </div>
 
-      <a href="#x" class="search-icon"> <i class="fa fa-search"></i> </a>
+      <a href="#x" class="search-icon"> <img src="{{ url_for('admin.static',filename='images/search.svg') }}"
+        width="20" height="20" alt="search"> </a>
 
     </div>
     <!-- end of fixed menu on mobie view -->
@@ -89,7 +88,8 @@
         <div class="text-center">
 
           <div class="w-100">
-            <h1 class="mt-4 hero-title"> <strong> اقتصاد خوان </strong> </h1>
+            <a class="logo" href="#/"> <img
+              src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" alt="search"> </a>
           </div>
 
           <div class="w-100 mt-3">
@@ -141,9 +141,8 @@
 
           <ul class="pages">
 
-            <li> <a class="search-icon" href="#x"> <img
-                  src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}"
-                  style="position: relative; bottom: 6px;" width="175" height="auto" alt="search"> </a></li>
+            <li> <a class="logo" href="#/"> <img
+                  src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" alt="search"> </a></li>
             <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
             <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
             <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a></li>
