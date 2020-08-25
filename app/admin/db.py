@@ -490,7 +490,7 @@ def row_count():
     db = get_database_connection()
     cursor = db.cursor()
     try:
-        cursor.execute('SELECT COUNT(*) FROM tbl_news WHERE NOT status = 3 AND NOT status = 4')
+        cursor.execute('SELECT COUNT(*) FROM tbl_news WHERE NOT status = 3 AND NOT status = 4 AND NOT status = 2')
         data = cursor.fetchone()
         return data[0]
     except Exception as e:

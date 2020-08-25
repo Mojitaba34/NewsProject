@@ -19,7 +19,7 @@ def home():
     limit_corona = 3
     bors_news_limit = 6
     row_num = db.row_count()
-    page_num = math.floor(row_num / limit)
+    page_num = math.ceil(row_num / limit)
     if int(request.args.get('page', 1, type=int)) > page_num:
         return render_template('404.html')
     page = request.args.get('page', 1, type=int)

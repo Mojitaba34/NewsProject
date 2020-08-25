@@ -10,13 +10,13 @@
       <div class="top-news">
         <div class="container-fluid">
           <div class="row">
-  
+
             <div class="col-md-3 col-12 p-1">
               <div class="cards-container">
-  
+
                 <!-- item 1 -->
                 <div class="our-card item-1" style="background-image: url({{ random_arzdigital[3] }})">
-  
+
                   <div class="text">
                     <div class="category-title">
                       <span> ارزدیجیتال </span>
@@ -24,10 +24,10 @@
                     <p> <a href="{{ random_arzdigital[0] }}">{{ random_arzdigital[1]|truncate(50) }}</a> </p>
                   </div>
                 </div>
-  
+
                 <!-- item 2 -->
                 <div class="our-card item-2" style=" background-image: url( {{ random_tasnim[3] }}); margin-top: 10px;">
-  
+
                   <div class="text">
                     <div class="category-title">
                       <span> اقتصاد تسنیم </span>
@@ -35,26 +35,27 @@
                     <p> <a href="{{ random_tasnim[0] }}">{{ random_tasnim[1]|truncate(50) }}</a> </p>
                   </div>
                 </div>
-  
+
               </div>
               <!-- end of div.cards-container -->
             </div>
             <!-- end of div.col-3 -->
-  
-  
+
+
             <div class="col-md-6 col-12 p-1">
               <div class="cards-container">
-  
+
                 <!-- item 1 -->
                 <div class="our-card item-3" style="background-image: url({{ random_bors[3] }}); height: 510px;">
-  
+
                   <div class="text">
                     <div class="category-title">
                       <span> بورس </span>
                     </div>
                     <p> <a href="{{ random_bors[0] }}"> {{ random_bors[1] }} </a> </p>
                     <div class="post-info d-none d-sm-flex align-items-center">
-                      <img src="{{ url_for('admin.static',filename='images/landingpage/profile.jpg') }}" width="30px" height="30px" alt="profile">
+                      <img src="{{ url_for('admin.static',filename='images/landingpage/profile.jpg') }}" width="30px"
+                        height="30px" alt="profile">
                       <p class="m-0 ml-lg-4 ml-md-2 ml-sm-1 ml-0 mr-1"> مدیر </p>
                       |
                       <p class="m-0 mx-lg-4 mx-md-2 mx-sm-1 mx-0">
@@ -69,19 +70,19 @@
                     </div>
                   </div>
                 </div>
-  
+
               </div>
               <!-- end of div.cards-container -->
             </div>
             <!-- end of div.col-3 -->
-  
-  
+
+
             <div class="col-md-3 col-12  p-1">
               <div class="cards-container">
-  
+
                 <!-- item 1 -->
                 <div class="our-card item-4" style="background-image: url({{random_corona[3]}});">
-  
+
                   <div class="text">
                     <div class="category-title">
                       <span> کرونا </span>
@@ -89,10 +90,10 @@
                     <p> <a href="{{ random_corona[0] }}"> {{ random_corona[1]|truncate(50) }} </a> </p>
                   </div>
                 </div>
-  
+
                 <!-- item 2 -->
                 <div class="our-card item-5" style="background-image: url({{ random_tejarat[3] }}); margin-top: 10px;">
-  
+
                   <div class="text">
                     <div class="category-title">
                       <span> اقتصاد تجارت </span>
@@ -100,12 +101,12 @@
                     <p> <a href="{{ random_tejarat[0] }}">{{ random_tejarat[1]|truncate(50) }} </a> </p>
                   </div>
                 </div>
-  
+
               </div>
               <!-- end of div.cards-container -->
             </div>
             <!-- end of div.col-3 -->
-  
+
           </div>
           <!-- end of div.row -->
         </div>
@@ -120,21 +121,23 @@
           <div class="row">
             <div class="col-md-12">
               <div class="owl-carousel slider owl-theme">
-  
+
                 {% for corona in corona_news %}
-                  <div class="item">
-                    <div class="our-card">
-                      <img src="{{ corona[3] }}" class="ml-2" alt="{{corona[1]}}">
-                      <div class="category-info">
-                        <a href="#">
-                          <p class="text-muted"> کرونا </p>
-                        </a>
-                        <a href="{{ corona[0] }}"> <p> {{ corona[1]|truncate(50) }} </p> </a>
-                      </div>
+                <div class="item">
+                  <div class="our-card">
+                    <img src="{{ corona[3] }}" class="ml-2" alt="{{corona[1]}}">
+                    <div class="category-info">
+                      <a href="{{ corona[0] }}">
+                        <p class="text-muted"> کرونا </p>
+                      </a>
+                      <a href="{{ corona[0] }}">
+                        <p> {{ corona[1]|truncate(50) }} </p>
+                      </a>
                     </div>
                   </div>
+                </div>
                 {% endfor %}
-  
+
               </div>
             </div>
             <!-- end of div.col-12 -->
@@ -164,26 +167,26 @@
       <div class="row cards-container">
 
         <div class="w-100 main-titles">
-  
+
           <h2 class="text-right"> <b> اخبار ارز دیجیتال</b> </h2>
           <hr class="line-next-to-title">
-  
+
         </div>
-  
-  
+
+
         <!-- OWL Carousel  -->
         <div class="owl-carousel owl-theme">
           {% for news in arzdigital%}
-  
+
           <div class="item">
             <div class="card" style="width: 100%;">
-  
+
               <div class="image-container">
                 <a class="d-inline" style="width: 100%;" href="{{ news[0] }}">
                   <img src="{{ news[4] }}" class="card-img-top" alt="{{ news[3] }}">
                 </a>
               </div>
-  
+
               <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-muted">{{ news[5] }}</h6>
                 <a href="{{ news[0] }}">
@@ -210,18 +213,18 @@
     <div class="row mt-5">
 
       <div class="col-lg-6 col-12 mt-lg-0 mt-3">
-
+        
         <div class="w-100 main-titles">
-
+          {% if not data == [] %}
           <h2 class="text-right"> <b> خبر روز</b> </h2>
           <hr class="line-next-to-title">
-  
+          {% endif %}
         </div>
+        
 
-        <!-- { % for post in data % } -->
         <article>
           <div class="day-news">
-          
+
             <div class="row">
               {% for newstoday in data %}
               <div class="col-md-6">
@@ -231,16 +234,19 @@
                     <img src="{{ newstoday[4] }}" class="ml-2" alt="{{ newstoday[1] }}">
                   </div>
                   <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> اقتصاد </p>
+                    <a href="{{ newstoday[0] }}">
+                      <p class="text-muted">{{ newstoday[1]}}</p>
                     </a>
-                    <a href="{{ newstoday[0] }}"> <p> {{ newstoday[1]|truncate(50) }} </p> </a>
+                    <a href="{{ newstoday[0] }}">
+                      <p> {{ newstoday[2]|truncate(125) }} </p>
+                    </a>
                   </div>
                 </div>
               </div>
-              {% endfor %}            
+              {% endfor %}
               <!-- end of row -->
-              </div>
+            </div>
+          </div>
           <!-- end of div day news -->
         </article>
 
@@ -249,97 +255,37 @@
 
 
       <div class="col-lg-6 col-12 mt-lg-0 mt-3">
-
+        
         <div class="w-100 main-titles">
-
-<<<<<<< HEAD
-          <h2 class="text-right"> <b> بورس </b> </h2>
-=======
+          {% if not bors_news_data == [] %}
           <h2 class="text-right"> <b> اخبار بورس</b> </h2>
->>>>>>> origin/master
           <hr class="line-next-to-title">
-  
+          {% endif %}
         </div>
-
+        
         <article>
           <div class="corona-virus">
 
             <div class="row">
-<<<<<<< HEAD
+
               {% for burs in bors_news_data %}
-                <div class="col-md-6">
-                  <!-- item 1 -->
-                  <div class="our-card">
-                    <div class="img-container">
-                      <img src="{{ burs[4] }}" class="ml-2" alt="{{ burs[1] }}">
-                    </div>
-                    <div class="category-info">
-                      <a href="#">
-                        <p class="text-muted"> بورس </p>
-                      </a>
-                      <a href="{{ burs[0] }}"> <p> {{ burs[1]|truncate(50) }} </p> </a>
-                    </div>
-                  </div>
-                </div>
-              {% endfor %}
-=======
               <div class="col-md-6">
-               
+                <!-- item 1 -->
                 <div class="our-card">
                   <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/insta-mobile.jpg') }}" class="ml-2" alt="picture">
+                    <img src="{{ burs[4] }}" class="ml-2" alt="{{ burs[1] }}">
                   </div>
                   <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
+                    <a href="{{ burs[0] }}">
+                      <p class="text-muted">{{burs[1]}}</p>
                     </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
+                    <a href="{{ burs[0] }}">
+                      <p> {{ burs[2]|truncate(125) }} </p>
+                    </a>
                   </div>
                 </div>
-                
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/watch.jpg') }}" class="ml-2" alt="picture">
-                  </div>
-                  <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                  </div>
-                </div>
-  
               </div>
-             
-        
-              <div class="col-md-6">
-               
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/insta-mobile.jpg') }}" class="ml-2" alt="picture">
-                  </div>
-                  <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                  </div>
-                </div>
-                
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/watch.jpg') }}" class="ml-2" alt="picture">
-                  </div>
-                  <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                  </div>
-                </div>
-  
-              </div> 
->>>>>>> origin/master
+              {% endfor %}
             </div>
             <!-- end of div.row inside div.col-md-6 -->
           </div>
@@ -362,7 +308,7 @@
             <li>{{data[2]|truncate(80)}}</li>
             {% endfor %}
           </ul>
-  
+
         </div>
       </article>
       <!-- end of div.digital-coin -->
