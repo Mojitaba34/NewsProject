@@ -248,13 +248,15 @@
       <!-- end of div.col-md-6 -->
 
 
-
-      <!-- { % if not bors_news_data == []% } -->
       <div class="col-lg-6 col-12 mt-lg-0 mt-3">
 
         <div class="w-100 main-titles">
 
+<<<<<<< HEAD
           <h2 class="text-right"> <b> بورس </b> </h2>
+=======
+          <h2 class="text-right"> <b> اخبار بورس</b> </h2>
+>>>>>>> origin/master
           <hr class="line-next-to-title">
   
         </div>
@@ -263,6 +265,7 @@
           <div class="corona-virus">
 
             <div class="row">
+<<<<<<< HEAD
               {% for burs in bors_news_data %}
                 <div class="col-md-6">
                   <!-- item 1 -->
@@ -279,6 +282,64 @@
                   </div>
                 </div>
               {% endfor %}
+=======
+              <div class="col-md-6">
+               
+                <div class="our-card">
+                  <div class="img-container">
+                    <img src="{{ url_for('admin.static',filename='images/insta-mobile.jpg') }}" class="ml-2" alt="picture">
+                  </div>
+                  <div class="category-info">
+                    <a href="#">
+                      <p class="text-muted"> طبیعت </p>
+                    </a>
+                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
+                  </div>
+                </div>
+                
+                <div class="our-card">
+                  <div class="img-container">
+                    <img src="{{ url_for('admin.static',filename='images/watch.jpg') }}" class="ml-2" alt="picture">
+                  </div>
+                  <div class="category-info">
+                    <a href="#">
+                      <p class="text-muted"> طبیعت </p>
+                    </a>
+                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
+                  </div>
+                </div>
+  
+              </div>
+             
+        
+              <div class="col-md-6">
+               
+                <div class="our-card">
+                  <div class="img-container">
+                    <img src="{{ url_for('admin.static',filename='images/insta-mobile.jpg') }}" class="ml-2" alt="picture">
+                  </div>
+                  <div class="category-info">
+                    <a href="#">
+                      <p class="text-muted"> طبیعت </p>
+                    </a>
+                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
+                  </div>
+                </div>
+                
+                <div class="our-card">
+                  <div class="img-container">
+                    <img src="{{ url_for('admin.static',filename='images/watch.jpg') }}" class="ml-2" alt="picture">
+                  </div>
+                  <div class="category-info">
+                    <a href="#">
+                      <p class="text-muted"> طبیعت </p>
+                    </a>
+                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
+                  </div>
+                </div>
+  
+              </div> 
+>>>>>>> origin/master
             </div>
             <!-- end of div.row inside div.col-md-6 -->
           </div>
@@ -286,7 +347,6 @@
         </article>
 
       </div>
-      <!-- { % endif% } -->
       <!-- end of div.col-md-6 -->
 
 
