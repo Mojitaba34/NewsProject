@@ -1,8 +1,8 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 
-RUN echo "uwsgi_read_timeout 600s;" > /etc/nginx/conf.d/custom_timeout.conf
-RUN echo "uwsgi_send_timeout 600s;" > /etc/nginx/conf.d/custom_timeout.conf
+RUN echo "uwsgi_read_timeout 3600s;" > /etc/nginx/conf.d/custom_timeout.conf
+RUN echo "uwsgi_send_timeout 3600s;" > /etc/nginx/conf.d/custom_timeout.conf
 
 COPY . /app
 
