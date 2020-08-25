@@ -6,15 +6,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-    <meta name="keywords" content=" {% for key in keywords %} {{key}} {% endfor %}">
+  <meta name="description" content="{{title}}">
+  <meta name="keywords" content=" {% for key in keywords %} {{key}} {% endfor %}">
   <meta name="author" content="Pro-dev">
   <meta charset="utf-8">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   
-  <title> egtesadkhan.com|اقتصاد خوان - </title>
+  <title> egtesadkhan.com|اقتصاد خوان -{{ title }} </title>
 
   <!--bootstrap -->
   <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/bootstrap.min.css') }}">
@@ -207,7 +207,7 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-lg-9 col-12">
-                  {% for post in data%}
+                  {% for post in data %}
                     <div id="landing-content">
                     <div class="row">
                       <div class="col-md-12">

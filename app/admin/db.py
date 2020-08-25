@@ -5,6 +5,7 @@ from persiantools.jdatetime import JalaliDateTime
 import datetime
 import time
 from slugify import slugify_unicode
+import random
 
 def BuildTables():
     db = get_database_connection()
@@ -456,15 +457,16 @@ def Insertcomment(username,email,subject,comment):
 """
 Geting data from DataBase to import in index page
 """
-def read_data(ofsset, limit):
+def today_news(ofsset, limit):
     db = get_database_connection()
     cursor = db.cursor()
     try:
-        cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE tbl_news.status = 0 OR tbl_news.status = 1 OR tbl_news.status = 3 ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
+        cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link,news_date FROM tbl_news WHERE tbl_news.status = 0 OR tbl_news.status = 1 ORDER BY news_date DESC LIMIT %s, %s;', (ofsset,limit))
         data = list(cursor.fetchall())
         return data
     except Exception as e:
         return f"ERROR -> {e}"
+
 
 """
 Geting data from DataBase to import in index page for Corona News
@@ -495,13 +497,83 @@ def row_count():
         return f"ERROR -> {e}"
 
 """
-Geting data from DataBase to import in to the Slider
+Geting data from DataBase random tejarat
 """
-def read_data_for_slider(limit):
+def read_data_random_tejarat():
     db = get_database_connection()
     cursor = db.cursor()
     try:
-        cursor.execute('SELECT news_slug,news_title,news_content,news_link,news_img_link FROM tbl_news  WHERE news_link LIKE %s ORDER BY news_date DESC LIMIT %s', ("%" + "tejaratnews" + "%", limit))
+        cursor.execute('SELECT news_slug,news_title,news_link,news_img_link FROM tbl_news  WHERE status = 1 ORDER BY news_date DESC LIMIT 6')
+        data = list(cursor.fetchall())
+        return random.choice(data)
+    except Exception as e:
+        return f"ERROR -> {e}"
+
+
+"""
+Geting data from DataBase random tasnim
+"""
+def read_data_random_tasnim():
+    db = get_database_connection()
+    cursor = db.cursor()
+    try:
+        cursor.execute('SELECT news_slug,news_title,news_link,news_img_link FROM tbl_news  WHERE status = 0 ORDER BY news_date DESC LIMIT 6')
+        data = list(cursor.fetchall())
+        return random.choice(data)
+    except Exception as e:
+        return f"ERROR -> {e}"
+
+
+
+"""
+Geting data from DataBase random arzdigital
+"""
+def read_data_random_arzdigital():
+    db = get_database_connection()
+    cursor = db.cursor()
+    try:
+        cursor.execute('SELECT news_slug,news_title,news_link,news_img_link FROM tbl_news  WHERE status = 2 ORDER BY news_date DESC LIMIT 6')
+        data = list(cursor.fetchall())
+        return random.choice(data)
+    except Exception as e:
+        return f"ERROR -> {e}"
+
+
+"""
+Geting data from DataBase random bors
+"""
+def read_data_random_bors():
+    db = get_database_connection()
+    cursor = db.cursor()
+    try:
+        cursor.execute('SELECT news_slug,news_title,news_link,news_img_link FROM tbl_news  WHERE status = 4 ORDER BY news_date DESC LIMIT 6')
+        data = list(cursor.fetchall())
+
+        return random.choice(data)
+    except Exception as e:
+        return f"ERROR -> {e}"
+
+
+
+"""
+Geting data from DataBase random corona
+"""
+def read_data_random_corona():
+    db = get_database_connection()
+    cursor = db.cursor()
+    try:
+        cursor.execute('SELECT news_slug,news_title,news_link,news_img_link FROM tbl_news  WHERE status = 3 ORDER BY news_date DESC LIMIT 6')
+        data = list(cursor.fetchall())
+        return random.choice(data)
+    except Exception as e:
+        return f"ERROR -> {e}"
+
+
+def read_corona_news():
+    db = get_database_connection()
+    cursor = db.cursor()
+    try:
+        cursor.execute('SELECT news_slug,news_title,news_link,news_img_link FROM tbl_news  WHERE status = 3 ORDER BY news_date DESC LIMIT 10')
         data = list(cursor.fetchall())
         return data
     except Exception as e:

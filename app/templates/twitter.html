@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content=" {% for key in keywords %} {{key}} {% endfor %}">
+    <meta name="description" content="توئیت های سایت اقتصادخوان خبر ارز و اقتصاد و بورس">
+    <meta name="keywords" content="توییتر افتصادخوان توییت توئیتر توئیت بورس ارز اقتصادخوان">
     <meta name="author" content="Pro-dev">
     <meta charset="utf-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -36,6 +36,7 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169005487-1"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -58,13 +59,10 @@
 </head>
 
 
-{% if active_page == 'arzdigital' %}
 
 <body onload="autoRefreshPage()">
-    {% else %}
 
     <body>
-        {% endif %}
 
         <!-- Start of fixed menu on mobie view -->
         <div class="above-site-mobile">
@@ -206,36 +204,21 @@
 
                 <!-- start of main area -->
                 <main>
-
                     <section id="landing">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-12 col-12">
-                                    { % for post in data% }
                                     <div id="landing-content">
-
                                         <div class="row">
-
-                                            
-                                            your code goes here 
-                                            main content of page goes here 
+                                            <a class="twitter-timeline" href="https://twitter.com/egtesadkhan?ref_src=twsrc%5Etfw">توئیت های مهم اقتصادی در اقتصاد خوان</a> 
                                             <div id="pos-footer-sticky-9576"></div>
-
                                         </div>
                                         <!-- end of div.row isnide div.col-md-9 -->
-
-                                        
                                     </div>
                                     <div id="pos-article-text-10942"></div>
                                     <!-- end of div#landing-content -->
-                                    { % endfor % }
                                 </div>
                                 <!-- end of div.col-md-9 -->
-
-
-        
-
-
                             </div>
                             <!-- end of div.row -->
                         </div>

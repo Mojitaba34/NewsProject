@@ -15,24 +15,24 @@
               <div class="cards-container">
   
                 <!-- item 1 -->
-                <div class="our-card item-1">
+                <div class="our-card item-1" style="background-image: url({{ random_arzdigital[3] }})">
   
                   <div class="text">
                     <div class="category-title">
-                      <span> ماشین </span>
+                      <span> ارزدیجیتال </span>
                     </div>
-                    <p> <a href="#"> متن مربوط به عکس متن مربوط </a> </p>
+                    <p> <a href="{{ random_arzdigital[0] }}">{{ random_arzdigital[1]|truncate(50) }}</a> </p>
                   </div>
                 </div>
   
                 <!-- item 2 -->
-                <div class="our-card item-2">
+                <div class="our-card item-2" style=" background-image: url( {{ random_tasnim[3] }}); margin-top: 10px;">
   
                   <div class="text">
                     <div class="category-title">
-                      <span> سلامتی </span>
+                      <span> اقتصاد تسنیم </span>
                     </div>
-                    <p> <a href="#"> متن مربوط به عکس متن مربوط </a> </p>
+                    <p> <a href="{{ random_tasnim[0] }}">{{ random_tasnim[1]|truncate(50) }}</a> </p>
                   </div>
                 </div>
   
@@ -46,16 +46,16 @@
               <div class="cards-container">
   
                 <!-- item 1 -->
-                <div class="our-card item-3">
+                <div class="our-card item-3" style="background-image: url({{ random_bors[3] }}); height: 510px;">
   
                   <div class="text">
                     <div class="category-title">
-                      <span> سبک زندگی </span>
+                      <span> بورس </span>
                     </div>
-                    <p> <a href="#"> متن مربوط به عکس متن مربوط </a> </p>
+                    <p> <a href="{{ random_bors[0] }}"> {{ random_bors[1] }} </a> </p>
                     <div class="post-info d-none d-sm-flex align-items-center">
-                      <img src="{{ url_for('admin.static',filename='images/profile.jpeg') }}" width="30px" height="30px" alt="profile">
-                      <p class="m-0 ml-lg-4 ml-md-2 ml-sm-1 ml-0 mr-1"> امیر ، 2 سال پیش </p>
+                      <img src="{{ url_for('admin.static',filename='images/landingpage/profile.jpg') }}" width="30px" height="30px" alt="profile">
+                      <p class="m-0 ml-lg-4 ml-md-2 ml-sm-1 ml-0 mr-1"> مدیر </p>
                       |
                       <p class="m-0 mx-lg-4 mx-md-2 mx-sm-1 mx-0">
                         0
@@ -80,24 +80,24 @@
               <div class="cards-container">
   
                 <!-- item 1 -->
-                <div class="our-card item-4">
+                <div class="our-card item-4" style="background-image: url({{random_corona[3]}});">
   
                   <div class="text">
                     <div class="category-title">
-                      <span> تکنولوژی </span>
+                      <span> کرونا </span>
                     </div>
-                    <p> <a href="#"> متن مربوط به عکس متن مربوط </a> </p>
+                    <p> <a href="{{ random_corona[0] }}"> {{ random_corona[1]|truncate(50) }} </a> </p>
                   </div>
                 </div>
   
                 <!-- item 2 -->
-                <div class="our-card item-5">
+                <div class="our-card item-5" style="background-image: url({{ random_tejarat[3] }}); margin-top: 10px;">
   
                   <div class="text">
                     <div class="category-title">
-                      <span> تکنولوژی </span>
+                      <span> اقتصاد تجارت </span>
                     </div>
-                    <p> <a href="#"> متن مربوط به عکس متن مربوط </a> </p>
+                    <p> <a href="{{ random_tejarat[0] }}">{{ random_tejarat[1]|truncate(50) }} </a> </p>
                   </div>
                 </div>
   
@@ -121,72 +121,19 @@
             <div class="col-md-12">
               <div class="owl-carousel slider owl-theme">
   
-                <div class="item">
-                  <div class="our-card">
-                    <img src="{{ url_for('admin.static',filename='images/blue-sky-girl.jpg') }}" class="ml-2" alt="picture">
-                    <div class="category-info">
-                      <a href="#">
-                        <p class="text-muted"> طبیعت </p>
-                      </a>
-                      <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
+                {% for corona in corona_news %}
+                  <div class="item">
+                    <div class="our-card">
+                      <img src="{{ corona[3] }}" class="ml-2" alt="{{corona[1]}}">
+                      <div class="category-info">
+                        <a href="#">
+                          <p class="text-muted"> کرونا </p>
+                        </a>
+                        <a href="{{ corona[0] }}"> <p> {{ corona[1]|truncate(50) }} </p> </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="item">
-                  <div class="our-card">
-                    <img src="{{ url_for('admin.static',filename='images/c-4.jpg') }}" class="ml-2" alt="picture">
-                    <div class="category-info">
-                      <a href="#">
-                        <p class="text-muted"> طبیعت </p>
-                      </a>
-                      <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="our-card">
-                    <img src="{{ url_for('admin.static',filename='images/camera-blue.jpg') }}" class="ml-2" alt="picture">
-                    <div class="category-info">
-                      <a href="#">
-                        <p class="text-muted"> طبیعت </p>
-                      </a>
-                      <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="our-card">
-                    <img src="{{ url_for('admin.static',filename='images/insta-mobile.jpg') }}" class="ml-2" alt="picture">
-                    <div class="category-info">
-                      <a href="#">
-                        <p class="text-muted"> طبیعت </p>
-                      </a>
-                      <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="our-card">
-                    <img src="{{ url_for('admin.static',filename='images/blue-sky-girl.jpg') }}" class="ml-2" alt="picture">
-                    <div class="category-info">
-                      <a href="#">
-                        <p class="text-muted"> طبیعت </p>
-                      </a>
-                      <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="our-card">
-                    <img src="{{ url_for('admin.static',filename='images/camera-blue.jpg') }}" class="ml-2" alt="picture">
-                    <div class="category-info">
-                      <a href="#">
-                        <p class="text-muted"> طبیعت </p>
-                      </a>
-                      <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                    </div>
-                  </div>
-                </div>
+                {% endfor %}
   
               </div>
             </div>
@@ -242,7 +189,7 @@
                 <a href="{{ news[0] }}">
                   <h5 class="card-title"><b>{{ news[1] }}</b></h5>
                 </a>
-                <p class="card-text">{{ news[2]|truncate(250) }}</p>
+                <p class="card-text">{{ news[2]|truncate(100) }}</p>
               </div>
             </div>
           </div>
@@ -266,7 +213,7 @@
 
         <div class="w-100 main-titles">
 
-          <h2 class="text-right"> <b> خبر های روز</b> </h2>
+          <h2 class="text-right"> <b> خبر روز</b> </h2>
           <hr class="line-next-to-title">
   
         </div>
@@ -276,68 +223,25 @@
           <div class="day-news">
           
             <div class="row">
-  
+              {% for newstoday in data %}
               <div class="col-md-6">
-  
                 <!-- item 1 -->
                 <div class="our-card">
                   <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/camera-blue.jpg') }}" class="ml-2" alt="picture">
+                    <img src="{{ newstoday[4] }}" class="ml-2" alt="{{ newstoday[1] }}">
                   </div>
                   <div class="category-info">
                     <a href="#">
-                      <p class="text-muted"> طبیعت </p>
+                      <p class="text-muted"> اقتصاد </p>
                     </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد  </p> </a>
+                    <a href="{{ newstoday[0] }}"> <p> {{ newstoday[1]|truncate(50) }} </p> </a>
                   </div>
                 </div>
-                <!-- item 2 -->
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/blue-sky-girl.jpg') }}" class="ml-2" alt="picture">
-                  </div>
-                  <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                  </div>
-                </div>
-  
               </div>
-  
-              <div class="col-md-6">
-  
-                <!-- item 1 -->
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/camera-blue.jpg') }}" class="ml-2" alt="picture">
-                  </div>                <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                  </div>
-                </div>
-                <!-- item 2 -->
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/camera-blue.jpg') }}" class="ml-2" alt="picture">
-                  </div>                <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                  </div>
-                </div>         
-  
+              {% endfor %}            
+              <!-- end of row -->
               </div>
-  
-            </div>
-            <!-- end of row -->
-          </div>
           <!-- end of div day news -->
-          <!-- { % endfor % } -->
         </article>
 
       </div>
@@ -350,7 +254,7 @@
 
         <div class="w-100 main-titles">
 
-          <h2 class="text-right"> <b> اخبار ویروس کرونا</b> </h2>
+          <h2 class="text-right"> <b> بورس </b> </h2>
           <hr class="line-next-to-title">
   
         </div>
@@ -359,64 +263,22 @@
           <div class="corona-virus">
 
             <div class="row">
-  
-              <div class="col-md-6">
-                <!-- item 1 -->
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/watch.jpg') }}" class="ml-2" alt="picture">
-                  </div>
-                  <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                  </div>
-                </div>
-                <!-- item 2 -->
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/insta-mobile.jpg') }}" class="ml-2" alt="picture">
-                  </div>
-                  <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
+              {% for burs in bors_news_data %}
+                <div class="col-md-6">
+                  <!-- item 1 -->
+                  <div class="our-card">
+                    <div class="img-container">
+                      <img src="{{ burs[4] }}" class="ml-2" alt="{{ burs[1] }}">
+                    </div>
+                    <div class="category-info">
+                      <a href="#">
+                        <p class="text-muted"> بورس </p>
+                      </a>
+                      <a href="{{ burs[0] }}"> <p> {{ burs[1]|truncate(50) }} </p> </a>
+                    </div>
                   </div>
                 </div>
-  
-              </div>
-  
-              
-              <div class="col-md-6">
-                <!-- item 1 -->
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/insta-mobile.jpg') }}" class="ml-2" alt="picture">
-                  </div>
-                  <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                  </div>
-                </div>
-                <!-- item 2 -->
-                <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ url_for('admin.static',filename='images/watch.jpg') }}" class="ml-2" alt="picture">
-                  </div>
-                  <div class="category-info">
-                    <a href="#">
-                      <p class="text-muted"> طبیعت </p>
-                    </a>
-                    <a href="#x"> <p> شرکت پورشه از جدید تریت ماشین خود رونمایی کرد </p> </a>
-                  </div>
-                </div>
-  
-              </div>
-  
+              {% endfor %}
             </div>
             <!-- end of div.row inside div.col-md-6 -->
           </div>

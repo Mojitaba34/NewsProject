@@ -6,13 +6,9 @@ This is a big Project for Online News
 - Data For Sport News
 - continues ... :)
 
-- [x] Start Project
-- [x] Crawled CryptoPrice
-- [x] Crawled Online News
-- [x] save data to db
-- [x] pagination Complete
-- [x] bugs are fix on index
-- [x] ip address of users are saved on database
-- [x] error handler for 404 Done!
-- [x] db changes are Done!
-- [x] robot run from database
+- [ ] maybe there are additional method. check this
+- [ ] check queries problem
+- [x] solving problem in sitemap
+- [x] jinja for index page
+- [x] twitter page complete.
+- [ ] fix ip users

@@ -6,7 +6,7 @@ from app.admin import config
 import readtime
 import math
 from urllib.parse import urlparse
-
+import time
 '''
 This routes is for Home page and passing some data to home Page
 
@@ -27,8 +27,7 @@ def home():
     slider_limit = 3
     ofsset=limit * (page - 1)
     ofsset_bors=bors_news_limit * (page - 1)
-    data = db.read_data(ofsset,limit)# reading data from data base to insert in news section
-    Corona_data = db.read_data_Corona_news(limit_corona)
+    todaynews = db.today_news(ofsset,limit)# reading data from data base to insert in news section
     bors_news_data = db.bors_news(ofsset_bors,bors_news_limit)
     # pagination page numbers show sort
     maxLeft = (page - math.ceil(pagination_link_limit/2)+1)# max Left pages number show from active page
@@ -42,17 +41,32 @@ def home():
         if maxLeft < 1:
             maxLeft = 1
 
-    slider_data = db.read_data_for_slider(slider_limit)
+    # Random Data for head site
+    random_tejarat = db.read_data_random_tejarat()
+    random_tasnim = db.read_data_random_tasnim()
+    random_arzdigital = db.read_data_random_arzdigital()
+    random_bors = db.read_data_random_bors()
+    random_corona = db.read_data_random_corona()
+
+
+    # arzdigital news
+    arzdigital = db.arzdigital_news()
+
+    # corona news
+    corona_news = db.read_corona_news()
+
     ip_address = request.environ['REMOTE_ADDR']# getting ip address
     db.insert_ip(ip_address)# inserting ip address
     print(db.ip_date_update(ip_address)) # update ip Date
-    arzdigital_news = db.arzdigital_news()
-    return render_template('index.html', data=data, arzdigital=arzdigital_news,page_num=page_num, slider_data=slider_data,
-    maxLeft=maxLeft,maxRight=maxRight,configId='UA-169005487-1',corona_data=Corona_data,bors_news_data=bors_news_data)
+    time.sleep(1)
+    return render_template('index.html', data=todaynews,page_num=page_num,maxLeft=maxLeft,maxRight=maxRight,configId='UA-169005487-1',
+    bors_news_data=bors_news_data,arzdigital=arzdigital,random_arzdigital=random_arzdigital,random_bors=random_bors,
+    random_corona=random_corona,random_tasnim=random_tasnim,random_tejarat=random_tejarat,corona_news=corona_news)
 
 @app.route('/about')
 def about_us():
     return render_template('about.html')
+
 
 @app.route('/contact', methods=["POST","GET"])
 def contact_us():
@@ -64,10 +78,6 @@ def contact_us():
         if db.Insertcomment(username,email,subject,comment) == True:
             flash('your comment was submitted successfully','success')
     return render_template('contact.html')
-
-@app.route('/arzdigital', methods=["GET", "POST"])
-def arzdigital():
-    return render_template('digital.html')
 
 
 @app.route('/<slug>',methods=["GET"])
@@ -81,6 +91,7 @@ def landing(slug):
     text = [post[2] for post in data]
     state = [post[6] for post in data]
     newsid = [post[7] for post in data]
+    title = [post[1] for post in data]
 
     time = readtime.of_text(text[0])
     min = int(time.seconds) / 60
@@ -91,7 +102,7 @@ def landing(slug):
 
     keywords = db.get_news_keywords(newsid[0])
     list_keywords = str(keywords[0][0]).split(',')
-    return render_template('landing.html',data=data,related_news=related_news,keywords = list_keywords,bors_news=bors_news,arz_news = arznews ,time_read=str(math.floor(min)))
+    return render_template('landing.html',data=data,title=title,related_news=related_news,keywords = list_keywords,bors_news=bors_news,arz_news = arznews ,time_read=str(math.floor(min)))
 
 
 
@@ -131,3 +142,7 @@ def sitemap():
     response.headers["Content-Type"] = "application/xml"
 
     return response
+
+@app.route("/twitter")
+def twitter():
+    return render_template("twitter.html")
