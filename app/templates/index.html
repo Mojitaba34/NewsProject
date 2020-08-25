@@ -128,7 +128,7 @@
                     <img src="{{ corona[3] }}" class="ml-2" alt="{{corona[1]}}">
                     <div class="category-info">
                       <a href="{{ corona[0] }}">
-                        <p class="text-muted"> کرونا </p>
+                        <p class="text-muted">اخبار کرونا</p>
                       </a>
                       <a href="{{ corona[0] }}">
                         <p> {{ corona[1]|truncate(50) }} </p>
@@ -227,20 +227,27 @@
 
             <div class="row">
               {% for newstoday in data %}
-              <div class="col-md-6">
+              <div class="col-xl-6 col-lg-12">
                 <!-- item 1 -->
                 <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ newstoday[4] }}" class="ml-2" alt="{{ newstoday[1] }}">
+
+                  <div class="col-md-6 p-0">
+                    <div class="img-container">
+                      <a href="{{ newstoday[0] }}"> <img src="{{ newstoday[4] }}" class="ml-2" alt="{{ newstoday[1] }}"> </a>
+                    </div>
                   </div>
-                  <div class="category-info">
-                    <a href="{{ newstoday[0] }}">
-                      <p class="text-muted">{{ newstoday[1]}}</p>
-                    </a>
-                    <a href="{{ newstoday[0] }}">
-                      <p> {{ newstoday[2]|truncate(125) }} </p>
-                    </a>
+
+                  <div class="col-md-6 p-0 d-flex p-0">
+                    <div class="category-info">
+                      <a href="{{ newstoday[0] }}">
+                        <p class="text-muted">{{ newstoday[1]}}</p>
+                      </a>
+                      <a href="{{ newstoday[0] }}">
+                        <p> {{ newstoday[2]|truncate(50) }} </p>
+                      </a>
+                    </div>
                   </div>
+
                 </div>
               </div>
               {% endfor %}
@@ -269,20 +276,27 @@
             <div class="row">
 
               {% for burs in bors_news_data %}
-              <div class="col-md-6">
+              <div class="col-xl-6 col-lg-12">
                 <!-- item 1 -->
                 <div class="our-card">
-                  <div class="img-container">
-                    <img src="{{ burs[4] }}" class="ml-2" alt="{{ burs[1] }}">
+                  <div class="col-md-6 p-0 ">
+                    <div class="img-container">
+                      <a href="{{ burs[0] }}"> <img src="{{ burs[4] }}" class="ml-2" alt="{{ burs[1] }}"> </a>
+                    </div>
                   </div>
-                  <div class="category-info">
-                    <a href="{{ burs[0] }}">
-                      <p class="text-muted">{{burs[1]}}</p>
-                    </a>
-                    <a href="{{ burs[0] }}">
-                      <p> {{ burs[2]|truncate(125) }} </p>
-                    </a>
+                  <div class="col-md-6 d-flex p-0 ">
+                    <div class="category-info">
+                      <a href="{{ burs[0] }}">
+                        <p class="text-muted">{{burs[1]}}</p>
+                      </a>
+                      <a href="{{ burs[0] }}">
+                        <p> {{ burs[2]|truncate(50) }} </p>
+                      </a>
+                    </div>
                   </div>
+                  
+                  
+
                 </div>
               </div>
               {% endfor %}
