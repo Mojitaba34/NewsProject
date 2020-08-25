@@ -197,7 +197,7 @@ def runRob():
 
         Bors_news_data = robots.Bors_news()
         data_bors = Bors_news_data.getData()
-        print("--------------Corona----------------")
+        print("--------------Bors----------------")
         print("Bors=  "+db.InsertTblNews(data_bors,state_bors))
 
         return redirect(url_for("admin.dashboard"))
