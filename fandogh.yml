@@ -1,7 +1,7 @@
 kind: ExternalService
 name: newsapp
 spec:
-  image: newsapp:13990529.1
+  image: newsapp:13990605.2
   allow_http: false
   static_path: /var/www/static/
       
@@ -20,7 +20,7 @@ spec:
       value: newsdb
     - name: AD_URL
       value: efi-moji-amir
-    hidden: true
+      hidden: true
     
   resources:
     memory: 1548Mi

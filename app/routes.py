@@ -16,7 +16,7 @@ This routes is for Home page and passing some data to home Page
 def home():
     
     limit= 6
-    limit_corona = 3
+    limit_corona = 4
     bors_news_limit = 6
     row_num = db.row_count()
     page_num = math.ceil(row_num / limit)
@@ -28,6 +28,7 @@ def home():
     ofsset=limit * (page - 1)
     ofsset_bors=bors_news_limit * (page - 1)
     todaynews = db.today_news(ofsset,limit)# reading data from data base to insert in news section
+    Corona_data = db.read_data_Corona_news(limit_corona)
     bors_news_data = db.bors_news(ofsset_bors,bors_news_limit)
     # pagination page numbers show sort
     maxLeft = (page - math.ceil(pagination_link_limit/2)+1)# max Left pages number show from active page
@@ -60,7 +61,7 @@ def home():
     print(db.ip_date_update(ip_address)) # update ip Date
     time.sleep(1)
     return render_template('index.html', data=todaynews,page_num=page_num,maxLeft=maxLeft,maxRight=maxRight,configId='UA-169005487-1',
-    bors_news_data=bors_news_data,arzdigital=arzdigital,random_arzdigital=random_arzdigital,random_bors=random_bors,
+    Corona_data=Corona_data,bors_news_data=bors_news_data,arzdigital=arzdigital,random_arzdigital=random_arzdigital,random_bors=random_bors,
     random_corona=random_corona,random_tasnim=random_tasnim,random_tejarat=random_tejarat,corona_news=corona_news)
 
 @app.route('/about')

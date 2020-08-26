@@ -1,8 +1,8 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 
-RUN echo "uwsgi_read_timeout 3600s;" > /etc/nginx/conf.d/custom_timeout.conf
-RUN echo "uwsgi_send_timeout 3600s;" > /etc/nginx/conf.d/custom_timeout.conf
+RUN echo "uwsgi_read_timeout 150s;" > /etc/nginx/conf.d/custom_timeout.conf
+RUN echo "uwsgi_send_timeout 150s;" > /etc/nginx/conf.d/custom_timeout.conf
 
 COPY . /app
 
@@ -12,7 +12,7 @@ COPY ./requirements.txt /var/www/requirements.txt
 
 COPY /app/admin/static/ /var/www/static/
 
-RUN apt-get update && apt-get install -y apt-transport-https && apt-get install -qy libmariadbclient-dev gcc
+RUN apt-get update && apt-get install -qy libmariadbclient-dev gcc
 
 RUN apt-get --assume-yes install ca-certificates
 
