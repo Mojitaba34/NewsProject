@@ -143,7 +143,3 @@ def sitemap():
     response.headers["Content-Type"] = "application/xml"
 
     return response
-
-@app.route("/twitter")
-def twitter():
-    return render_template("twitter.html")

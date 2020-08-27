@@ -10,5 +10,4 @@ This is a big Project for Online News
 - [ ] check queries problem
 - [x] solving problem in sitemap
 - [x] jinja for index page
-- [x] twitter page complete.
 - [ ] fix ip users
