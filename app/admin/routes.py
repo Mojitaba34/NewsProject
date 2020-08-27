@@ -173,30 +173,22 @@ def runRob():
     state_Corona = 3
     state_bors = 4
     if session.get("user_data") != None:
-        tasnim_news = robots.news_from_tasnimnews()
-        data_tasnim = tasnim_news.getData()   
+
+        data_tejarat, data_tasnim, data_arzdigital, data_corona, data_bors = robots.get_all_data()
+
         print("--------------Tasnim----------------")
-        print("tasnim=  "+db.InsertTblNews(data_tasnim,state_tasnim))        
+        print("tasnim=  "+db.InsertTblNews(data_tasnim,state_tasnim)) 
 
-
-        tejarat_news = robots.news_from_tejaratnews()
-        data_tejarat = tejarat_news.getData()
         print("--------------Tejarat----------------")
         print("tejarat=  "+db.InsertTblNews(data_tejarat,state_tejart))
 
-
-        arzdigital_news = robots.news_from_arzdigital()
-        data_arzdigital = arzdigital_news.getData()
         print("--------------Arzdigital----------------")
         print("arzdigital=  "+db.InsertTblNews(data_arzdigital,state_arzdigi))
 
-        mehr_news = robots.news_from_mehrnews()
-        data_corona = mehr_news.getData()
         print("--------------Corona----------------")
         print("Mehr_news=  "+db.InsertTblNews(data_corona,state_Corona))
 
-        Bors_news_data = robots.Bors_news()
-        data_bors = Bors_news_data.getData()
+
         print("--------------Bors----------------")
         print("Bors=  "+db.InsertTblNews(data_bors,state_bors))
 

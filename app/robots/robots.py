@@ -12,7 +12,6 @@ import json
 
 
 
-
 class PageContent():
 
     '''
@@ -26,12 +25,15 @@ class PageContent():
     def reading_Html(url):
         reformated_url = url.replace('%3A', ':')
         headers = {'User-Agent':"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.162 Safari/537.36"}
-        req = Request(reformated_url, headers=headers)
-        fp = urllib.request.urlopen(req)
-        mybytes = fp.read()
-        mystr = mybytes.decode("utf8")
-        fp.close()
-        return mystr
+        try:
+            req = Request(reformated_url, headers=headers)
+            fp = urllib.request.urlopen(req)
+            mybytes = fp.read()
+            mystr = mybytes.decode("utf8")
+            fp.close()
+            return mystr
+        except Exception as e:  # This is the correct syntax
+            print(f"Error ---> {e}")
 
 
 
@@ -87,7 +89,8 @@ class news_from_tejaratnews():
             news_image_lst.append(image_lnk[0])
             for text in root.xpath("//div[contains(@class, 'single-post-content')]/p[position() < last()]//text()"):
                 modifed_text = modifed_text + str(text)
-            news_content.append(modifed_text)
+            modifed_text = modifed_text.lstrip()
+            news_content.append(modifed_text[20:])
             modifed_text = ""
         return news_content ,news_image_lst
 
@@ -163,7 +166,8 @@ class news_from_tasnimnews():
             news_image_lst.append(image_lnk[0])
             for text in root.xpath("//article[contains(@class, 'single-news')]//p[position() < last()]//text()"):
                 modifed_text = modifed_text + str(text)
-            news_content.append(modifed_text)
+            modifed_text = modifed_text.lstrip()
+            news_content.append(modifed_text[23:])
             modifed_text = ""
         return news_content, news_image_lst
 
@@ -307,19 +311,23 @@ class news_from_mehrnews():
 
         
     def news_content_and_image(self,links):
-        news_image_lst = []
+        image_lnk_lst = []
         news_content = []
         modifed_text = ""
         content = PageContent()
         for link in links:
             root = html.fromstring(content.reading_Html(link))
             image_lnk = root.xpath("//figure[contains(@class,'item-img')]//img/@src")
-            news_image_lst.append(image_lnk[0])
+            if image_lnk == []:
+                image_lnk_lst.append("به لینک منبع مراجعه کنید!")
+            else:
+                image_lnk_lst.append(image_lnk[0])
             for text in root.xpath("//div[contains(@class,'item-body')]//p/text()"):
                 modifed_text = modifed_text + str(text)
-            news_content.append(modifed_text)
+            modifed_text = modifed_text.lstrip()
+            news_content.append(modifed_text[10:])
             modifed_text = ""
-        return news_content, news_image_lst
+        return news_content, image_lnk_lst
 
 
     def news_link(self):
@@ -367,19 +375,20 @@ class Bors_news():
         return news_title
 
     def news_content_and_image(self,links):
-        news_image_lst = []
+        image_lnk_lst = []
         news_content = []
         modifed_text = ""
         content = PageContent()
         for link in links:
             root = html.fromstring(content.reading_Html(link))
             image_lnk = root.xpath("//div[contains(@class,'gds-container')]//img/@data-src")
-            news_image_lst.append(image_lnk[0])
+            image_lnk_lst.append(image_lnk[0])
             for text in root.xpath("//div[contains(@class, 'single-post-content')]/p[position() < last()]//text()"):
                 modifed_text = modifed_text + str(text)
-            news_content.append(modifed_text)
+            modifed_text = modifed_text.lstrip()
+            news_content.append(modifed_text[19:].replace("،",""))
             modifed_text = ""
-        return news_content, news_image_lst
+        return news_content, image_lnk_lst
 
 
 
@@ -406,3 +415,24 @@ class Bors_news():
         for post in range(len(self.news_title())):
             posts.append({"news_img_link":data['news_image_link'][post],"title":data['news_title'][post],"content":data['news_content'][post],"link":data['news_link'][post]})
         return posts
+
+
+
+
+def get_all_data():
+    tejarat_news = news_from_tejaratnews()
+    data_tejart = tejarat_news.getData()  
+
+    tasnim_news = news_from_tasnimnews()
+    data_tasnim = tasnim_news.getData()  
+
+    arzdigital_news = news_from_arzdigital()
+    data_arzdigi = arzdigital_news.getData()  
+
+    mehr_news = news_from_mehrnews()
+    data_corona = mehr_news.getData() 
+
+    Bors_news_data = Bors_news()
+    data_bors = Bors_news_data.getData() 
+
+    return data_tejart, data_tasnim, data_arzdigi, data_corona, data_bors  
