@@ -190,7 +190,7 @@
               <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-muted">{{ news[5] }}</h6>
                 <a href="{{ news[0] }}">
-                  <h5 class="card-title"><b>{{ news[1] }}</b></h5>
+                  <h5 class="card-title"><b>{{ news[1]|truncate(100) }}</b></h5>
                 </a>
                 <p class="card-text">{{ news[2]|truncate(100) }}</p>
               </div>
