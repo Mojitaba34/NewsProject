@@ -14,23 +14,23 @@
   <title> egtesadkhan.com | اقتصاد خوان </title>
 
   <!--bootstrap -->
-  <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
 
   <!--Font awesome -->
-  <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <!--Owl carousel -->
-  <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/owl.carousel.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/owl.theme.default.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.theme.default.css') }}">
 
   <!--css animation -->
-  <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/animate.css') }}">
-  <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/hover-min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/hover-min.css') }}">
 
   <!--main css files -->
-  <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/main.css') }}">
-  <link rel="stylesheet" href="{{ url_for('admin.static',filename='css/responsive.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169005487-1"></script>
@@ -75,7 +75,7 @@
         <a class="logo" href="#/"> <h3> <strong> اقتصادخوان </strong> </h3> </a>
       </div>
 
-      <a href="#x" class="search-icon"> <img src="{{ url_for('admin.static',filename='images/search.svg') }}"
+      <a href="#x" class="search-icon"> <img src="{{ url_for('static',filename='images/search.svg') }}"
         width="20" height="20" alt="search"> </a>
 
     </div>
@@ -91,7 +91,7 @@
 
           <div class="w-100">
             <a class="logo" href="#/"> <img
-              src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" alt="search"> </a>
+              src="{{ url_for('static',filename='images/eg-logo.svg') }}" alt="search"> </a>
           </div>
 
           <div class="w-100 mt-3">
@@ -145,7 +145,7 @@
           <ul class="pages">
 
             <li> <a class="logo" href="#/"> <img
-                  src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" alt="search"> </a></li>
+                  src="{{ url_for('static',filename='images/eg-logo.svg') }}" alt="search"> </a></li>
             <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
             <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
             <li> <a href="/contact" class="{{ 'active' if active_page == 'contact' else '' }}"> ارتباط با ما </a></li>
@@ -156,7 +156,7 @@
           <div class="d-flex">
 
             <a data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="جستجو کنید"
-              class="search-icon" href="#x"> <img src="{{ url_for('admin.static',filename='images/search.svg') }}"
+              class="search-icon" href="#x"> <img src="{{ url_for('static',filename='images/search.svg') }}"
                 width="20" height="20" alt="search"> </a>
 
             <div class="date mr-3">
@@ -220,7 +220,7 @@
 
         <div class="col-md-4">
           <div class="card">
-            <img src="{{ url_for('admin.static',filename='images/eg-logo.svg') }}" height="auto" width="75%" alt="logo">
+            <img src="{{ url_for('static',filename='images/eg-logo.svg') }}" height="auto" width="75%" alt="logo">
             <div class="card-body">
 
               <div class="d-flex" style="align-items: center;">
@@ -299,26 +299,26 @@
 
 
     <!--jQuery and popper -->
-    <script src="{{ url_for('admin.static',filename='js/jquery-3.5.0.js') }}"></script>
-    <script src="{{ url_for('admin.static',filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/jquery-3.5.0.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
 
     <!--bootstrap -->
-    <script src="{{ url_for('admin.static',filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
 
     <!--Owl carousel -->
-    <script src="{{ url_for('admin.static',filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/owl.carousel.min.js') }}"></script>
 
     <!--js animation -->
-    <script src="{{ url_for('admin.static',filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/wow.min.js') }}"></script>
 
 
-    <script src="{{ url_for('admin.static',filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/particles.js') }}"></script>
 
     <!--date js file -->
-    <script src="{{ url_for('admin.static',filename='js/date.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/date.js') }}"></script>
 
     <!--main js file -->
-    <script src="{{ url_for('admin.static',filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/main.js') }}"></script>
   </body>
 
 </html>
