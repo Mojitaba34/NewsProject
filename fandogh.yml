@@ -1,7 +1,7 @@
 kind: ExternalService
 name: newsapp
 spec:
-  image: newsapp:13990605.2
+  image: newsapp:13990606.2
   allow_http: false
   static_path: /var/www/static/
       
@@ -19,7 +19,9 @@ spec:
     - name: MYSQL_DB_NAME
       value: newsdb
     - name: AD_URL
-      value: efi-moji-amir
+      value: AdminRPuid
+    - name: SEC_KEY
+      value: 8kGHqBAAY8dFfPprokyFVo5iL1qSKlr3
       hidden: true
     
   resources:

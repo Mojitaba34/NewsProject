@@ -61,7 +61,7 @@ def home():
     print(db.ip_date_update(ip_address)) # update ip Date
     time.sleep(1)
     return render_template('index.html', data=todaynews,page_num=page_num,maxLeft=maxLeft,maxRight=maxRight,configId='UA-169005487-1',
-    Corona_data=Corona_data,bors_news_data=bors_news_data,arzdigital=arzdigital,random_arzdigital=random_arzdigital,random_bors=random_bors,
+    corona_data=Corona_data,bors_news_data=bors_news_data,arzdigital=arzdigital,random_arzdigital=random_arzdigital,random_bors=random_bors,
     random_corona=random_corona,random_tasnim=random_tasnim,random_tejarat=random_tejarat,corona_news=corona_news)
 
 @app.route('/about')

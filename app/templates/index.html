@@ -240,7 +240,7 @@
                   <div class="col-md-6 p-0 d-flex p-0">
                     <div class="category-info">
                       <a href="{{ newstoday[0] }}">
-                        <p class="text-muted">{{ newstoday[1]}}</p>
+                        <p class="text-muted">{{ newstoday[1]|truncate(50) }}</p>
                       </a>
                       <a href="{{ newstoday[0] }}">
                         <p> {{ newstoday[2]|truncate(50) }} </p>
