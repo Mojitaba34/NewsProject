@@ -135,7 +135,7 @@ dmypy.json
 .static
 static/
 /admin/static
-app/admin/config.py
+
 .vscode
 .vscode/
 /.vscode/
