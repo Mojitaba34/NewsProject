@@ -7,6 +7,7 @@ import readtime
 import math
 from urllib.parse import urlparse
 import time
+import re
 '''
 This routes is for Home page and passing some data to home Page
 
@@ -143,3 +144,19 @@ def sitemap():
     response.headers["Content-Type"] = "application/xml"
 
     return response
+
+
+@app.template_filter('MakeParagraph')
+def paragraph(string):
+    result = []
+    FullParagraph = ""
+    counter = 3
+    Paragraph = re.split(r'(?<!\d)\.(?!\d)',string)
+    for index, ParagraphData in enumerate(Paragraph):
+        FullParagraph = FullParagraph + ParagraphData
+        if index == counter:
+            result.append((u''.join(u'<p class="text-justify"><a href="/">اقتصاد خوان: </a>%s.</p><br>' % f"{str(FullParagraph)}")))
+            FullParagraph = ""
+            counter = counter + 3
+
+    return result

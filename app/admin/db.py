@@ -33,7 +33,7 @@ def BuildTables():
             news_content TEXT,
             news_link TEXT,
             news_img_link TEXT,
-            news_date VARCHAR(10),
+            news_date VARCHAR(20),
             status INT(1)
             );
             """)
@@ -338,13 +338,14 @@ def InsertTblNews(data,state):
     db = get_database_connection()
     cursor = db.cursor()
     date_time = JalaliDateTime.now() # give us dateTime shamsi
+    NewsDateTime = date_time.strftime('%Y/%m/%d %H:%M:%S')
     try:
         count = 0
         for news_Data in data:
             if CheckExistsTitleNews(news_Data['title']) == False:
                 slug = slugify_unicode(str(news_Data['title']),allow_unicode=True)
                 insert_query = "INSERT INTO tbl_news (news_title,news_slug, news_content, news_link, news_img_link, news_date,status) VALUES (%s ,%s , %s, %s, %s, %s,%s)"
-                insert_val = (str(news_Data['title']),slug,str(news_Data['content']),str(news_Data['link']),str(news_Data['news_img_link']),str(date_time.jalali_date()),str(state))
+                insert_val = (str(news_Data['title']),slug,str(news_Data['content']),str(news_Data['link']),str(news_Data['news_img_link']),str(NewsDateTime),str(state))
                 cursor.execute(insert_query,insert_val)
             db.commit()
             lastId = get_last_news_id()

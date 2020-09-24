@@ -213,14 +213,14 @@
     <div class="row mt-5">
 
       <div class="col-lg-6 col-12 mt-lg-0 mt-3">
-        
+
         <div class="w-100 main-titles">
           {% if not data == [] %}
           <h2 class="text-right"> <b> خبر روز</b> </h2>
           <hr class="line-next-to-title">
           {% endif %}
         </div>
-        
+
 
         <article>
           <div class="day-news">
@@ -233,17 +233,19 @@
 
                   <div class="col-md-6 p-0">
                     <div class="img-container">
-                      <a href="{{ newstoday[0] }}"> <img src="{{ newstoday[4] }}" class="ml-2" alt="{{ newstoday[1] }}"> </a>
+                      <a href="{{ newstoday[0] }}"> <img src="{{ newstoday[4] }}" class="ml-2" alt="{{ newstoday[1] }}">
+                      </a>
                     </div>
                   </div>
 
                   <div class="col-md-6 p-0 d-flex p-0">
                     <div class="category-info">
                       <a href="{{ newstoday[0] }}">
-                        <p class="text-muted">{{ newstoday[1]|truncate(50) }}</p>
+                        <h3> <p class="text-muted">{{ newstoday[1]|truncate(50) }}</p></h3>
+                       
                       </a>
                       <a href="{{ newstoday[0] }}">
-                        <p> {{ newstoday[2]|truncate(50) }} </p>
+                        <h4><p> {{ newstoday[2]|truncate(50) }} </p></h4>
                       </a>
                     </div>
                   </div>
@@ -262,14 +264,14 @@
 
 
       <div class="col-lg-6 col-12 mt-lg-0 mt-3">
-        
+
         <div class="w-100 main-titles">
           {% if not bors_news_data == [] %}
           <h2 class="text-right"> <b> اخبار بورس</b> </h2>
           <hr class="line-next-to-title">
           {% endif %}
         </div>
-        
+
         <article>
           <div class="corona-virus">
 
@@ -287,15 +289,13 @@
                   <div class="col-md-6 d-flex p-0 ">
                     <div class="category-info">
                       <a href="{{ burs[0] }}">
-                        <p class="text-muted">{{burs[1]}}</p>
+                        <h3><p class="text-muted">{{burs[1]}}</p></h3>
                       </a>
                       <a href="{{ burs[0] }}">
-                        <p> {{ burs[2]|truncate(50) }} </p>
+                        <h4><p> {{ burs[2]|truncate(50) }} </p></h4>
                       </a>
                     </div>
                   </div>
-                  
-                  
 
                 </div>
               </div>

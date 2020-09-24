@@ -138,7 +138,7 @@
 
           <ul class="pages">
 
-            <li> <a class="logo" href="#/"> <img
+            <li> <a class="logo" href="/"> <img
                   src="{{ url_for('static',filename='images/eg-logo.svg') }}" alt="search"> </a></li>
             <li> <a href="/" class="{{ 'active' if active_page == 'home' else '' }}"> خانه </a> </li>
             <li> <a href="/about" class="{{ 'active' if active_page == 'about' else '' }}"> درباره ی ما </a> </li>
@@ -230,7 +230,10 @@
 
                       <div class="col-md-12">
                         <div class="landing-news-text">
-                          <p class="text-justify">{{post[2]}}</p>
+                          {%for data in post[2]|MakeParagraph %}
+                          {{data|safe}}
+                          {% endfor %}
+                          <!-- <p class="text-justify">{{post[2]}}</p> -->
                           <!-- shared content by -->
                           <div class="shared-by d-flex">
                             <img src="{{ url_for('static',filename='images/landingpage/profile.jpg') }}"
